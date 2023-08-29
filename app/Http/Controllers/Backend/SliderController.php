@@ -37,11 +37,11 @@ class SliderController extends Controller
     {
         $request->validate([
 
-            'banner' => ['required', 'image', 'max:2000'],
+            'banner' => ['required', 'image', 'max:5000'],
             'type' => ['string', 'max:200'],
             'title' => ['required','max:200'],
             'starting_price' => ['max:200'],
-            'btn_url' => ['url', 'max:200'],
+            'btn_url' => ['url', 'max:500'],
             'serial' => ['required', 'integer'],
             'status' => ['required'],
             
@@ -64,7 +64,7 @@ class SliderController extends Controller
 
         toastr('Created Succesfully!', 'success');
 
-        return redirect()->back();
+        return redirect()->route('admin.slider.index');
 
     }
 
@@ -96,11 +96,11 @@ class SliderController extends Controller
 
         $request->validate([
 
-            'banner' => ['nullable', 'image', 'max:2000'],
+            'banner' => ['nullable', 'image', 'max:5000'],
             'type' => ['string', 'max:200'],
             'title' => ['required','max:200'],
             'starting_price' => ['max:200'],
-            'btn_url' => ['url', 'max:200'],
+            'btn_url' => ['url', 'max:500'],
             'serial' => ['required', 'integer'],
             'status' => ['required'],
             
@@ -109,8 +109,8 @@ class SliderController extends Controller
         $slider = Slider::findOrFail($id);
 
         $imagePath = $this->updateImage($request, 'banner', 'uploads', $slider->banner);
-        
-        $slider->banner= $imagePath;
+
+        $slider->banner= empty(!$imagePath) ? $imagePath:  $slider->banner;
         $slider->type = $request-> type;
         $slider->title = $request-> title;
         $slider->starting_price = $request-> starting_price;
@@ -130,8 +130,13 @@ class SliderController extends Controller
     /**
      * Remove the specified resource from storage.
      */
+
     public function destroy(string $id)
     {
-        //
+        $slider = Slider::findOrFail($id);
+        $this->deleteImage($slider->banner);
+        $slider->delete();
+        
+        return response(['status' => 'success','message' => 'Deleted Succesfully']);
     }
 }

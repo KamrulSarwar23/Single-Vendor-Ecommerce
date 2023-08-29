@@ -15,7 +15,7 @@
             <div class="row mt-sm-4">
 
 
-                <div class="col-12 col-md-12 col-lg-7 m-auto">
+                <div class="col-md-12 m-auto">
                     <div class="card">
 
                         <form method="POST" action="{{ route('admin.profile.update') }}" class="needs-validation"
@@ -64,7 +64,7 @@
 
 
 
-                <div class="col-12 col-md-12 col-lg-7 m-auto">
+                <div class="col-md-12 m-auto">
 
 
                     <div class="card">

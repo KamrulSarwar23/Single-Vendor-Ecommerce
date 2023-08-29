@@ -6,11 +6,11 @@ use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\VendorController;
 use App\Http\Controllers\Frontend\UserDashboardController;
 use App\Http\Controllers\Frontend\UserProfileController;
+use App\Http\Controllers\Frontend\HomeController;
 
 
-Route::get('/', function () {
-    return view('frontend.home.home');
-})->name('home.page');
+
+Route::get('/', [HomeController::class, 'index'])->name('home.page');
 
 
 Route::middleware('auth')->group(function () {
