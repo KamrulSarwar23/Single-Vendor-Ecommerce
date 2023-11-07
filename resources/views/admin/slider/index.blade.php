@@ -12,7 +12,7 @@
       <div class="section-body">
        
         <div class="row">
-          <div class="col-12">
+          <div class="col-md-12">
             <div class="card">
               <div class="card-header">
                 <h4>All Slider</h4>
@@ -30,14 +30,12 @@
             </div>
           </div>
         </div>
-      </div>
     </section>
 
-
+    @endsection
+    
    @push('scripts')
 
    {{ $dataTable->scripts(attributes: ['type' => 'module']) }} 
 
    @endpush 
-
-@endsection

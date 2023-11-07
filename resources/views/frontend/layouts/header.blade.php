@@ -8,9 +8,9 @@
             </div>
             <div class="col-xl-2 col-7 col-md-8 col-lg-2">
                 <div class="wsus_logo_area">
-                    <a class="wsus__header_logo" href="{{route('home.page')}}">
-                        <h2 style="color:white">Kamrul</h2>
-                        {{-- <img src="{{ asset('frontend/images/logo_2.png') }}" alt="logo" class="img-fluid w-100"> --}}
+                    <a class="wsus__header_logo" href="{{ route('home.page') }}">
+
+                        <img src="{{ asset('frontend/images/logo_2.png') }}" alt="logo" class="img-fluid w-100">
                     </a>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                         </div>
                         <div class="wsus__call_text">
                             <p>kh4035209@gmail.com</p>
-                            <p>01851-93923</p>
+                            <p>01851-939223</p>
                         </div>
                     </div>
                     <ul class="wsus__icon_area">

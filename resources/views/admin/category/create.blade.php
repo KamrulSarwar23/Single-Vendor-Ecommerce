@@ -15,7 +15,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h4>All Categories</h4>
+                <h4>Create Categories</h4>
               </div>
               <div class="card-body">
 
@@ -44,9 +44,7 @@
                               <option value="0">Inactive</option>
                             </select>
                           </div>
-    
-
-    
+        
                           <button type="submit" class="btn btn-primary">Create</button>
                     </form>
     

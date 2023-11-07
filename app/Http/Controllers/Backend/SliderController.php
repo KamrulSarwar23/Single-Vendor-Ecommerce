@@ -137,6 +137,6 @@ class SliderController extends Controller
         $this->deleteImage($slider->banner);
         $slider->delete();
         
-        return response(['status' => 'success','message' => 'Deleted Succesfully']);
+        return response(['status' => 'success', 'message' => 'Deleted Successfully']);
     }
 }
