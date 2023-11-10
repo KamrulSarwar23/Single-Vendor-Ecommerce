@@ -36,6 +36,7 @@ class VendorProductDataTable extends DataTable
                     <i class="fas fa-cog"></i>
                     </button>
                     <ul class="dropdown-menu">
+                    
                         <li><a class="dropdown-item" href="' . route('vendor.product-image-gallery.index', ['product' => $query->id]) . '">Image Gallery</a></li>
                         <li><a class="dropdown-item" href="' . route('vendor.product-variant.index', ['product' => $query->id]) . '">Variants</a></li>
 
@@ -89,7 +90,17 @@ class VendorProductDataTable extends DataTable
                 return $button;
             })
 
-            ->rawColumns(['thumb_image', 'action', 'status', 'type'])
+            ->addColumn('approved', function ($query) {
+                if ($query->is_approved == 1) {
+
+                    return '<i class="badge bg-success">Approved<i/>';
+                } else {
+
+                    return '<i class="badge bg-warning">Pending<i/>';
+                }
+            })
+
+            ->rawColumns(['thumb_image', 'action', 'status', 'type', 'approved'])
             ->setRowId('id');
     }
 
@@ -133,6 +144,7 @@ class VendorProductDataTable extends DataTable
             Column::make('thumb_image'),
             Column::make('name'),
             Column::make('price'),
+            Column::make('approved'),
             Column::make('type')->width(150),
             Column::make('status'),
             Column::computed('action')
