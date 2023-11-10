@@ -26,7 +26,6 @@ class ProductImageGalleryDataTable extends DataTable
 
             ->addColumn('action', function ($query) {
 
-
                 $deleteBtn = "<a href='" . route('admin.product-image-gallery.destroy', $query->id) . "' class= 'btn btn-danger ml-3 delete-item'><i class='fas fa-trash'></i> </a>";
 
                 return $deleteBtn;
@@ -76,7 +75,7 @@ class ProductImageGalleryDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-
+            
             Column::make('id')->width(100),
             Column::make('image'),
             Column::computed('action')

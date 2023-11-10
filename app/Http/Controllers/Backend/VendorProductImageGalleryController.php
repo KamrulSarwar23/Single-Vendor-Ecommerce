@@ -8,6 +8,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\ProductImageGallery;
 use App\Traits\ImageUploadTrait;
+use Illuminate\Support\Facades\Auth;
 
 class VendorProductImageGalleryController extends Controller
 {
@@ -19,6 +20,12 @@ class VendorProductImageGalleryController extends Controller
     {
 
         $product = Product::findOrFail($request->product);
+
+        // Check Product Vendor
+        if ($product->vendor_id !== Auth::user()->vendor->id) {
+            abort(404);
+        }
+        
         return $dataTable->render('vendor.product.imagegallery.index', compact('product'));
     }
 
@@ -83,9 +90,15 @@ class VendorProductImageGalleryController extends Controller
     public function destroy(string $id)
     {
         $productimage = ProductImageGallery::findOrFail($id);
+
+        // Check Product Vendor
+        if ($productimage->product->vendor_id !== Auth::user()->vendor->id) {
+            abort(404);
+        }
+
         $this->deleteImage($productimage->image);
         $productimage->delete();
-        
+
         return response(['status' => 'success', 'message' => 'Deleted Successfully']);
     }
 }

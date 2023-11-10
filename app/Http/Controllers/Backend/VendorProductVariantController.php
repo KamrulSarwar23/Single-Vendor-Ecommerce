@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\ProductVariant;
 use App\Models\ProductVariantItem;
+use Illuminate\Support\Facades\Auth;
 
 class VendorProductVariantController extends Controller
 {
@@ -17,6 +18,12 @@ class VendorProductVariantController extends Controller
     public function index(Request $request, VendorProductVariantDataTable $datatable)
     {
          $product = Product::findOrFail($request->product);
+
+          // Check Product Vendor
+          if ($product->vendor_id !== Auth::user()->vendor->id) {
+            abort(404);
+        }
+
         return $datatable->render('vendor.product.product-variant.index', compact('product'));
     }
 
@@ -64,6 +71,12 @@ class VendorProductVariantController extends Controller
     public function edit(string $id)
     {
         $productVariant = ProductVariant::findOrFail($id);
+
+            // Check Product Vendor
+            if ($productVariant->product->vendor_id !== Auth::user()->vendor->id) {
+                abort(404);
+            }
+
         return view('vendor.product.product-variant.edit', compact('productVariant'));
     }
 
@@ -77,8 +90,13 @@ class VendorProductVariantController extends Controller
             'status' => ['required']
         ]);
 
-
         $productVariant = ProductVariant::findOrFail($id);
+
+           // Check Product Vendor
+           if ($productVariant->product->vendor_id !== Auth::user()->vendor->id) {
+            abort(404);
+        }
+        
         $productVariant->name = $request->name;
         $productVariant->status = $request->status;
         $productVariant->save();
@@ -93,6 +111,12 @@ class VendorProductVariantController extends Controller
     public function destroy(string $id)
     {
         $productVariant = ProductVariant::findOrFail($id);
+
+            // Check Product Vendor
+            if ($productVariant->vendor_id !== Auth::user()->vendor->id) {
+                abort(404);
+            }
+
         $variantItemCheck = ProductVariantItem::where('product_variant_id', $productVariant->id)->count();
 
         if ( $variantItemCheck > 0) {

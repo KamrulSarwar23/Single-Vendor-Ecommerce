@@ -26,8 +26,6 @@ class VendorProductDataTable extends DataTable
 
             ->addColumn('action', function ($query) {
 
-
-
                 $editBtn = "<a href='" . route('vendor.products.edit', $query->id) . "' class= 'btn btn-primary'> <i class='fas fa-edit'></i> </a>";
                 $deleteBtn = "<a href='" . route('vendor.products.destroy', $query->id) . "' class= 'btn btn-danger ml-3 delete-item'><i class='fas fa-trash'></i> </a>";
                 $moreBtn = '
@@ -35,8 +33,9 @@ class VendorProductDataTable extends DataTable
                     <button type="button" class="text-left btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-cog"></i>
                     </button>
-                    <ul class="dropdown-menu">
                     
+                    <ul class="dropdown-menu">
+
                         <li><a class="dropdown-item" href="' . route('vendor.product-image-gallery.index', ['product' => $query->id]) . '">Image Gallery</a></li>
                         <li><a class="dropdown-item" href="' . route('vendor.product-variant.index', ['product' => $query->id]) . '">Variants</a></li>
 
