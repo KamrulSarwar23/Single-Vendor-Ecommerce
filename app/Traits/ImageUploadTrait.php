@@ -24,8 +24,6 @@ trait ImageUploadTrait
     }
   }
 
-
-
   public function uploadMultiImage(Request $request, $inputName, $path)
   {
 
@@ -48,8 +46,6 @@ trait ImageUploadTrait
       
     }
   }
-
-
 
   public function updateImage(Request $request, $inputName, $path, $oldPath = null)
   {

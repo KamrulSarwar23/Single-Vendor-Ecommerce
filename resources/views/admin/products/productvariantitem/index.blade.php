@@ -8,7 +8,7 @@
 
         <div class="mb-3">
             <a class="btn btn-primary" href="{{ route('admin.product-variant.index', ['product' => $product->id]) }}">Back</a>
-        </div
+        </div>
 
         <div class="section-body">
 
