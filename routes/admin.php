@@ -9,11 +9,12 @@ use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\ChildCategoryController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\AdminVendorProfileController;
+use App\Http\Controllers\Backend\FlashSaleController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ProductImageGalleryController;
 use App\Http\Controllers\Backend\ProductVariantController;
 use App\Http\Controllers\Backend\ProductVariantItemController;
-
+use App\Http\Controllers\Backend\SellerProductController;
 
 // Admin profile Routes
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
@@ -51,7 +52,6 @@ Route::put('product/change-status', [ProductController::class, 'changeStatus'])-
 Route::resource('products', ProductController::class);
 
 //* Products Image Gallery Routes*//
-
 Route::resource('product-image-gallery', ProductImageGalleryController::class);
 
 //* Products Variants Routes*//
@@ -66,3 +66,16 @@ Route::get('product-variant-item/edit{variantItemId}', [ProductVariantItemContro
 Route::post('product-varian t-item/update{variantItemId}', [ProductVariantItemController::class, 'update'])->name('product-variant-item.update');
 Route::delete('product-variant-item/destroy/{variantItemId}', [ProductVariantItemController::class, 'destroy'])->name('product-variant-item.destroy');
 Route::put('product-variant-item/change-status', [ProductVariantItemController::class, 'changeStatus'])->name('product-variant-item.change-status');
+
+// Seller Product
+Route::get('seller-products', [SellerProductController::class, 'index'])->name('seller-products.index');
+Route::get('seller-pending-products', [SellerProductController::class, 'pendingProducts'])->name('seller-pending-products.index');
+Route::put('change-approve-status', [SellerProductController::class, 'chnageapprovestatus'])->name('change-approve-status');
+
+// Flash Sale
+Route::get('flash-sale', [FlashSaleController::class, 'index'])->name('flash-sale.index');
+Route::put('flash-sale-update', [FlashSaleController::class, 'update'])->name('flash-sale.update');
+Route::post('flash-sale-update/add-product', [FlashSaleController::class, 'addProduct'])->name('flash-sale.add-product');
+Route::put('flash-sale-update/show-at-home/status-change', [FlashSaleController::class, 'changeShowAtHomeStatus'])->name('flash-sale.show-at-home.change-status');
+Route::put('flash-sale-item/change-status', [FlashSaleController::class, 'changeStatus'])->name('flash-sale-item.change-status');
+Route::delete('flash-sale-item/delete/{id}', [FlashSaleController::class, 'destroy'])->name('flash-sale-item.delete');

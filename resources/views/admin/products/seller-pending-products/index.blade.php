@@ -3,7 +3,7 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>Products</h1>
+            <h1>Seller Pending Products</h1>
 
         </div>
 
@@ -13,7 +13,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>All Products</h4>
+                            <h4>All Seller Pending Products</h4>
                         </div>
                         <div class="card-body">
 
@@ -51,8 +51,33 @@
                     error: function(xhr, status, error) {
                         console.log(error);
                     }
-                });
-            });
+                })
+            })
+
+            // Change Approve Status
+
+            $('body').on('change', '.is_approve', function() {
+
+                let value = $(this).val();
+                let id = $(this).data('id');
+
+                $.ajax({
+                    url: "{{ route('admin.change-approve-status') }}",
+                    method: 'PUT',
+                    data: {
+                        value: value,
+                        id: id
+                    },
+                    success: function(data) {
+                        toastr.success(data.message)
+                        window.location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(error);
+                    }
+                })
+            })
+
         });
     </script>
 @endpush
