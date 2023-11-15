@@ -37,11 +37,18 @@ class FlashSaleController extends Controller
     public function addProduct(Request $request)
     {
 
-        $request->validate([
-            'product' => ['required'],
-            'show_at_home' => ['required'],
-            'status' => ['required'],
-        ]);
+        $request->validate(
+            [
+                'product' => ['required', 'unique:flash_sale_items,product_id'],
+                'show_at_home' => ['required'],
+                'status' => ['required'],
+            ],
+            [
+                'product.unique' => 'Product Is Already Added In Flash Sale!',
+            ]
+        );
+
+
         $flashSaleDate = FlashSale::first();
 
         $flashSaleItem = new FlashSaleItem();
@@ -56,7 +63,7 @@ class FlashSaleController extends Controller
         return redirect()->back();
     }
 
-    
+
     public function destroy(string $id)
     {
         $flashSaleItem = FlashSaleItem::findOrFail($id);
@@ -64,7 +71,8 @@ class FlashSaleController extends Controller
         return response(['status' => 'success', 'message' => 'Deleted Successfully']);
     }
 
-    public function changeShowAtHomeStatus(Request $request){
+    public function changeShowAtHomeStatus(Request $request)
+    {
 
         $flashSaleItem = FlashSaleItem::findOrFail($request->id);
         $flashSaleItem->show_at_home = $request->status == 'true' ? 1 : 0;
@@ -73,7 +81,8 @@ class FlashSaleController extends Controller
         return response(['message' => 'Status has been Updated!']);
     }
 
-    public function changeStatus(Request $request){
+    public function changeStatus(Request $request)
+    {
 
         $flashSaleItem = FlashSaleItem::findOrFail($request->id);
         $flashSaleItem->status = $request->status == 'true' ? 1 : 0;

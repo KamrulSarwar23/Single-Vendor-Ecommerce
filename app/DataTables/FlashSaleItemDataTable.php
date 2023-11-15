@@ -61,10 +61,10 @@ class FlashSaleItemDataTable extends DataTable
             })
 
             ->addColumn('product_name', function ($query) {
-                return $query->product->name;
+                return "<a href='".route('admin.products.edit', $query->product->id)."'>".$query->product->name."</a>" ;
             })
 
-            ->rawColumns(['action', 'status', 'show_at_home'])
+            ->rawColumns(['action', 'status', 'show_at_home', 'product_name'])
             ->setRowId('id');
     }
 
