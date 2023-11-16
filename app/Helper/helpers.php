@@ -14,7 +14,6 @@ function setActive(array $route)
     }
 }
 
-
 // Check if product have discount
 function checkProductDiscount($product)
 {
@@ -27,7 +26,6 @@ function checkProductDiscount($product)
 
     return false;
 }
-
 
 // Calculaete discount percent
 

@@ -2,8 +2,8 @@
 
 @section('content')
     <!--============================
-                BREADCRUMB START
-            ==============================-->
+                        BREADCRUMB START
+                    ==============================-->
     <section id="wsus__breadcrumb">
         <div class="wsus_breadcrumb_overlay">
             <div class="container">
@@ -11,7 +11,7 @@
                     <div class="col-12">
                         <h4>Flash Sale</h4>
                         <ul>
-                            <li><a href="{{url('/')}}">Home</a></li>
+                            <li><a href="{{ url('/') }}">Home</a></li>
                             <li><a href="javascript:;">Flash Sale</a></li>
                         </ul>
                     </div>
@@ -20,13 +20,13 @@
         </div>
     </section>
     <!--============================
-                BREADCRUMB END
-            ==============================-->
+                        BREADCRUMB END
+                    ==============================-->
 
 
     <!--============================
-                DAILY DEALS DETAILS START
-            ==============================-->
+                        DAILY DEALS DETAILS START
+                    ==============================-->
     <section id="wsus__daily_deals">
         <div class="container">
             <div class="wsus__offer_details_area">
@@ -85,18 +85,19 @@
                                         class="wsus__minus">-{{ calculateDiscountPercent($product->price, $product->offer_price) }}</span>
                                 @endif
 
-                                <a class="wsus__pro_link" href="product_details.html">
+                                <a class="wsus__pro_link" href="{{ route('product-detail', $product->slug) }}">
                                     <img src="{{ asset($product->thumb_image) }}" alt="product"
                                         class="img-fluid w-100 img_1" />
 
                                     <img src=" 
-                                
+                                 
                                 @if (isset($product->productImageGallery[0]->image)) {{ asset($product->productImageGallery[0]->image) }}
                                 @else
                                 {{ asset($product->thumb_image) }} @endif "
                                         alt="product" class="img-fluid w-100 img_2" />
 
                                 </a>
+
                                 <ul class="wsus__single_pro_icon">
                                     <li><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
                                                 class="far fa-eye"></i></a></li>
@@ -113,7 +114,7 @@
                                         <i class="fas fa-star-half-alt"></i>
                                         <span>(133 review)</span>
                                     </p>
-                                    <a class="wsus__pro_name" href="#">{{ $product->name }}</a>
+                                    <a class="wsus__pro_name" href="{{ route('product-detail', $product->slug) }}">{{ $product->name }}</a>
 
                                     @if (checkProductDiscount($product))
                                         <p class="wsus__price">${{ $product->offer_price }}
@@ -131,19 +132,19 @@
 
                 </div>
 
-            <div class="mt-5">
-                @if ($flashSaleItem->hasPages())
-                {{ $flashSaleItem->links() }}
-            @endif
-            </div>
+                <div class="mt-5">
+                    @if ($flashSaleItem->hasPages())
+                        {{ $flashSaleItem->links() }}
+                    @endif
+                </div>
 
             </div>
         </div>
         </div>
     </section>
     <!--============================
-                DAILY DEALS DETAILS END
-            ==============================-->
+                        DAILY DEALS DETAILS END
+                    ==============================-->
 @endsection
 
 
