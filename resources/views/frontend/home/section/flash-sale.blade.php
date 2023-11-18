@@ -6,7 +6,8 @@
                     <div class="wsus__flash_coundown">
                         <span class=" end_text">flash sell</span>
                         <div class="simply-countdown simply-countdown-one"></div>
-                        <a class="common_btn" href="{{route('flash-sale')}}">see more <i class="fas fa-caret-right"></i></a>
+                        <a class="common_btn" href="{{ route('flash-sale') }}">see more <i
+                                class="fas fa-caret-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -33,11 +34,10 @@
 
                             <img src=" 
                             
-                            @if (isset($product->productImageGallery[0]->image))
-                            {{ asset($product->productImageGallery[0]->image) }}
+                            @if (isset($product->productImageGallery[0]->image)) {{ asset($product->productImageGallery[0]->image) }}
                             @else
-                            {{ asset($product->thumb_image) }}
-                            @endif " alt="product" class="img-fluid w-100 img_2" />
+                            {{ asset($product->thumb_image) }} @endif "
+                                alt="product" class="img-fluid w-100 img_2" />
 
                         </a>
                         <ul class="wsus__single_pro_icon">
@@ -56,7 +56,8 @@
                                 <i class="fas fa-star-half-alt"></i>
                                 <span>(133 review)</span>
                             </p>
-                            <a class="wsus__pro_name" href="{{ route('product-detail', $product->slug) }}">{{ $product->name }}</a>
+                            <a class="wsus__pro_name"
+                                href="{{ route('product-detail', $product->slug) }}">{{ $product->name }}</a>
 
                             @if (checkProductDiscount($product))
                                 <p class="wsus__price">${{ $product->offer_price }}
@@ -71,7 +72,6 @@
                     </div>
                 </div>
             @endforeach
-
         </div>
     </div>
 </section>

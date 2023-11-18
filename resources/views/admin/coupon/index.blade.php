@@ -3,7 +3,7 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>Products</h1>
+            <h1>Coupons</h1>
         </div>
 
         <div class="section-body">
@@ -12,9 +12,9 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>All Product</h4>
+                            <h4>All Coupons</h4>
                             <div class="card-header-action">
-                                <a href="{{ route('admin.products.create') }}"
+                                <a href="{{ route('admin.coupons.create') }}"
                                     class="btn btn-primary">Create New</a>
                             </div>
                         </div>
@@ -43,7 +43,7 @@
                 let id = $(this).data('id');
 
                 $.ajax({
-                    url: "{{ route('admin.product.change-status') }}",
+                    url: "{{ route('admin.coupons.change-status') }}",
                     method: 'PUT',
                     data: {
                         status: isChecked,

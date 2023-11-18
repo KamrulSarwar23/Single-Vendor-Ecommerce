@@ -9,12 +9,15 @@ use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\ChildCategoryController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\AdminVendorProfileController;
+use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\FlashSaleController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ProductImageGalleryController;
 use App\Http\Controllers\Backend\ProductVariantController;
 use App\Http\Controllers\Backend\ProductVariantItemController;
 use App\Http\Controllers\Backend\SellerProductController;
+use App\Http\Controllers\Backend\SettingController;
+use App\Http\Controllers\Backend\ShippingRuleController;
 
 // Admin profile Routes
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
@@ -79,3 +82,18 @@ Route::post('flash-sale-update/add-product', [FlashSaleController::class, 'addPr
 Route::put('flash-sale-update/show-at-home/status-change', [FlashSaleController::class, 'changeShowAtHomeStatus'])->name('flash-sale.show-at-home.change-status');
 Route::put('flash-sale-item/change-status', [FlashSaleController::class, 'changeStatus'])->name('flash-sale-item.change-status');
 Route::delete('flash-sale-item/delete/{id}', [FlashSaleController::class, 'destroy'])->name('flash-sale-item.delete');
+
+
+// Coupon Routes
+Route::put('coupons/change-status', [CouponController::class, 'changeStatus'])->name('coupons.change-status');
+Route::resource('coupons', CouponController::class);
+
+// shipping rule Routes
+Route::put('shipping-rule/change-status', [ShippingRuleController::class, 'changeStatus'])->name('
+');
+Route::resource('shipping-rule', ShippingRuleController::class);
+
+// General Setting
+Route::get('settings', [SettingController::class, 'index'])->name('setting.index');
+Route::put('general-setting-update', [SettingController::class, 'generalSettingUpdate'])->name('general-setting-update');
+

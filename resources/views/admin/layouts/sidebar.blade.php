@@ -2,6 +2,11 @@
     .active {
         background-color: rgba(184, 184, 184, 0.5);
     }
+
+    .fa-circle-chevron-down,
+    .fa-gear {
+        color: rgb(93, 114, 236)
+    }
 </style>
 
 <div class="main-sidebar sidebar-style-2">
@@ -21,7 +26,8 @@
             </li>
             <li class="menu-header">Starter</li>
             <li class="dropdown {{ setActive(['admin.slider.*']) }}">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
+                        class="fa-solid fa-circle-chevron-down"></i>
                     <span>Manage Slider</span></a>
 
                 <ul class="dropdown-menu">
@@ -32,7 +38,8 @@
             </li>
 
             <li class="dropdown {{ setActive(['admin.category.*', 'admin.subcategory.*', 'admin.childcategory.*']) }}">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
+                        class="fa-solid fa-circle-chevron-down"></i>
                     <span>Manage Category</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ setActive(['admin.category.*']) }}"><a class="nav-link"
@@ -56,7 +63,8 @@
                 'admin.product-variant.*',
                 'admin.product-variant-item.*',
             ]) }}">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
+                        class="fa-solid fa-circle-chevron-down"></i>
                     <span>Manage Products</span></a>
 
                 <ul class="dropdown-menu">
@@ -82,20 +90,29 @@
                 </ul>
             </li>
 
-            <li class="dropdown {{ setActive(['admin.vendor-profile.*', 'admin.flash-sale.*']) }}">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
+            <li class="dropdown {{ setActive(['admin.vendor-profile.*', 'admin.flash-sale.*', 'admin.coupons.*', 'admin.shipping-rule.*']) }}">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
+                        class="fa-solid fa-circle-chevron-down"></i>
                     <span>Manage Ecommerce</span></a>
 
                 <ul class="dropdown-menu">
                     <li class="{{ setActive(['admin.flash-sale.*']) }}"><a class="nav-link"
-                        href="{{ route('admin.flash-sale.index') }}">Flash Sale</a></li>
+                            href="{{ route('admin.flash-sale.index') }}">Flash Sale</a></li>
+
+                    <li class="{{ setActive(['admin.coupons.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.coupons.index') }}">Coupons</a></li>
+
+                    <li class="{{ setActive(['admin.shipping-rule.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.shipping-rule.index') }}">Shipping Rule</a></li>
 
                     <li class="{{ setActive(['admin.vendor-profile.*']) }}"><a class="nav-link"
                             href="{{ route('admin.vendor-profile.index') }}">Vendor Profile</a></li>
 
                 </ul>
             </li>
-
+            <li class="{{ setActive(['admin.setting.index']) }}"><a class="nav-link"
+                    href="{{ route('admin.setting.index') }}"><i class="fa-solid fa-gear"></i> <span>Settings</span>
+                </a></li>
         </ul>
 
     </aside>
