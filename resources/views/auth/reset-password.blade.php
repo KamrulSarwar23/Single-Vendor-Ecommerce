@@ -1,5 +1,9 @@
 @extends('frontend.layouts.master')
 
+@section('title')
+{{$setting->site_name}} || Reset Password
+@endsection
+
 @section('content')
 
    <!--============================

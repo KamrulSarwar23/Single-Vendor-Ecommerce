@@ -1,6 +1,10 @@
 
 @extends('frontend.layouts.master')
 
+@section('title')
+{{$setting->site_name}} || Login
+@endsection
+
 @section('content')
         <!--============================
          BREADCRUMB START

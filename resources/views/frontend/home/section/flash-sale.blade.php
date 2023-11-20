@@ -1,3 +1,4 @@
+
 <section id="wsus__flash_sell" class="wsus__flash_sell_2">
     <div class=" container">
         <div class="row">
@@ -12,6 +13,7 @@
                 </div>
             </div>
         </div>
+
         <div class="row flash_sell_slider">
             @foreach ($flashSaleItem as $item)
                 @php
@@ -60,11 +62,11 @@
                                 href="{{ route('product-detail', $product->slug) }}">{{ $product->name }}</a>
 
                             @if (checkProductDiscount($product))
-                                <p class="wsus__price">${{ $product->offer_price }}
+                                <p class="wsus__price">{{$setting->currency_icon}}{{ $product->offer_price }}
                                     <del>${{ $product->price }}</del>
                                 </p>
                             @else
-                                <p class="wsus__price">${{ $product->price }}
+                                <p class="wsus__price">{{$setting->currency_icon}}{{ $product->price }}
                                 </p>
                             @endif
                             <a class="add_cart" href="#">add to cart</a>
@@ -73,6 +75,7 @@
                 </div>
             @endforeach
         </div>
+        
     </div>
 </section>
 

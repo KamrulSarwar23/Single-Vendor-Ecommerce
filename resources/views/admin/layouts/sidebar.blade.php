@@ -1,12 +1,17 @@
 <style>
     .active {
-        background-color: rgba(184, 184, 184, 0.5);
+        background-color: rgb(93, 114, 236,0.5)
     }
 
     .fa-circle-chevron-down,
     .fa-gear {
         color: rgb(93, 114, 236)
     }
+
+    ul li a {
+        font-size: 14px;
+    }
+
 </style>
 
 <div class="main-sidebar sidebar-style-2">
@@ -90,7 +95,8 @@
                 </ul>
             </li>
 
-            <li class="dropdown {{ setActive(['admin.vendor-profile.*', 'admin.flash-sale.*', 'admin.coupons.*', 'admin.shipping-rule.*']) }}">
+            <li
+                class="dropdown {{ setActive(['admin.vendor-profile.*', 'admin.flash-sale.*', 'admin.coupons.*', 'admin.shipping-rule.*']) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
                         class="fa-solid fa-circle-chevron-down"></i>
                     <span>Manage Ecommerce</span></a>

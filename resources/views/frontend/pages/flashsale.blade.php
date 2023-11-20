@@ -1,5 +1,9 @@
 @extends('frontend.layouts.master')
 
+@section('title')
+{{$setting->site_name}} || Flash Sale
+@endsection
+
 @section('content')
     <!--============================
                         BREADCRUMB START
@@ -117,11 +121,11 @@
                                     <a class="wsus__pro_name" href="{{ route('product-detail', $product->slug) }}">{{ $product->name }}</a>
 
                                     @if (checkProductDiscount($product))
-                                        <p class="wsus__price">${{ $product->offer_price }}
+                                        <p class="wsus__price">{{$setting->currency_icon}}{{ $product->offer_price }}
                                             <del>${{ $product->price }}</del>
                                         </p>
                                     @else
-                                        <p class="wsus__price">${{ $product->price }}
+                                        <p class="wsus__price">{{$setting->currency_icon}}{{ $product->price }}
                                         </p>
                                     @endif
                                     <a class="add_cart" href="#">add to cart</a>
@@ -131,6 +135,7 @@
                     @endforeach
 
                 </div>
+                
 
                 <div class="mt-5">
                     @if ($flashSaleItem->hasPages())
