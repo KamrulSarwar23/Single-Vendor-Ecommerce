@@ -20,33 +20,57 @@ class CartController extends Controller
         if ($request->has('variants_items')) {
             foreach ($request->variants_items as $item_id) {
                 $variantitem = ProductVariantItem::find($item_id);
-                $variants[$variantitem->productVariantname->name] ['name'] =  $variantitem->name;
-                $variants[$variantitem->productVariantname->name] ['price'] =  $variantitem->price;
+                $variants[$variantitem->productVariantname->name]['name'] =  $variantitem->name;
+                $variants[$variantitem->productVariantname->name]['price'] =  $variantitem->price;
                 $variantTotalAmount += $variantitem->price;
             }
         }
-      
+
         // Check Discount 
 
-        $productTotalAmount = 0;
+        $productPrice = 0;
         if (checkProductDiscount($product)) {
-            $productTotalAmount = ($product->offer_price + $variantTotalAmount);
-        }else{
-            $productTotalAmount = ($product->price + $variantTotalAmount);
+            $productPrice = $product->offer_price;
+        } else {
+            $productPrice = $product->price;
         }
 
         $cartdata = [];
         $cartdata['id'] = $product->id;
         $cartdata['name'] = $product->name;
         $cartdata['qty'] = $request->qty;
-        $cartdata['price'] = $productTotalAmount * $request->qty;
+        $cartdata['price'] = $productPrice;
         $cartdata['weight'] = 10;
-        $cartdata['options'] ['variants']= $variants;
-        $cartdata['options'] ['image'] = $product->thumb_image; 
-        $cartdata['options'] ['slug'] = $product->slug; 
+        $cartdata['options']['variants'] = $variants;
+        $cartdata['options']['variants_total'] = $variantTotalAmount;
+        $cartdata['options']['image'] = $product->thumb_image;
+        $cartdata['options']['slug'] = $product->slug;
 
         Cart::add($cartdata);
 
-        return response(['status' => 'success', 'message'=> 'Product Added to cart successfully']);
+        return response(['status' => 'success', 'message' => 'Product Added to cart successfully']);
+    }
+
+    public function cartDetails()
+    {
+
+        $cartItems = Cart::content();
+
+        return view('frontend.pages.cart-details', compact('cartItems'));
+    }
+
+    public function updateProductQuantity(Request $request)
+    {
+
+        Cart::update($request->rowId, $request->quantity);
+        $productTotal = $this->getProductTotal($request->rowId);
+        return response(['status' => 'success', 'message' => 'Product Quantity Updated', 'product_total' => $productTotal]);
+    }
+
+    public function getProductTotal($rowId)
+    {
+        $product = Cart::get($rowId);
+        $total = ($product->price + $product->options->variants_total) * $product->qty;
+        return  $total;
     }
 }

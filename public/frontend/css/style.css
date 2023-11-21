@@ -9502,11 +9502,11 @@ a:not([href]):not([class]):hover {
   height: 22px !important;
 }
 
-.delete-item{
+.delete-item {
   margin-left: 5px;
 }
 
-.variant-btn{
+.variant-btn {
   margin-right: 5px;
 }
 
@@ -9520,7 +9520,30 @@ a:not([href]):not([class]):hover {
   -o-transition: all linear 0.3s ease;
 }
 
-
-#sticky_pro_zoom{
+#sticky_pro_zoom {
   z-index: 9999 !important;
 }
+
+.product_qty_wrapper {
+  display: flex;
+}
+
+.product-qty {
+  width: 35px;
+  height: 40px;
+  margin: 0 3px;
+  text-align: center;
+}
+
+.product_qty_wrapper button {
+  width: 35px;
+  height: 40px;
+  text-align: center;
+}
+
+/* .product_qty_wrapper input {
+  background-color: rgba(50, 0, 0, 0.08);
+  border: none;
+  outline: none;
+  border-radius: 3px;
+} */

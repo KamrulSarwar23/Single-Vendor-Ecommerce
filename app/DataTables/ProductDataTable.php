@@ -71,10 +71,7 @@ class ProductDataTable extends DataTable
                 }
             })
 
-            ->addColumns('price', function($query){
-                $query->
-            })
-
+     
             ->addColumn('status', function ($query) {
                 if ($query->status == 1) {
                     $button = '<label class="custom-switch">
