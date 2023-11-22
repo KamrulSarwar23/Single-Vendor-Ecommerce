@@ -11,6 +11,7 @@ use App\Models\Subcategory;
 use App\Models\ProductImageGallery;
 use App\Models\ProductVariant;
 use App\Models\Brand;
+use App\Models\FlashSaleItem;
 use App\Models\Product;
 use App\Traits\ImageUploadTrait;
 use Illuminate\Support\Facades\Auth;
@@ -169,6 +170,14 @@ class ProductController extends Controller
     {
         // Delete Main Product Image
         $product = Product::findOrFail($id);
+
+        $flashsaleitem = FlashSaleItem::where('product_id', $product->id)->count();
+
+        if ($flashsaleitem) {
+
+            return response(['status' => 'error', 'message' => 'This item added in Flash Sale, for delete this first remove from Flash Sale']);
+        }
+
         $this->deleteImage($product->thumb_image);
 
         // // Delete Gallery Image

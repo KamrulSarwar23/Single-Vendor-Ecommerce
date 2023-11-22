@@ -7,8 +7,8 @@
 
 @section('content')
     <!--============================
-                        BREADCRUMB START
-                    ==============================-->
+                                            BREADCRUMB START
+                                        ==============================-->
     <section id="wsus__breadcrumb">
         <div class="wsus_breadcrumb_overlay">
             <div class="container">
@@ -26,13 +26,13 @@
         </div>
     </section>
     <!--============================
-                        BREADCRUMB END
-                    ==============================-->
+                                            BREADCRUMB END
+                                        ==============================-->
 
 
     <!--============================
-                        CART VIEW PAGE START
-                    ==============================-->
+                                            CART VIEW PAGE START
+                                        ==============================-->
     <section id="wsus__cart_view">
         <div class="container">
             <div class="row">
@@ -64,7 +64,7 @@
 
 
                                         <th class="wsus__pro_icon">
-                                            <a href="#" class="common_btn">clear cart</a>
+                                            <a href="#" class="common_btn clear_cart">clear cart</a>
                                         </th>
                                     </tr>
 
@@ -89,25 +89,38 @@
                                             </td>
 
                                             <td class="wsus__pro_status">
-                                                <h6 id="{{$item->rowId}}">{{ $setting->currency_icon . ($item->price + $item->options->variants_total) * $item->qty}}
+                                                <h6 id="{{ $item->rowId }}">
+                                                    {{ $setting->currency_icon . ($item->price + $item->options->variants_total) * $item->qty }}
                                                 </h6>
                                             </td>
 
                                             <td class="wsus__pro_select">
                                                 <form class="product_qty_wrapper">
-                                                    <button type="button" class="btn btn-danger product-decrement">-</button>
-                                                    <input class="product-qty btn btn-secondary" data-rowid="{{ $item->rowId }}"
-                                                        type="button" min="1" max="100" value="{{$item->qty}}" readonly/>
-                                                    <button type="button" class="btn btn-success product-increment">+</button>
+                                                    <button type="button"
+                                                        class="btn btn-danger product-decrement">-</button>
+                                                    <input class="product-qty btn btn-secondary"
+                                                        data-rowid="{{ $item->rowId }}" type="button" min="1"
+                                                        max="100" value="{{ $item->qty }}" readonly />
+                                                    <button type="button"
+                                                        class="btn btn-success product-increment">+</button>
                                                 </form>
                                             </td>
 
                                             <td class="wsus__pro_icon">
-                                                <a href="#"><i class="far fa-times"></i></a>
+                                                <a href="{{ route('remove.product', $item->rowId) }}"><i class="far fa-times"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach
 
+                                    @if (count($cartItems) == 0)
+                                        <tr class="d-flex ">
+                                            <td style="width:100%" class="wsus__pro_status">
+                                                <h5 class="">
+                                                    Cart is Empty
+                                                </h5>
+                                            </td>
+                                        </tr>
+                                    @endif
 
                                 </tbody>
                             </table>
@@ -168,8 +181,8 @@
         </div>
     </section>
     <!--============================
-                          CART VIEW PAGE END
-                    ==============================-->
+                                              CART VIEW PAGE END
+                                        ==============================-->
 @endsection
 
 
@@ -298,12 +311,13 @@
                     success: function(data) {
                         if (data.status == 'success') {
                             let productId = '#' + rowId;
-                            let totalAmount = "{{$setting->currency_icon}}" + data.product_total;
+                            let totalAmount = "{{ $setting->currency_icon }}" + data.product_total;
                             $(productId).text(totalAmount);
 
                             // Update total price dynamically
-                            let totalElement = $('#total-price'); // Update with your actual total price element
-                            totalElement.text("{{$setting->currency_icon}}" + data.cart_total);
+                            let totalElement = $(
+                                '#total-price'); // Update with your actual total price element
+                            totalElement.text("{{ $setting->currency_icon }}" + data.cart_total);
 
                             toastr.success(data.message);
                         }
@@ -313,6 +327,42 @@
                     },
                 });
             }
-        });
+
+            // Clear Cart
+            $('.clear_cart').on('click', function(e) {
+                e.preventDefault();
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "This action will clear your cart",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, Clear it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+
+                        $.ajax({
+                            type: 'get',
+                            url: "{{ route('clear.cart') }}",
+
+                            success: function(data) {
+                                if (data.status == 'success') {
+                                    window.location.reload();
+                                }
+                            },
+
+                            error: function(xhr, status, error) {
+                                console.log(error);
+                            }
+                        })
+
+
+                    }
+
+                })
+            })
+        })
     </script>
 @endpush

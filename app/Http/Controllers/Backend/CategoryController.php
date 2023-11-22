@@ -109,8 +109,6 @@ class CategoryController extends Controller
     public function destroy(string $id)
     {
 
-
-
         $category = Category::findOrFail($id);
 
         $subcategory = SubCategory::where('category_id', $category->id)->count();
