@@ -29,15 +29,15 @@
                             <i class="fas fa-user-headset"></i>
                         </div>
                         <div class="wsus__call_text">
-                            <p>kh4035209@gmail.com</p>
-                            <p>01851-939223</p>
+                            <p>admin@gmail.com</p>
+                            <p>01845-362545</p>
                         </div>
                     </div>
                     <ul class="wsus__icon_area">
                         <li><a href="wishlist.html"><i class="fal fa-heart"></i><span>05</span></a></li>
                         <li><a href="compare.html"><i class="fal fa-random"></i><span>03</span></a></li>
-                        <li><a class="wsus__cart_icon" href="#"><i
-                                    class="fal fa-shopping-bag"></i><span id="cart-count">{{ Cart::content()->count() }}</span></a></li>
+                        <li><a class="wsus__cart_icon" href="#"><i class="fal fa-shopping-bag"></i><span
+                                    id="cart-count">{{ Cart::content()->count() }}</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -45,28 +45,52 @@
     </div>
     <div class="wsus__mini_cart">
         <h4>shopping cart <span class="wsus_close_mini_cart"><i class="far fa-times"></i></span></h4>
-        <ul>
+        <ul class="mini-cart-wrapper">
 
             @foreach (Cart::content() as $sidebarProduct)
-            <li>
-                <div class="wsus__cart_img">
-                    <a href="#"><img src="{{ asset($sidebarProduct->options->image) }}" alt="product"
-                            class="img-fluid w-100"></a>
-                    <a class="wsis__del_icon remove_sidebar_product" data-rowId="{{ $sidebarProduct->rowId }}" href="#"><i class="fas fa-minus-circle"></i></a>
-                </div>
-                <div class="wsus__cart_text">
-                    <a class="wsus__cart_title" href="{{ route('product-detail', $sidebarProduct->options->slug) }}">{{ $sidebarProduct->name }}</a>
-                    <p>{{ $setting->currency_icon }} {{ $sidebarProduct->price }}</p>
-                </div>
-            </li>
+                <li id="mini_cart_{{ $sidebarProduct->rowId }}">
+                    <div class="wsus__cart_img">
+                        <a href="#"><img src="{{ asset($sidebarProduct->options->image) }}" alt="product"
+                                class="img-fluid w-100"></a>
+                        <a class="wsis__del_icon remove_sidebar_product" data-id="{{ $sidebarProduct->rowId }}"
+                            href="#"><i class="fas fa-minus-circle"></i></a>
+                    </div>
+                    <div class="wsus__cart_text">
+                        <a class="wsus__cart_title"
+                            href="{{ route('product-detail', $sidebarProduct->options->slug) }}">{{ $sidebarProduct->name }}</a>
+                        <p>{{ $setting->currency_icon }} {{ $sidebarProduct->price }}</p>
+                    </div>
+                </li>
             @endforeach
-       
+
         </ul>
         <h5>sub total <span>$3540</span></h5>
         <div class="wsus__minicart_btn_area">
-            <a class="common_btn" href="{{route('cart-details')}}">view cart</a>
+            <a class="common_btn" href="{{ route('cart-details') }}">view cart</a>
             <a class="common_btn" href="check_out.html">checkout</a>
         </div>
     </div>
 
 </header>
+
+
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            function fetchSidebarCartProducts() {
+
+                $.ajax({
+                    method: 'GET',
+                    data: formdata,
+                    url: "{{ route('cart-products') }}",
+                    success: function(data) {
+                        console.log(data);
+                    },
+                    error: function(data) {
+
+                    }
+                })
+            }
+        })
+    </script>
+@endpush

@@ -4,7 +4,7 @@
             <div class="col-xl-3 col-sm-7 col-md-6 col-lg-3">
                 <div class="wsus__footer_content">
                     <a class="wsus__footer_2_logo" href="#">
-                        <h2 style="color:white">Kamrul</h2>
+                        <h2 style="color:white">Sazao</h2>
                         {{-- <img src="{{ asset('frontend/images/logo_2.png') }}" alt="logo"> --}}
                     </a>
                     <a class="action" href="callto:+8896254857456"><i class="fas fa-phone-alt"></i>
@@ -71,7 +71,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="wsus__copyright d-flex justify-content-center">
-                        <p>Copyright © 2023 Kamrul. All Rights Reserved.</p>
+                        <p>Copyright © 2023 Sazao. All Rights Reserved.</p>
                     </div>
                 </div>
             </div>

@@ -38,6 +38,7 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 
     Route::resource('address', UserAddressController::class);
 });
 
+
 // add to cart route
 Route::post('add-to-cart', [CartController::class, 'addCart'])->name('add-to-cart');
 Route::get('cart-details', [CartController::class, 'cartDetails'])->name('cart-details');
@@ -45,3 +46,5 @@ Route::post('cart/update-quantity', [CartController::class, 'updateProductQuanti
 Route::get('clear-cart', [CartController::class, 'clearCart'])->name('clear.cart');
 Route::get('clear/remove-product/{rowId}', [CartController::class, 'clearProduct'])->name('remove.product');
 Route::get('cart-count', [CartController::class, 'getCartCount'])->name('cart-count');
+Route::get('cart-products', [CartController::class, 'getCartProduct'])->name('cart-products');
+Route::post('cart/remove-sidebar-product', [CartController::class, 'removeSidebarProduct'])->name('cart.remove-sidebar-product');
