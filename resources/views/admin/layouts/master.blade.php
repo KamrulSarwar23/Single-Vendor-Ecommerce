@@ -12,8 +12,10 @@
     <link rel="stylesheet" href="{{ asset('backend/assets/modules/fontawesome/css/all.min.css') }}">
 
     <!-- CSS Libraries -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="{{asset('backend/assets/modules/bootstrap-daterangepicker/daterangepicker.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{{ asset('backend/assets/modules/bootstrap-daterangepicker/daterangepicker.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/modules/jqvmap/dist/jqvmap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/modules/weather-icon/css/weather-icons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/modules/weather-icon/css/weather-icons-wind.min.css') }}">
@@ -50,11 +52,11 @@
 
             <!-- Navbar Start-->
             @include('admin.layouts.navbar')
-
+            <!-- Navbar End-->
 
             <!-- Sidebar Start-->
             @include('admin.layouts.sidebar')
-
+            <!-- Sidebar End-->
 
 
             <!-- Main Content Start-->
@@ -66,6 +68,7 @@
 
             <!-- Main Content End-->
 
+            <!-- Footer Start-->
             <footer class="main-footer">
                 <div class="footer-left">
                     Copyright &copy; 2023 - All Rights Reserve by Kamrul Hasan
@@ -74,6 +77,7 @@
 
                 </div>
             </footer>
+            <!-- Footer End-->
 
         </div>
     </div>
@@ -118,9 +122,6 @@
         @endif
     </script>
 
-
-
-
     <script>
         $(document).ready(function() {
 
@@ -146,7 +147,7 @@
                     confirmButtonText: 'Yes, delete it!'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        
+
                         $.ajax({
                             type: 'DELETE',
                             url: deleteUrl,
@@ -161,7 +162,7 @@
 
                                     window.location.reload();
 
-                                }else if (data.status == 'error') {
+                                } else if (data.status == 'error') {
                                     Swal.fire(
                                         'Cant Delete',
                                         data.message,

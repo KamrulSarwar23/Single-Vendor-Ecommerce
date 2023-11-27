@@ -5,9 +5,7 @@
 @endsection
 
 @section('content')
-    <!--============================
-                                                            BREADCRUMB START
-                                                        ==============================-->
+    <!--============================ BREADCRUMB START ==============================-->
     <section id="wsus__breadcrumb">
         <div class="wsus_breadcrumb_overlay">
             <div class="container">
@@ -24,14 +22,11 @@
             </div>
         </div>
     </section>
-    <!--============================
-                                                            BREADCRUMB END
-                                                        ==============================-->
+    <!--============================ BREADCRUMB END ==============================-->
 
 
-    <!--============================
-                                                            PRODUCT DETAILS START
-                                                        ==============================-->
+    <!--============================ PRODUCT DETAILS START ==============================-->
+
     <section id="wsus__product_details">
         <div class="container">
             <div class="wsus__details_bg">
@@ -81,7 +76,6 @@
                                 <h4>{{ $setting->currency_icon }}{{ $product->price }}</h4>
                             @endif
 
-
                             <p class="review">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -101,9 +95,7 @@
                                 <div class="simply-countdown simply-countdown-one"></div>
                             </div>
 
-
                             <form class="shopping-cart-form">
-
 
                                 <div class="wsus__selectbox">
                                     <div class="row">
@@ -450,14 +442,12 @@
             </div>
         </div>
     </section>
-    <!--============================
-                                                            PRODUCT DETAILS END
-                                                        ==============================-->
+    <!--============================ PRODUCT DETAILS END ==============================-->
 
 
-    <!--============================
-                                                            RELATED PRODUCT START
-                                                        ==============================-->
+
+    <!--============================ RELATED PRODUCT START ==============================-->
+
     {{-- <section id="wsus__flash_sell">
         <div class="container">
             <div class="row">
@@ -620,9 +610,8 @@
             </div>
         </div>
     </section> --}}
-    <!--============================
-                                                            RELATED PRODUCT END
-                                                        ==============================-->
+
+    <!--============================ RELATED PRODUCT END ==============================-->
 @endsection
 
 
@@ -638,7 +627,6 @@
             });
         })
     </script>
-
 
     <script>
         $(document).ready(function() {
@@ -659,13 +647,13 @@
                     success: function(data) {
                         getCartCount()
                         fetchSidebarCartProducts()
+                        $('.mini_cart_actions').removeClass('d-none');
                         toastr.success(data.message);
                     },
                     error: function(data) {
 
                     }
                 })
-
             })
 
             function getCartCount() {
@@ -694,21 +682,27 @@
                         for (let item in data) {
                             let product = data[item];
                             html += `        
-                             <li id="mini_cart_${ product.rowId }">
-                                 <div class="wsus__cart_img">
-                                    <a href="{{url('product-detail')}}/${product.options.slug}"><img src="{{ asset('/') }}${product.options.image}" alt="product"
+                             <li id="mini_cart_${product.rowId}">
+                                    <div class="wsus__cart_img">
+                                    <a href="{{ url('product-detail') }}/${product.options.slug}"><img src="{{ asset('/') }}${product.options.image}" alt="product"
                                         class="img-fluid w-100"></a>
                                         <a class="wsis__del_icon remove_sidebar_product" data-id="${product.rowId}"
                                         href=""><i class="fas fa-minus-circle"></i></a>
                                     </div>
+
                                     <div class="wsus__cart_text">
                                         <a class="wsus__cart_title"
-                                            href="{{url('product-detail')}}/${product.options.slug}">${product.name}</a>
-                                        <p>${product.price}</p>
+                                            href="{{ url('product-detail') }}/${product.options.slug}">${product.name}</a>
+                                        <p>{{$setting->currency_icon}}${product.price}</p>
+                                        <small>Variants  Total: {{$setting->currency_icon}}${product.options.variants_total}</small>
+                                        <br>
+                                        <small>Qty: ${product.qty}</small>
                                     </div>
+                                    
                                 </li> `
                         }
                         $('.mini-cart-wrapper').html(html);
+                        getSidebarCartSubtotal();
                     },
                     error: function(data) {
 
@@ -716,7 +710,9 @@
                 })
             }
 
-            $('body').on('click', '.remove_sidebar_product', function(e){
+            // Remove Product From Sidebar Cart
+
+            $('body').on('click', '.remove_sidebar_product', function(e) {
                 e.preventDefault();
                 let rowId = $(this).data('id');
                 $.ajax({
@@ -726,16 +722,36 @@
                         rowId: rowId
                     },
                     success: function(data) {
-                       let productId = '#mini_cart_'+rowId;
+                        let productId = '#mini_cart_' + rowId;
                         $(productId).remove()
-                        toastr.success(data.message);
+                        getSidebarCartSubtotal()
 
+                        if ($('.mini-cart-wrapper').find('li').length == 0) {
+                            $('.mini_cart_actions').addClass('d-none');
+                            $('.mini-cart-wrapper').html(
+                                '<li class="text-center"> Cart is Empty </li>')
+                        }
+                        toastr.success(data.message);
                     },
                     error: function(data) {
-                       
+
                     }
                 })
             })
+
+            // Get Sidebar Cart Subtotal
+            function getSidebarCartSubtotal() {
+                $.ajax({
+                    method: 'GET',
+                    url: "{{ route('cart.sidebar-product-total') }}",
+                    success: function(data) {
+                        $('#mini_cart_subtotal').text("{{ $setting->currency_icon }}" + data);
+                    },
+                    error: function(data) {
+
+                    }
+                })
+            }
         })
     </script>
 @endpush

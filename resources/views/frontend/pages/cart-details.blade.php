@@ -6,9 +6,7 @@
 
 
 @section('content')
-    <!--============================
-                                            BREADCRUMB START
-                                        ==============================-->
+    <!--============================BREADCRUMB START==============================-->
     <section id="wsus__breadcrumb">
         <div class="wsus_breadcrumb_overlay">
             <div class="container">
@@ -25,14 +23,11 @@
             </div>
         </div>
     </section>
-    <!--============================
-                                            BREADCRUMB END
-                                        ==============================-->
+    <!--============================BREADCRUMB END==============================-->
 
 
-    <!--============================
-                                            CART VIEW PAGE START
-                                        ==============================-->
+    <!--============================CART VIEW PAGE START==============================-->
+
     <section id="wsus__cart_view">
         <div class="container">
             <div class="row">
@@ -107,7 +102,8 @@
                                             </td>
 
                                             <td class="wsus__pro_icon">
-                                                <a href="{{ route('remove.product', $item->rowId) }}"><i class="far fa-times"></i></a>
+                                                <a href="{{ route('remove.product', $item->rowId) }}"><i
+                                                        class="far fa-times"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -180,9 +176,7 @@
             </div>
         </div>
     </section>
-    <!--============================
-                                              CART VIEW PAGE END
-                                        ==============================-->
+    <!--============================CART VIEW PAGE END==============================-->
 @endsection
 
 

@@ -73,6 +73,18 @@ class CartController extends Controller
         $total = ($product->price + $product->options->variants_total) * $product->qty;
         return  $total;
     }
+
+    public function cartTotal()
+    {
+        $total = 0;
+
+        foreach (Cart::content() as $product) {
+            $total += $this->getProductTotal($product->rowId);
+        }
+
+        return $total;
+    }
+
     // Clear Cart
     public function clearCart()
     {
@@ -87,15 +99,18 @@ class CartController extends Controller
         return redirect()->back();
     }
 
-    public function getCartCount(){
+    public function getCartCount()
+    {
         return Cart::content()->count();
     }
 
-    public function getCartProduct(){
+    public function getCartProduct()
+    {
         return Cart::content();
     }
 
-    public function removeSidebarProduct(Request $request){
+    public function removeSidebarProduct(Request $request)
+    {
         Cart::remove($request->rowId);
         return response(['status' => 'success', 'message' => 'Product Removed From Cart Successfully']);
     }
