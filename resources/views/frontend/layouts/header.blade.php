@@ -59,21 +59,23 @@
                         <a class="wsus__cart_title"
                             href="{{ route('product-detail', $sidebarProduct->options->slug) }}">{{ $sidebarProduct->name }}</a>
                         <p>{{ $setting->currency_icon }}{{ $sidebarProduct->price }}</p>
-                        <small>Variants  total: {{ $setting->currency_icon }}{{ $sidebarProduct->options->variants_total }}</small>
+                        <small>Variants total:
+                            {{ $setting->currency_icon }}{{ $sidebarProduct->options->variants_total }}</small>
                         <br>
                         <small>Qty: {{ $sidebarProduct->qty }}</small>
                     </div>
                 </li>
             @endforeach
 
-            @if(Cart::content()->count() == 0)
-            <li class="text-center"> Cart is Empty </li>
+            @if (Cart::content()->count() == 0)
+                <li class="text-center"> Cart is Empty </li>
             @endif
 
         </ul>
 
-        <div class="mini_cart_actions {{ Cart::content()->count() == 0 ? 'd-none' : ''}}">
-            <h5>sub total <span id="mini_cart_subtotal">{{ $setting->currency_icon }}{{ getTotalCartCount() }}</span></h5>
+        <div class="mini_cart_actions {{ Cart::content()->count() == 0 ? 'd-none' : '' }}">
+            <h5>sub total <span id="mini_cart_subtotal">{{ $setting->currency_icon }}{{ getTotalCartCount() }}</span>
+            </h5>
 
             <div class="wsus__minicart_btn_area">
                 <a class="common_btn" href="{{ route('cart-details') }}">view cart</a>

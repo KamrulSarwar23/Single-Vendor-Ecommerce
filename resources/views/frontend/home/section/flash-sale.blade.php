@@ -69,7 +69,28 @@
                                 <p class="wsus__price">{{ $setting->currency_icon }}{{ $product->price }}
                                 </p>
                             @endif
-                            <a class="add_cart" href="#">add to cart</a>
+
+                            <form class="shopping-cart-form">
+                                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                @foreach ($product->variant as $variant)
+                                    <select class="d-none" name="variants_items[]">
+
+                                        @foreach ($variant->productVariantItems as $variantitem)
+                                            <option value="{{ $variantitem->id }}"
+                                                {{ $variantitem->is_default == 1 ? 'selected' : '' }}>
+                                                {{ $variantitem->name }}
+                                                {{ $setting->currency_icon }}{{ $variantitem->price }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                @endforeach
+
+                                <input name="qty" type="hidden" min="1" max="100" value="1" />
+
+                                <button class="add_cart" style="border: none" href="#" type="submit">add to
+                                    cart</button>
+                            </form>
+
                         </div>
                     </div>
                 </div>
@@ -119,12 +140,12 @@
                                         </div>
 
                                         @if (count($product->productImageGallery) == 0)
-                                        <div class="col-xl-12">
-                                            <div class="modal_slider_img">
-                                                <img src="{{ asset($product->thumb_image) }}" alt="product"
-                                                    class="img-fluid w-100">
+                                            <div class="col-xl-12">
+                                                <div class="modal_slider_img">
+                                                    <img src="{{ asset($product->thumb_image) }}" alt="product"
+                                                        class="img-fluid w-100">
+                                                </div>
                                             </div>
-                                        </div>
                                         @endif
 
                                         @foreach ($product->productImageGallery as $productImage)
@@ -135,8 +156,6 @@
                                                 </div>
                                             </div>
                                         @endforeach
-
-
 
                                     </div>
                                 </div>
@@ -149,7 +168,8 @@
 
                                     @if (checkProductDiscount($product))
                                         <h4>{{ $setting->currency_icon }}{{ $product->offer_price }}
-                                            <del>{{ $setting->currency_icon }}{{ $product->price }}</del></h4>
+                                            <del>{{ $setting->currency_icon }}{{ $product->price }}</del>
+                                        </h4>
                                     @else
                                         <h4>{{ $setting->currency_icon }}{{ $product->price }}</h4>
                                     @endif
@@ -162,54 +182,61 @@
                                         <i class="fas fa-star-half-alt"></i>
                                         <span>20 review</span>
                                     </p>
+
                                     <p class="description">{{ $product->short_description }}</p>
 
-                                    <div class="wsus_pro_hot_deals">
-                                        <h5>offer ending time : </h5>
-                                        <div class="simply-countdown simply-countdown-one"></div>
-                                    </div>
 
-                                    <div class="wsus__selectbox">
-                                        <div class="row">
-    
-                                            <input type="hidden" name="product_id" value="{{ $product->id }}">
-    
-                                            @foreach ($product->variant as $variant)
-                                                <div class="col-xl-6 col-sm-6 mb-2">
-                                                    <h5 class="mb-2">{{ $variant->name }}:</h5>
-                                                    <select class="select_2" name="variants_items[]">
-    
-                                                        @foreach ($variant->productVariantItems as $variantitem)
-                                                            <option value="{{ $variantitem->id }}"
-                                                                {{ $variantitem->is_default == 1 ? 'selected' : '' }}>
-                                                                {{ $variantitem->name }} ({{$setting->currency_icon}}{{ $variantitem->price }})</option>
-                                                        @endforeach
-    
-                                                    </select>
-                                                </div>
-                                            @endforeach
-    
+                                    <form class="shopping-cart-form">
+
+                                        <div class="wsus__selectbox">
+                                            <div class="row">
+
+                                                <input type="hidden" name="product_id" value="{{ $product->id }}">
+
+                                                @foreach ($product->variant as $variant)
+                                                    @if ($variant->status != 0)
+                                                        <div class="col-xl-6 col-sm-6 mb-2">
+                                                            <h5 class="mb-2">{{ $variant->name }}:</h5>
+                                                            <select class="select_2" name="variants_items[]">
+
+                                                                @foreach ($variant->productVariantItems as $variantitem)
+                                                                    @if ($variantitem->status != 0)
+                                                                        <option value="{{ $variantitem->id }}"
+                                                                            {{ $variantitem->is_default == 1 ? 'selected' : '' }}>
+                                                                            {{ $variantitem->name }}
+                                                                            ({{ $setting->currency_icon }}{{ $variantitem->price }})
+                                                                        </option>
+                                                                    @endif
+                                                                @endforeach
+s
+                                                            </select>
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="wsus__quentity">
-                                        <h5>quentity : </h5>
-                                        <div class="select_number">
-                                            <input class="number_area" type="text" min="1" max="100"
-                                                value="1" />
+                                        <div class="wsus__quentity">
+                                            <h5>quentity: </h5>
+                                            <div class="select_number">
+                                                <input class="number_area" name="qty" type="text"
+                                                    min="1" max="100" value="1" />
+                                            </div>
                                         </div>
-                                    </div>
 
-                        
-                                    <ul class="wsus__button_area">
-                                        <li><a class="add_cart" href="#">add to cart</a></li>
-                                        <li><a class="buy_now" href="#">buy now</a></li>
-                                        <li><a href="#"><i class="fal fa-heart"></i></a></li>
-                                        <li><a href="#"><i class="far fa-random"></i></a></li>
-                                    </ul>
-                                 
+                                        <ul class="wsus__button_area">
+                                            <li><button type="submit" class="add_cart" data-href="#">add to
+                                                    cart</button></li>
+                                            <li><a class="buy_now" href="#">buy now</a></li>
+                                            <li><a href="#"><i class="fal fa-heart"></i></a></li>
+                                            <li><a href="#"><i class="far fa-random"></i></a></li>
+                                        </ul>
+
+                                    </form>
+                                    
                                     <p class="brand_model"><span>brand :</span> {{ $product->brand->name }}</p>
-                          
+
                                 </div>
                             </div>
                         </div>
@@ -234,32 +261,4 @@
             });
         })
     </script>
-
-<script>
-    $(document).ready(function() {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
-        $('.shopping-cart-form').on('submit', function(e) {
-            e.preventDefault();
-            let formdata = $(this).serialize();
-
-            $.ajax({
-                method: 'POST',
-                data: formdata,
-                url: "{{ route('add-to-cart') }}",
-                success: function(data) {
-
-                },
-                error: function(data) {
-
-                }
-            })
-
-        })
-    })
-</script>
 @endpush

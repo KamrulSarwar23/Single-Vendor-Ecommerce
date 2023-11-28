@@ -29,6 +29,7 @@ Route::get('flash-sale', [FlashSaleController::class, 'index'])->name('flash-sal
 // Product Details Routes
 Route::get('product-detail/{slug}', [FrontendProductController::class, 'showProduct'])->name('product-detail');
 
+// User Dashboard Routes
 Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 'user.'], function () {
 
     Route::get('dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
@@ -38,8 +39,7 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 
     Route::resource('address', UserAddressController::class);
 });
 
-
-// Add to cart route
+// Add to cart routes
 Route::post('add-to-cart', [CartController::class, 'addCart'])->name('add-to-cart');
 Route::get('cart-details', [CartController::class, 'cartDetails'])->name('cart-details');
 Route::post('cart/update-quantity', [CartController::class, 'updateProductQuantity'])->name('cart.update-quantity');
