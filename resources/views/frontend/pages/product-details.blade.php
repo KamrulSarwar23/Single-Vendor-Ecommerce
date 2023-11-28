@@ -66,7 +66,13 @@
                     <div class="col-xl-5 col-md-7 col-lg-7">
                         <div class="wsus__pro_details_text">
                             <a class="title" href="javascript:;">{{ $product->name }}</a>
-                            <p class="wsus__stock_area"><span class="in_stock">in stock</span> (167 item)</p>
+                            @if ($product->qty > 0)
+                                <p class="wsus__stock_area"><span class="in_stock">in stock</span> ({{ $product->qty }}
+                                    item)</p>
+                            @elseif ($product->qty == 0)
+                            <p class="wsus__stock_area"><span class="in_stock">Stock Out</span> ({{ $product->qty }}
+                                item)</p>
+                            @endif
 
                             @if (checkProductDiscount($product))
                                 <h4>{{ $setting->currency_icon }}{{ $product->offer_price }}

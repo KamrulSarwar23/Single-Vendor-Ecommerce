@@ -16,10 +16,15 @@
                 data: formdata,
                 url: "{{ route('add-to-cart') }}",
                 success: function(data) {
-                    getCartCount()
-                    fetchSidebarCartProducts()
-                    $('.mini_cart_actions').removeClass('d-none');
-                    toastr.success(data.message);
+                    if (data.status == 'success') {
+                        getCartCount()
+                        fetchSidebarCartProducts()
+                        $('.mini_cart_actions').removeClass('d-none');
+                        toastr.success(data.message);
+                    }else if (data.status == 'error') {
+                        toastr.error(data.message);
+                    }
+
                 },
                 error: function(data) {
 
@@ -47,7 +52,7 @@
                 url: "{{ route('cart-products') }}",
                 success: function(data) {
                     $('.mini-cart-wrapper').html("");
-                  
+
                     var html = '';
                     for (let item in data) {
                         let product = data[item];
@@ -122,5 +127,9 @@
                 }
             })
         }
+
+     
+
+
     })
 </script>

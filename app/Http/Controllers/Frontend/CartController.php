@@ -10,10 +10,31 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
+
+    public function cartDetails()
+    {
+
+        $cartItems = Cart::content();
+
+        if (count($cartItems) == 0) {
+            toastr('Please Add Product to Your Cart', 'warning' ,'Cart is empty');
+            return redirect()->route('home.page');
+        }
+        return view('frontend.pages.cart-details', compact('cartItems'));
+    }
+
     public function addCart(Request $request)
     {
 
         $product = Product::findOrFail($request->product_id);
+
+        // Check product Quantity
+        if ($product->qty == 0) {
+            return response(['status' => 'error', 'message' => 'Product Stock Out']);
+        } else if ($product->qty < $request->qty) {
+            return response(['status' => 'error', 'message' => 'Quantity not available in our stock']);
+        }
+
         $variantTotalAmount = 0;
         $variants = [];
 
@@ -51,16 +72,18 @@ class CartController extends Controller
         return response(['status' => 'success', 'message' => 'Product Added to cart successfully']);
     }
 
-    public function cartDetails()
-    {
-
-        $cartItems = Cart::content();
-
-        return view('frontend.pages.cart-details', compact('cartItems'));
-    }
 
     public function updateProductQuantity(Request $request)
     {
+        $productId = Cart::get($request->rowId)->id;
+        $product = Product::findOrFail($productId);
+
+        // Check product Quantity
+        if ($product->qty == 0) {
+            return response(['status' => 'error', 'message' => 'Product Stock Out']);
+        } else if ($product->qty < $request->qty) {
+            return response(['status' => 'error', 'message' => 'Quantity not available in our stock']);
+        }
 
         Cart::update($request->rowId, $request->quantity);
         $productTotal = $this->getProductTotal($request->rowId);
@@ -89,13 +112,17 @@ class CartController extends Controller
     public function clearCart()
     {
         Cart::destroy();
-        return response(['status' => 'success', 'message' => 'Cart Cleared successfully']);
+        return response(['status' => 'success', 'message' => 'Cart Cleared Successfully']);
     }
 
     public function clearProduct($rowId)
     {
         Cart::remove($rowId);
-        toastr('Product Removed From Cart Successfully');
+        $cartItems = Cart::content();
+        if (count($cartItems) > 0) {
+            toastr('Product Removed From Cart Successfully');
+        }
+       
         return redirect()->back();
     }
 

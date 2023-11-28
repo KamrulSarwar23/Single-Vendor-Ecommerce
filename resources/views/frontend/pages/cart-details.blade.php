@@ -126,7 +126,8 @@
                 <div class="col-xl-3">
                     <div class="wsus__cart_list_footer_button" id="sticky_sidebar">
                         <h6>total cart</h6>
-                        <p>subtotal: <span>$124.00</span></p>
+                        <p>subtotal: <span id="sub_total">{{ $setting->currency_icon }}{{ getTotalCartCount() }}</span>
+                        </p>
                         <p>delivery: <span>$00.00</span></p>
                         <p>discount: <span>$10.00</span></p>
                         <p class="total"><span>total:</span> <span>$134.00</span></p>
@@ -304,16 +305,19 @@
                     },
                     success: function(data) {
                         if (data.status == 'success') {
+
                             let productId = '#' + rowId;
                             let totalAmount = "{{ $setting->currency_icon }}" + data.product_total;
                             $(productId).text(totalAmount);
-
+                            renderCartSubTotal();
                             // Update total price dynamically
+
                             let totalElement = $(
                                 '#total-price'); // Update with your actual total price element
                             totalElement.text("{{ $setting->currency_icon }}" + data.cart_total);
-
                             toastr.success(data.message);
+                        } else if (data.status == 'error') {
+                            toastr.error(data.message);
                         }
                     },
                     error: function(data) {
@@ -344,6 +348,8 @@
                             success: function(data) {
                                 if (data.status == 'success') {
                                     window.location.reload();
+                                } else if (data.status == 'error') {
+                                    toastr.error(data.message);
                                 }
                             },
 
@@ -357,6 +363,24 @@
 
                 })
             })
+
+            // get subttotal of cart and put it on dom
+            function renderCartSubTotal() {
+                $.ajax({
+                    method: 'GET',
+                    url: "{{ route('cart.sidebar-product-total') }}",
+                    success: function(data) {
+                        $('#sub_total').text("{{ $setting->currency_icon }}" + data)
+                    },
+                    error: function(data) {
+
+                    }
+                })
+            }
+
+
+
+
         })
     </script>
 @endpush
