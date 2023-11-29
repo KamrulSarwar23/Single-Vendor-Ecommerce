@@ -128,17 +128,21 @@
                         <h6>total cart</h6>
                         <p>subtotal: <span id="sub_total">{{ $setting->currency_icon }}{{ getTotalCartCount() }}</span>
                         </p>
-                        <p>delivery: <span>$00.00</span></p>
-                        <p>discount: <span>$10.00</span></p>
-                        <p class="total"><span>total:</span> <span>$134.00</span></p>
+                        {{-- <p>delivery: <span>$00.00</span></p> --}}
+                        <p>Coupon(-): <span id="discount">{{ $setting->currency_icon }}{{ getCartDiscount() }}</span></p>
+                        <p class="total"><span>total:</span> <span id="cart_total">{{ $setting->currency_icon }}
+                                {{ getMainCartCount() }} </span>
+                        </p>
 
-                        <form>
-                            <input type="text" placeholder="Coupon Code">
+                        <form id="coupon_form">
+                            <input name="coupon_code" type="text" placeholder="Coupon Code"
+                                value="{{ session()->has('coupon') ? session()->get('coupon')['coupon_code'] : '' }}">
                             <button type="submit" class="common_btn">apply</button>
                         </form>
+
                         <a class="common_btn mt-4 w-100 text-center" href="check_out.html">checkout</a>
-                        <a class="common_btn mt-1 w-100 text-center" href="product_grid_view.html"><i
-                                class="fab fa-shopify"></i> go shop</a>
+                        <a class="common_btn mt-1 w-100 text-center" href="{{ route('home.page') }}"><i
+                                class="fab fa-shopify"></i>Keep Shopping</a>
                     </div>
                 </div>
             </div>
@@ -310,6 +314,9 @@
                             let totalAmount = "{{ $setting->currency_icon }}" + data.product_total;
                             $(productId).text(totalAmount);
                             renderCartSubTotal();
+
+                            calculateCouponDiscount()
+
                             // Update total price dynamically
 
                             let totalElement = $(
@@ -378,9 +385,46 @@
                 })
             }
 
+            // apply coupon
 
+            $('#coupon_form').on('submit', function(e) {
+                e.preventDefault();
+                let formdata = $(this).serialize();
+                $.ajax({
+                    method: 'GET',
+                    url: "{{ route('apply-coupon') }}",
+                    data: formdata,
+                    success: function(data) {
+                        if (data.status == 'error') {
+                            toastr.error(data.message);
+                        } else if (data.status == 'success') {
+                            calculateCouponDiscount();
+                            toastr.success(data.message);
+                        }
+                    },
+                    error: function(data) {
+                        console.log(data);
+                    }
+                });
+            });
 
+            // Calaculate Coupon Discount
 
+            function calculateCouponDiscount() {
+                $.ajax({
+                    method: 'GET',
+                    url: "{{ route('coupon-calculation') }}",
+                    success: function(data) {
+                        if (data.status == 'success') {
+                            $('#discount').text('{{ $setting->currency_icon }}' + data.discount);
+                            $('#cart_total').text('{{ $setting->currency_icon }}' + data.cart_total);
+                        }
+                    },
+                    error: function(data) {
+
+                    }
+                })
+            }
         })
     </script>
 @endpush

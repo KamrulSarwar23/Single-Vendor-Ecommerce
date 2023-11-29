@@ -9529,7 +9529,7 @@ a:not([href]):not([class]):hover {
 }
 
 .product-qty {
-  width: 50px;
+  width: 40px;
   height: 40px;
   margin: 0 3px;
   text-align: center;

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Coupon;
 use App\Models\Product;
 use App\Models\ProductVariantItem;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -17,7 +19,8 @@ class CartController extends Controller
         $cartItems = Cart::content();
 
         if (count($cartItems) == 0) {
-            toastr('Please Add Product to Your Cart', 'warning' ,'Cart is empty');
+            Session::forget('coupon');
+            toastr('Please Add Product to Your Cart', 'warning', 'Cart is empty');
             return redirect()->route('home.page');
         }
         return view('frontend.pages.cart-details', compact('cartItems'));
@@ -72,7 +75,6 @@ class CartController extends Controller
         return response(['status' => 'success', 'message' => 'Product Added to cart successfully']);
     }
 
-
     public function updateProductQuantity(Request $request)
     {
         $productId = Cart::get($request->rowId)->id;
@@ -122,7 +124,7 @@ class CartController extends Controller
         if (count($cartItems) > 0) {
             toastr('Product Removed From Cart Successfully');
         }
-       
+
         return redirect()->back();
     }
 
@@ -141,4 +143,63 @@ class CartController extends Controller
         Cart::remove($request->rowId);
         return response(['status' => 'success', 'message' => 'Product Removed From Cart Successfully']);
     }
+
+    public function applyCoupon(Request $request)
+    {
+
+        if ($request->coupon_code == null) {
+            return response(['status' => 'error', 'message' => 'Coupon Field is Required']);
+        }
+
+        $coupon = Coupon::where(['code' => $request->coupon_code, 'status' => 1])->first();
+        if ($coupon == null) {
+            return response(['status' => 'error', 'message' => 'Coupon Not Exists!']);
+        } elseif ($coupon->start_date > date('Y-m-d')) {
+            return response(['status' => 'error', 'message' => 'Coupon Not Exists!']);
+        } elseif ($coupon->end_date < date('Y-m-d')) {
+            return response(['status' => 'error', 'message' => 'Coupon is Expired!']);
+        } elseif ($coupon->total_used >= $coupon->quantity) {
+            return response(['status' => 'error', 'message' => 'You can Not Apply This Coupon']);
+        }
+
+        if ($coupon->discount_type == 'amount') {
+            Session::put('coupon', [
+                'coupon_name' => $coupon->name,
+                'coupon_code' => $coupon->code,
+                'discount_type' => 'amount',
+                'discount' => $coupon->discount,
+            ]);
+        } elseif ($coupon->discount_type == 'percent') {
+            Session::put('coupon', [
+                'coupon_name' => $coupon->name,
+                'coupon_code' => $coupon->code,
+                'discount_type' => 'percent',
+                'discount' => $coupon->discount,
+            ]);
+        }
+
+        return response(['status' => 'success', 'message' => 'Coupon Applied Successfully']);
+    }
+
+    // calculate coupon discount
+
+    public function couponCalculation()
+    {
+        if (Session::has('coupon')) {
+            $coupon = Session::get('coupon');
+            $subtotal = getTotalCartCount();
+            if ($coupon['discount_type'] == 'amount') {
+                $total = $subtotal - $coupon['discount'];
+                return response(['status' => 'success', 'cart_total' => $total, 'discount' => $coupon['discount']]);
+            } elseif ($coupon['discount_type'] == 'percent') {
+                $discount = ($subtotal * $coupon['discount'] / 100);
+                $total = $subtotal - $discount;
+                return response(['status' => 'success', 'cart_total' => $total, 'discount' => $discount]);
+            }
+        } else {
+            $total = getTotalCartCount();
+            return response(['status' => 'success', 'cart_total' => $total, 'discount' => 0]);
+        }
+    }
 }
+ 
