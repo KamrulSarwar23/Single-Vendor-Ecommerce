@@ -58,7 +58,7 @@ class CartController extends Controller
         } else {
             $productPrice = $product->price;
         }
-
+        
         $cartdata = [];
         $cartdata['id'] = $product->id;
         $cartdata['name'] = $product->name;
@@ -148,7 +148,7 @@ class CartController extends Controller
     {
 
         if ($request->coupon_code == null) {
-            return response(['status' => 'error', 'message' => 'Coupon Field is Required']);
+            return response(['status' => 'error', 'message' => 'Coupon Code is Required']);
         }
 
         $coupon = Coupon::where(['code' => $request->coupon_code, 'status' => 1])->first();
@@ -202,4 +202,3 @@ class CartController extends Controller
         }
     }
 }
- 

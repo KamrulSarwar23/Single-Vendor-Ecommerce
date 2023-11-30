@@ -46,7 +46,7 @@ class UserAddressController extends Controller
         $address->user_id = Auth::user()->id;
         $address->name = $request->name;
         $address->email = $request->email;
-        $address->phone = $request->name;
+        $address->phone = $request->phone;
         $address->country = $request->country;
         $address->state = $request->state;
         $address->city = $request->city;
@@ -94,7 +94,7 @@ class UserAddressController extends Controller
         $address->user_id = Auth::user()->id;
         $address->name = $request->name;
         $address->email = $request->email;
-        $address->phone = $request->name;
+        $address->phone = $request->phone;
         $address->country = $request->country;
         $address->state = $request->state;
         $address->city = $request->city;

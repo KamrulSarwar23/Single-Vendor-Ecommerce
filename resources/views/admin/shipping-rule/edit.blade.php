@@ -29,7 +29,7 @@
                                 <div class="form-group">
                                     <label for="inputState">Type</label>
                                     <select id="inputState" class="form-control shipping-type" name="type">
-                                        <option {{ $shipping->type == 'flast_cost' ? 'selected' : '' }} value="flast_cost">
+                                        <option {{ $shipping->type == 'flat_cost' ? 'selected' : '' }} value="flat_cost">
                                             Flat Cost</option>
                                         <option {{ $shipping->type == 'min_cost' ? 'selected' : '' }} value="min_cost">
                                             Minimum Order Amount</option>

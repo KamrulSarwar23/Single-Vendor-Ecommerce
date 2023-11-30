@@ -28,7 +28,7 @@
                                 <div class="form-group">
                                     <label for="inputState">Type</label>
                                     <select id="inputState" class="form-control shipping-type" name="type">
-                                        <option value="flast_cost">Flat Cost</option>
+                                        <option value="flat_cost">Flat Cost</option>
                                         <option value="min_cost">Minimum Order Amount</option>
                                     </select>
                                 </div>

@@ -4740,6 +4740,7 @@ CHECKOUT PAGE START
 }
 
 .wsus__order_details .form-check-input[type="radio"] {
+  
   border-radius: 50% !important;
   -webkit-border-radius: 50% !important;
   -moz-border-radius: 50% !important;
@@ -9497,10 +9498,10 @@ a:not([href]):not([class]):hover {
   margin-bottom: 10px;
 }
 
-.form-check-input {
+/* .form-check-input {
   width: 40px !important;
   height: 22px !important;
-}
+} */
 
 .delete-item {
   margin-left: 5px;
