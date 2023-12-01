@@ -71,7 +71,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="wsus__copyright d-flex justify-content-center">
-                        <p>Copyright © 2023 Sazao. All Rights Reserved.</p>
+                        <p>Copyright © 2023 Iconic Solution. All Rights Reserved.</p>
                     </div>
                 </div>
             </div>

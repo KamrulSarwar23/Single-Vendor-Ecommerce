@@ -304,11 +304,11 @@ header {
   background: #08C;
   padding: 19px 0px;
   height: 90px;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid #bdbcbc;
 }
 
 .wsus__header_logo {
-  width: 75%;
+  width: 100%;
 }
 
 .wsus__search form {
