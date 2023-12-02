@@ -1,6 +1,6 @@
 <style>
     .active {
-        background-color: rgb(93, 114, 236,0.5)
+        background-color: rgb(93, 114, 236, 0.5)
     }
 
     .fa-circle-chevron-down,
@@ -11,7 +11,6 @@
     ul li a {
         font-size: 14px;
     }
-
 </style>
 
 <div class="main-sidebar sidebar-style-2">
@@ -114,11 +113,16 @@
                     <li class="{{ setActive(['admin.vendor-profile.*']) }}"><a class="nav-link"
                             href="{{ route('admin.vendor-profile.index') }}">Vendor Profile</a></li>
 
+
+
                 </ul>
             </li>
             <li class="{{ setActive(['admin.setting.index']) }}"><a class="nav-link"
-                    href="{{ route('admin.setting.index') }}"><i class="fa-solid fa-gear"></i> <span>Settings</span>
+                    href="{{ route('admin.setting.index') }}"><i class="fa-solid fa-gear"></i> <span>Site Settings</span>
                 </a></li>
+
+            <li class="{{ setActive(['admin.payment-settings.*']) }}"><a class="nav-link"
+                    href="{{ route('admin.payment-settings.index') }}"><i class="fa-solid fa-gear"></i><span>Payment Setting</span></a></li>
         </ul>
 
     </aside>

@@ -117,3 +117,19 @@ function getCartDiscount()
         return 0;
     }
 }
+
+// get selected shipping fee
+
+function getShippingFee(){
+    if (Session::has('shipping_method')) {
+        return Session::get('shipping_method')['cost'];
+    }else{
+        return 0;
+    }
+}
+
+// payable amount for shipping
+
+function getFinalPayableAmount(){
+    return getMainCartCount() + getShippingFee();
+}

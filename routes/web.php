@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\Backend\PaymentController;
+use App\Http\Controllers\Frontend\PaymentController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\AdminController;
-use App\Http\Controllers\Backend\CheckOutController;
+use App\Http\Controllers\Frontend\CheckOutController;
 use App\Http\Controllers\Backend\VendorController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\FlashSaleController;
@@ -31,26 +31,6 @@ Route::get('flash-sale', [FlashSaleController::class, 'index'])->name('flash-sal
 // Product Details Routes
 Route::get('product-detail/{slug}', [FrontendProductController::class, 'showProduct'])->name('product-detail');
 
-// User Dashboard Routes
-Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 'user.'], function () {
-
-    Route::get('dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
-    Route::get('profile', [UserProfileController::class, 'index'])->name('profile');
-    Route::put('profile', [UserProfileController::class, 'updateProfile'])->name('profile.update');
-    Route::post('profile', [UserProfileController::class, 'updatePassword'])->name('profile.update.password');
-
-    // User Address Route
-    Route::resource('address', UserAddressController::class);
-
-    //Checkout Controller
-    Route::get('checkout', [CheckOutController::class, 'index'])->name('checkout');
-    Route::post('checkout/address-create', [CheckOutController::class, 'checkoutCreateAddress'])->name('checkout.create.address');
-    Route::post('checkout/form-submit', [CheckOutController::class, 'checkoutFormSubmit'])->name('checkout.form-submit');
-
-    //Payment Controller
-    Route::get('payment', [PaymentController::class, 'payment'])->name('payment');
-});
-
 // Add to cart routes
 Route::post('add-to-cart', [CartController::class, 'addCart'])->name('add-to-cart');
 Route::get('cart-details', [CartController::class, 'cartDetails'])->name('cart-details');
@@ -63,3 +43,29 @@ Route::post('cart/remove-sidebar-product', [CartController::class, 'removeSideba
 Route::get('cart/sidebar-product-total', [CartController::class, 'cartTotal'])->name('cart.sidebar-product-total');
 Route::get('apply-coupon', [CartController::class, 'applyCoupon'])->name('apply-coupon');
 Route::get('coupon-calculation', [CartController::class, 'couponCalculation'])->name('coupon-calculation');
+
+// User Dashboard Routes
+Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 'user.'], function () {
+
+    Route::get('dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
+    Route::get('profile', [UserProfileController::class, 'index'])->name('profile');
+    Route::put('profile', [UserProfileController::class, 'updateProfile'])->name('profile.update');
+    Route::post('profile', [UserProfileController::class, 'updatePassword'])->name('profile.update.password');
+
+    // User Address Route
+    Route::resource('address', UserAddressController::class);
+
+    //Checkout Route
+    Route::get('checkout', [CheckOutController::class, 'index'])->name('checkout');
+    Route::post('checkout/address-create', [CheckOutController::class, 'checkoutCreateAddress'])->name('checkout.create.address');
+    Route::post('checkout/form-submit', [CheckOutController::class, 'checkoutFormSubmit'])->name('checkout.form-submit');
+
+    //Payment Route
+    Route::get('payment', [PaymentController::class, 'payment'])->name('payment');
+    Route::get('payment-success', [PaymentController::class, 'paymentSuccess'])->name('payment.success');
+
+      //Paypal Route
+      Route::get('paypal/payment', [PaymentController::class, 'payWithPaypal'])->name('paypal.payment');
+      Route::get('paypal/success', [PaymentController::class, 'paypalSuccess'])->name('paypal.success');
+      Route::get('paypal/cancel', [PaymentController::class, 'paypalCancel'])->name('paypal.cancel');
+});
