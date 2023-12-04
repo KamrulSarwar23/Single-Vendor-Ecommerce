@@ -20,20 +20,18 @@
                                     <div class="list-group" id="list-tab" role="tablist">
                                         <a class="list-group-item list-group-item-action active" id="list-home-list"
                                             data-toggle="list" href="#list-home" role="tab">Paypal</a>
-                                        <a class="list-group-item list-group-item-action" id="list-profile-list"
-                                            data-toggle="list" href="#list-profile" role="tab">Stripe</a>
-                                 
+
+                                        <a class="list-group-item list-group-item-action" id="list-stripe-list"
+                                            data-toggle="list" href="#list-stripe" role="tab">Stripe</a>
+
                                     </div>
                                 </div>
                                 <div class="col-10">
                                     <div class="tab-content" id="nav-tabContent">
                                         @include('admin.payment-settings.section.paypal-setting')
 
-                                        <div class="tab-pane fade" id="list-profile" role="tabpanel"
-                                            aria-labelledby="list-profile-list">
-                                           Stripe Setting
-                                        </div>
-                             
+                                        @include('admin.payment-settings.section.stripe-setting')
+
                                     </div>
                                 </div>
                             </div>

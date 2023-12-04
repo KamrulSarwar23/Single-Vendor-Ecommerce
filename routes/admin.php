@@ -20,6 +20,7 @@ use App\Http\Controllers\Backend\ProductVariantItemController;
 use App\Http\Controllers\Backend\SellerProductController;
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\ShippingRuleController;
+use App\Http\Controllers\Backend\StripeSettingController;
 
 // Admin profile Routes
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
@@ -101,4 +102,8 @@ Route::put('general-setting-update', [SettingController::class, 'generalSettingU
 // Paypal Setting Route
 Route::get('payment-settings', [PaymentSettingController::class, 'index'])->name('payment-settings.index');
 Route::resource('paypal-setting', PaypalSettingController::class);
+
+
+// General Setting
+Route::put('stripe-setting/{id}', [StripeSettingController::class, 'update'])->name('stripe-setting.update');
 

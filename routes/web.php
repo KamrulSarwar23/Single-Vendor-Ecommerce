@@ -14,6 +14,8 @@ use App\Http\Controllers\Frontend\UserProfileController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\UserAddressController;
 
+// Home Page Route
+
 Route::get('/', [HomeController::class, 'index'])->name('home.page');
 
 Route::middleware('auth')->group(function () {
@@ -24,8 +26,10 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 
+// Admin Login Route
 Route::get('/admin/login', [AdminController::class, 'login'])->name('admin.login');
 
+// Flash Sale Route
 Route::get('flash-sale', [FlashSaleController::class, 'index'])->name('flash-sale');
 
 // Product Details Routes
@@ -44,9 +48,11 @@ Route::get('cart/sidebar-product-total', [CartController::class, 'cartTotal'])->
 Route::get('apply-coupon', [CartController::class, 'applyCoupon'])->name('apply-coupon');
 Route::get('coupon-calculation', [CartController::class, 'couponCalculation'])->name('coupon-calculation');
 
-// User Dashboard Routes
+
+// User Dashboard Routes Group
 Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 'user.'], function () {
 
+    // User Dashboard
     Route::get('dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
     Route::get('profile', [UserProfileController::class, 'index'])->name('profile');
     Route::put('profile', [UserProfileController::class, 'updateProfile'])->name('profile.update');
@@ -64,8 +70,13 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 
     Route::get('payment', [PaymentController::class, 'payment'])->name('payment');
     Route::get('payment-success', [PaymentController::class, 'paymentSuccess'])->name('payment.success');
 
-      //Paypal Route
-      Route::get('paypal/payment', [PaymentController::class, 'payWithPaypal'])->name('paypal.payment');
-      Route::get('paypal/success', [PaymentController::class, 'paypalSuccess'])->name('paypal.success');
-      Route::get('paypal/cancel', [PaymentController::class, 'paypalCancel'])->name('paypal.cancel');
+    //Paypal Route
+    Route::get('paypal/payment', [PaymentController::class, 'payWithPaypal'])->name('paypal.payment');
+    Route::get('paypal/success', [PaymentController::class, 'paypalSuccess'])->name('paypal.success');
+    Route::get('paypal/cancel', [PaymentController::class, 'paypalCancel'])->name('paypal.cancel');
+
+    //Stripe Route
+    Route::post('stripe/payment', [PaymentController::class, 'payWithStripe'])->name('stripe.payment');
+    Route::get('stripe/success', [PaymentController::class, 'stripeSuccess'])->name('stripe.success');
+    Route::get('stripe/cancel', [PaymentController::class, 'stripeCancel'])->name('stripe.cancel');
 });
