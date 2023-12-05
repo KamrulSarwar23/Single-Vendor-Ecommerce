@@ -8,11 +8,14 @@ use App\Models\Order;
 use App\Models\OrderProduct;
 use App\Models\PaypalSetting;
 use App\Models\Product;
+use App\Models\StripeSetting;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
+use Stripe\Charge;
+use Stripe\Stripe;
 
 class PaymentController extends Controller
 {
@@ -65,7 +68,7 @@ class PaymentController extends Controller
             $orderProduct->save();
         }
 
-        // order store
+        // store transaction
         $transaction = new Transaction();
         $transaction->order_id = $order->id;
         $transaction->transaction_id = $transactionId;
@@ -189,6 +192,29 @@ class PaymentController extends Controller
     // stripe Payment
     public function payWithStripe(Request $request)
     {
-        dd($request->all());
+        // calculate payable amount depending on currency rate
+        $stripeSetting = StripeSetting::first();
+        $total = getFinalPayableAmount();
+        $payableAmount = round($total * $stripeSetting->currency_rate, 2);
+
+        Stripe::setApiKey($stripeSetting->secret_key);
+        $response = Charge::create([
+            "amount" =>  $payableAmount * 100,
+            "currency" => $stripeSetting->currency,
+            "source" => $request->stripe_token,
+            "description" => "Product Purchase!"
+        ]);
+
+        if ($response->status == 'succeeded') {
+            $this->storeOrder('stripe', 1, $response->id,  $payableAmount, $stripeSetting->currency);
+            // clear all the session item
+            $this->clearSession();
+            toastr('Payment Success');
+            return redirect()->route('user.payment.success');
+        } else {
+
+            toastr('Something went wrong try later!', 'error', 'Error');
+            return redirect()->route('user.payment');
+        }
     }
 }
