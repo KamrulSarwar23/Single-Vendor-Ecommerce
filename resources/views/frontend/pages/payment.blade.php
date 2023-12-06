@@ -78,8 +78,8 @@
                         <div class="wsus__pay_booking_summary" id="sticky_sidebar2">
                             <h5>Order Summary</h5>
                             <p>subtotal: <span>{{ $setting->currency_icon }}{{ getTotalCartCount() }}</span></p>
-                            <p>shipping fee (+) : <span>{{ $setting->currency_icon }}{{ getShippingFee() }}</span></p>
                             <p>Coupon (-) : <span>{{ $setting->currency_icon }}{{ getCartDiscount() }}</span></p>
+                            <p>shipping fee (+) : <span>{{ $setting->currency_icon }}{{ getShippingFee() }}</span></p>
                             <h6>total <span>{{ $setting->currency_icon }}{{ getFinalPayableAmount() }}</span></h6>
                         </div>
                     </div>

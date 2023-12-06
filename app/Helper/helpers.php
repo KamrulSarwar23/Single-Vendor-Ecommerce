@@ -79,7 +79,6 @@ function getTotalCartCount()
     return $total;
 }
 
-
 // get payable total amount
 
 function getMainCartCount()

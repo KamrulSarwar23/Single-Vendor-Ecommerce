@@ -21,7 +21,7 @@
                                 @csrf
 
                                 <div class="form-group">
-                                    <label for="inputState">Child Category</label>
+                                    <label for="inputState">Category</label>
                                     <select id="inputState" class="form-control main-category" name="category">
                                         <option value="">Select</option>
 

@@ -11,13 +11,13 @@ use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\AdminVendorProfileController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\FlashSaleController;
+use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\PaymentSettingController;
 use App\Http\Controllers\Backend\PaypalSettingController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ProductImageGalleryController;
 use App\Http\Controllers\Backend\ProductVariantController;
 use App\Http\Controllers\Backend\ProductVariantItemController;
-use App\Http\Controllers\Backend\RazorpaySettingController;
 use App\Http\Controllers\Backend\SellerProductController;
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\ShippingRuleController;
@@ -87,7 +87,6 @@ Route::put('flash-sale-update/show-at-home/status-change', [FlashSaleController:
 Route::put('flash-sale-item/change-status', [FlashSaleController::class, 'changeStatus'])->name('flash-sale-item.change-status');
 Route::delete('flash-sale-item/delete/{id}', [FlashSaleController::class, 'destroy'])->name('flash-sale-item.delete');
 
-
 // Coupon Routes
 Route::put('coupons/change-status', [CouponController::class, 'changeStatus'])->name('coupons.change-status');
 Route::resource('coupons', CouponController::class);
@@ -107,4 +106,5 @@ Route::resource('paypal-setting', PaypalSettingController::class);
 // Stripe Setting
 Route::put('stripe-setting/{id}', [StripeSettingController::class, 'update'])->name('stripe-setting.update');
 
-
+// Order Route
+Route::resource('order', OrderController::class);
