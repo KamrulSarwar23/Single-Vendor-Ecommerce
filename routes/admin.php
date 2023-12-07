@@ -106,5 +106,14 @@ Route::resource('paypal-setting', PaypalSettingController::class);
 // Stripe Setting
 Route::put('stripe-setting/{id}', [StripeSettingController::class, 'update'])->name('stripe-setting.update');
 
-// Order Route
+// Orders Route
+Route::get('order-status', [OrderController::class, 'changeOrderStatus'])->name('order.status');
+Route::get('payment-status', [OrderController::class, 'changePaymentStatus'])->name('payment.status');
+Route::get('pending-order', [OrderController::class, 'pendingOrder'])->name('pending.order');
+Route::get('processed_and_ready_to_ship-order', [OrderController::class, 'processedReadyShipOrder'])->name('processed-ready.order');
+Route::get('dropped_off-order', [OrderController::class, 'droppedOffOrder'])->name('dropped-off.order');
+Route::get('shipped-order', [OrderController::class, 'shippedOrder'])->name('shipped.order');
+Route::get('out_for_delivery-order', [OrderController::class, 'outForDeliveryOrder'])->name('outfor-delivery.order');
+Route::get('delivered-order', [OrderController::class, 'deliveredOrder'])->name('delivered.order');
+Route::get('cancel-order', [OrderController::class, 'cancelOrder'])->name('cancel.order');
 Route::resource('order', OrderController::class);

@@ -56,14 +56,45 @@
                 </ul>
             </li>
 
-            <li class="dropdown {{ setActive(['admin.order.*']) }}">
+            <li
+                class="dropdown {{ setActive([
+                    'admin.order.*',
+                    'admin.pending.*',
+                    'admin.delivered.*',
+                    'admin.processed-ready.*',
+                    'admin.dropped-off.*',
+                    'admin.shipped.*',
+                    'admin.outfor-delivery.*',
+                    'admin.cancel.*',
+                ]) }}">
+
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
                         class="fa-solid fa-circle-chevron-down"></i>
                     <span>Manage Orders</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ setActive(['admin.order.*']) }}"><a class="nav-link"
                             href="{{ route('admin.order.index') }}">All Orders</a></li>
-                    
+
+                    <li class="{{ setActive(['admin.pending.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.pending.order') }}">Pending Orders</a></li>
+
+                    <li class="{{ setActive(['admin.processed-ready.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.processed-ready.order') }}">Processed & Ready Ship</a></li>
+
+                    <li class="{{ setActive(['admin.dropped-off.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.dropped-off.order') }}">Dropped Off Orders</a></li>
+
+                    <li class="{{ setActive(['admin.shipped.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.shipped.order') }}">Shipped Orders</a></li>
+
+                    <li class="{{ setActive(['admin.outfor-delivery.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.outfor-delivery.order') }}">Out For Delivery Orders</a></li>
+
+                    <li class="{{ setActive(['admin.delivered.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.delivered.order') }}">Delivered Orders</a></li>
+
+                    <li class="{{ setActive(['admin.cancel.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.cancel.order') }}">Cancel Orders</a></li>
                 </ul>
             </li>
 
@@ -129,11 +160,13 @@
                 </ul>
             </li>
             <li class="{{ setActive(['admin.setting.index']) }}"><a class="nav-link"
-                    href="{{ route('admin.setting.index') }}"><i class="fa-solid fa-gear"></i> <span>Site Settings</span>
+                    href="{{ route('admin.setting.index') }}"><i class="fa-solid fa-gear"></i> <span>Site
+                        Settings</span>
                 </a></li>
 
             <li class="{{ setActive(['admin.payment-settings.*']) }}"><a class="nav-link"
-                    href="{{ route('admin.payment-settings.index') }}"><i class="fa-solid fa-gear"></i><span>Payment Setting</span></a></li>
+                    href="{{ route('admin.payment-settings.index') }}"><i class="fa-solid fa-gear"></i><span>Payment
+                        Setting</span></a></li>
         </ul>
 
     </aside>

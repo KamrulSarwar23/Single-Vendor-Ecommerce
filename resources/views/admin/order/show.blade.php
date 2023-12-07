@@ -10,20 +10,16 @@
     <section class="section">
         <div class="section-header">
             <h1>Orders</h1>
-
         </div>
 
         <div class="section-body">
-
             <div class="row">
                 <div class="col-md-12">
                     <section class="section">
-
                         <div class="invoice">
                             <div class="invoice-print">
                                 <div class="row">
                                     <div class="col-lg-12">
-
                                         <div class="invoice-title">
                                             <h2>Invoice</h2>
                                             <div class="invoice-number">Order #{{ $order->invoice_id }}</div>
@@ -131,16 +127,35 @@
                                         </div>
                                         <div class="row mt-4">
                                             <div class="col-lg-8">
-                                                {{-- <div class="section-title">Payment Method</div>
-                                                <p class="section-lead">The payment method that we provide is to make it
-                                                    easier for you to pay
-                                                    invoices.</p>
-                                                <div class="images">
-                                                    <img src="assets/img/visa.png" alt="visa">
-                                                    <img src="assets/img/jcb.png" alt="jcb">
-                                                    <img src="assets/img/mastercard.png" alt="mastercard">
-                                                    <img src="assets/img/paypal.png" alt="paypal">
-                                                </div> --}}
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="">Order Status</label>
+
+                                                        <select name="order_status" id="order_status"
+                                                            data-id='{{ $order->id }}' class="form-control">
+                                                            @foreach (config('order-status.order_status_admin') as $key => $orderStatus)
+                                                                <option {{ $order->order_status == $key ? 'selected' : '' }}
+                                                                    value="{{ $key }}">
+                                                                    {{ $orderStatus['status'] }}</option>
+                                                            @endforeach
+                                                        </select>
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="">Payment Status</label>
+                                                        <select name="payment_status" id="payment_status"
+                                                            data-id="{{ $order->id }}" class="form-control">
+                                                            <option {{ $order->payment_status == 0 ? 'selected' : '' }}
+                                                                value="0">Pending</option>
+                                                            <option {{ $order->payment_status == 1 ? 'selected' : '' }}
+                                                                value="1">Completed</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
                                             </div>
                                             <div class="col-lg-4 text-right">
                                                 <div class="invoice-detail-item">
@@ -193,7 +208,8 @@
                                     <button class="btn btn-danger btn-icon icon-left"><i class="fas fa-times"></i>
                                         Cancel</button>
                                 </div>
-                                <button class="btn btn-warning btn-icon icon-left"><i class="fas fa-print"></i>
+                                <button class="btn btn-warning btn-icon icon-left print-invoice"><i
+                                        class="fas fa-print"></i>
                                     Print</button>
                             </div>
                         </div>
@@ -207,3 +223,71 @@
         </div>
     </section>
 @endsection
+
+
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            //     $.ajaxSetup({
+            //     headers: {
+            //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            //     }
+            // });
+
+            $('#order_status').on('change', function() {
+                let status = $(this).val();
+                let id = $(this).data('id');
+
+                $.ajax({
+                    method: 'GET',
+                    url: "{{ route('admin.order.status') }}",
+                    data: {
+                        status: status,
+                        id: id
+                    },
+                    success: function(data) {
+                        if (data.status == 'success') {
+                            toastr.success(data.message);
+                        }
+                    },
+                    error: function(data) {
+                        console.log(data);
+                    }
+                })
+            })
+
+            $('#payment_status').on('change', function() {
+                let status = $(this).val();
+                let id = $(this).data('id');
+
+                $.ajax({
+                    method: 'GET',
+                    url: "{{ route('admin.payment.status') }}",
+                    data: {
+                        status: status,
+                        id: id
+                    },
+                    success: function(data) {
+                        if (data.status == 'success') {
+                            toastr.success(data.message);
+                        }
+                    },
+                    error: function(data) {
+                        console.log(data);
+                    }
+                })
+            })
+
+            $('.print-invoice').on('click', function() {
+                let printBody = $('.invoice-print');
+                let originalContents = $('body').html();
+
+                $('body').html(printBody.html());
+                window.print();
+
+                $('body').html(originalContents);
+            })
+
+        })
+    </script>
+@endpush

@@ -12,7 +12,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class OrderDataTable extends DataTable
+class shippedOrderDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
@@ -64,8 +64,8 @@ class OrderDataTable extends DataTable
                         return "<span class='badge bg-warning'>Out For Delivery</span>";
                         break;
 
-                    case 'delivered':
-                        return "<span class='badge bg-success'>Delivered</span>";
+                    case 'deliverd':
+                        return "<span class='badge bg-success'>Deliverd</span>";
                         break;
                     case 'cancel':
                         return "<span class='badge bg-danger'>Cancel</span>";
@@ -93,7 +93,7 @@ class OrderDataTable extends DataTable
      */
     public function query(Order $model): QueryBuilder
     {
-        return $model->newQuery();
+        return $model->where('order_status', 'shipped')->newQuery();
     }
 
     /**
@@ -102,20 +102,20 @@ class OrderDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-            ->setTableId('order-table')
-            ->columns($this->getColumns())
-            ->minifiedAjax()
-            //->dom('Bfrtip')
-            ->orderBy(0)
-            ->selectStyleSingle()
-            ->buttons([
-                Button::make('excel'),
-                Button::make('csv'),
-                Button::make('pdf'),
-                Button::make('print'),
-                Button::make('reset'),
-                Button::make('reload')
-            ]);
+                    ->setTableId('pendingorder-table')
+                    ->columns($this->getColumns())
+                    ->minifiedAjax()
+                    //->dom('Bfrtip')
+                    ->orderBy(0)
+                    ->selectStyleSingle()
+                    ->buttons([
+                        Button::make('excel'),
+                        Button::make('csv'),
+                        Button::make('pdf'),
+                        Button::make('print'),
+                        Button::make('reset'),
+                        Button::make('reload')
+                    ]);
     }
 
     /**
@@ -147,6 +147,6 @@ class OrderDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'Order_' . date('YmdHis');
+        return 'PendingOrder_' . date('YmdHis');
     }
 }
