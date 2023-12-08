@@ -12,6 +12,7 @@ use App\Http\Controllers\Frontend\UserDashboardController;
 use App\Http\Controllers\Frontend\UserProfileController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\UserAddressController;
+use App\Http\Controllers\Frontend\UserOrderController;
 
 // Home Page Route
 
@@ -77,4 +78,8 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 
     //Stripe Route
     Route::post('stripe/payment', [PaymentController::class, 'payWithStripe'])->name('stripe.payment');
 
+    // Orders route
+    Route::get('orders', [UserOrderController::class, 'index'])->name('orders');
+    Route::get('orders/show/{id}', [UserOrderController::class, 'show'])->name('orders.show');
+    
 });

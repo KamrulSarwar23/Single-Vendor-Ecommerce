@@ -22,6 +22,7 @@ use App\Http\Controllers\Backend\SellerProductController;
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\ShippingRuleController;
 use App\Http\Controllers\Backend\StripeSettingController;
+use App\Http\Controllers\Backend\TransactionController;
 
 // Admin profile Routes
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
@@ -117,3 +118,8 @@ Route::get('out_for_delivery-order', [OrderController::class, 'outForDeliveryOrd
 Route::get('delivered-order', [OrderController::class, 'deliveredOrder'])->name('delivered.order');
 Route::get('cancel-order', [OrderController::class, 'cancelOrder'])->name('cancel.order');
 Route::resource('order', OrderController::class);
+
+// Orders Transaction route
+Route::get('transaction', [TransactionController::class, 'index'])->name('transaction');
+
+

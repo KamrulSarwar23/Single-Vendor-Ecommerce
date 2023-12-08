@@ -16,9 +16,16 @@
             <div class="row">
                 <div class="col-md-12">
                     <section class="section">
+                        <div class="col-md-12 text-right mb-3">
+                              
+                            <button class="btn btn-warning btn-icon icon-left print-invoice"><i
+                                    class="fas fa-print"></i>
+                                Print</button>
+                        </div>
                         <div class="invoice">
                             <div class="invoice-print">
                                 <div class="row">
+                                
                                     <div class="col-lg-12">
                                         <div class="invoice-title">
                                             <h2>Invoice</h2>
@@ -118,7 +125,7 @@
                                                         </td>
                                                         <td class="text-center">{{ $product->qty }}</td>
                                                         <td class="text-right">
-                                                            {{ $setting->currency_icon }}{{ $product->unit_price * $product->qty + $product->variants_total }}
+                                                            {{ $setting->currency_icon }}{{ ($product->unit_price + $product->variants_total) * $product->qty }}
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -199,15 +206,10 @@
                                     </div>
                                 </div>
                             </div>
+                            
                             <hr>
                             <div class="text-md-right">
-                                <div class="float-lg-left mb-lg-0 mb-3">
-                                    <button class="btn btn-primary btn-icon icon-left"><i class="fas fa-credit-card"></i>
-                                        Process
-                                        Payment</button>
-                                    <button class="btn btn-danger btn-icon icon-left"><i class="fas fa-times"></i>
-                                        Cancel</button>
-                                </div>
+                              
                                 <button class="btn btn-warning btn-icon icon-left print-invoice"><i
                                         class="fas fa-print"></i>
                                     Print</button>

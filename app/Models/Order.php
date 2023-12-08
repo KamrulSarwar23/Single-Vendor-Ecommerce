@@ -20,4 +20,5 @@ class Order extends Model
         return $this->hasMany(OrderProduct::class);
     }
 
+
 }

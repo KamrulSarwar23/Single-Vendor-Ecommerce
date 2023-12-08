@@ -147,6 +147,6 @@ class shippedOrderDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'PendingOrder_' . date('YmdHis');
+        return 'shippedOrder_' . date('YmdHis');
     }
 }

@@ -98,6 +98,9 @@
                 </ul>
             </li>
 
+            <li class="{{ setActive(['admin.transaction']) }}"><a class="nav-link"
+                href="{{ route('admin.transaction') }}"><i class="fa-solid fa-circle-chevron-down"></i><span>Manage Transaction</span></a></li>
+
             <li
                 class="dropdown 
             {{ setActive([
