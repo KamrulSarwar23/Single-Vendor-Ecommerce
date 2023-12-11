@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('vendors', function (Blueprint $table) {
-            $table->string('shop_name')->nullable();
+        Schema::create('home_page_settings', function (Blueprint $table) {
+            $table->id();
+            $table->string('key')->nullable();
+            $table->text('value')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -21,8 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('vendors', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('home_page_settings');
     }
 };

@@ -16,7 +16,7 @@
                 <div class="form-group">
                     <label>Account Mode</label>
                     <select name="mode" id="" class="form-control">
-                        <option {{ $paypalSetting->mode == 0 ? 'selected' : '' }} value="0">Sendbox</option>
+                        <option {{ $paypalSetting->mode == 0 ? 'selected' : '' }} value="0">Sandbox</option>
                         <option {{ $paypalSetting->mode == 1 ? 'selected' : '' }} value="1">Live</option>
                     </select>
                 </div>

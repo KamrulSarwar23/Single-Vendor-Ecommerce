@@ -33,6 +33,6 @@ class AppServiceProvider extends ServiceProvider
 
         View::composer('*', function ($view) use ($generalSetting) {
             $view->with('setting', $generalSetting);
-        });
-    }
+            });
+        }
 }

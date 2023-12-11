@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\AdminVendorProfileController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\FlashSaleController;
+use App\Http\Controllers\Backend\HomePageSettingController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\PaymentSettingController;
 use App\Http\Controllers\Backend\PaypalSettingController;
@@ -121,5 +122,9 @@ Route::resource('order', OrderController::class);
 
 // Orders Transaction route
 Route::get('transaction', [TransactionController::class, 'index'])->name('transaction');
+
+// Home Page Routes
+Route::get('home-page-setting', [HomePageSettingController::class, 'index'])->name('home-page-setting.index');
+Route::put('popular-category-section', [HomePageSettingController::class, 'updatePopularCategorySection'])->name('popular-category-section');
 
 

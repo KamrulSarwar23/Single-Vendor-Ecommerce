@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('phone');
             $table->string('email');
             $table->text('address');
+            $table->string('shop_name')->nullable();
             $table->text('description');
             $table->text('fb_link')->nullable();
             $table->text('tw_link')->nullable();

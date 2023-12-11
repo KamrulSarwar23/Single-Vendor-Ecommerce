@@ -4,7 +4,15 @@
     }
 
     .fa-circle-chevron-down,
-    .fa-gear {
+    .fa-gear,
+    .fa-house,
+    .fa-people-roof,
+    .fa-sliders,
+    .fa-list,
+    .fa-product-hunt,
+    .fa-list-check,
+    .fa-money-check-dollar,
+    .fa-windows {
         color: rgb(93, 114, 236)
     }
 
@@ -25,25 +33,27 @@
             <li class="menu-header">Dashboard</li>
             <li class="dropdown {{ setActive(['admin.dashboard']) }}">
                 <a href="{{ route('admin.dashboard') }}" class="nav-link"><i
-                        class="fas fa-fire"></i><span>Dashboard</span></a>
+                        class="fa-solid fa-house"></i><span>Dashboard</span></a>
 
             </li>
             <li class="menu-header">Starter</li>
-            <li class="dropdown {{ setActive(['admin.slider.*']) }}">
+            <li class="dropdown {{ setActive(['admin.slider.*','admin.home-page-setting.*' ]) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
-                        class="fa-solid fa-circle-chevron-down"></i>
-                    <span>Manage Slider</span></a>
+                        class="fa-solid fa-sliders"></i>
+                    <span>Manage Website</span></a>
 
                 <ul class="dropdown-menu">
                     <li class="{{ setActive(['admin.slider.*']) }}"><a class="nav-link"
-                            href="{{ route('admin.slider.index') }}">Slider</a></li>
+                            href="{{ route('admin.slider.index') }}">Banner Slider</a></li>
+
+                    <li class="{{ setActive(['admin.home-page-setting.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.home-page-setting.index') }}">Home Page Setting</a></li>
 
                 </ul>
             </li>
 
             <li class="dropdown {{ setActive(['admin.category.*', 'admin.subcategory.*', 'admin.childcategory.*']) }}">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
-                        class="fa-solid fa-circle-chevron-down"></i>
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fa-solid fa-list"></i>
                     <span>Manage Category</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ setActive(['admin.category.*']) }}"><a class="nav-link"
@@ -69,7 +79,7 @@
                 ]) }}">
 
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
-                        class="fa-solid fa-circle-chevron-down"></i>
+                        class="fa-solid fa-people-roof"></i>
                     <span>Manage Orders</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ setActive(['admin.order.*']) }}"><a class="nav-link"
@@ -99,7 +109,8 @@
             </li>
 
             <li class="{{ setActive(['admin.transaction']) }}"><a class="nav-link"
-                href="{{ route('admin.transaction') }}"><i class="fa-solid fa-circle-chevron-down"></i><span>Manage Transaction</span></a></li>
+                    href="{{ route('admin.transaction') }}"><i class="fa-solid fa-money-check-dollar"></i><span>Manage
+                        Transaction</span></a></li>
 
             <li
                 class="dropdown 
@@ -113,7 +124,7 @@
                 'admin.product-variant-item.*',
             ]) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
-                        class="fa-solid fa-circle-chevron-down"></i>
+                        class="fa-brands fa-product-hunt"></i>
                     <span>Manage Products</span></a>
 
                 <ul class="dropdown-menu">
@@ -142,7 +153,7 @@
             <li
                 class="dropdown {{ setActive(['admin.vendor-profile.*', 'admin.flash-sale.*', 'admin.coupons.*', 'admin.shipping-rule.*']) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
-                        class="fa-solid fa-circle-chevron-down"></i>
+                        class="fa-solid fa-list-check"></i>
                     <span>Manage Ecommerce</span></a>
 
                 <ul class="dropdown-menu">

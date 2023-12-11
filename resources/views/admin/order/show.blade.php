@@ -289,7 +289,6 @@
 
                 $('body').html(originalContents);
             })
-
         })
     </script>
 @endpush

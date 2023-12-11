@@ -27,7 +27,7 @@
 
  <!--============================ Top Category start ==============================-->
 
-  {{-- @include('frontend.home.section.top-category-product') --}}
+  @include('frontend.home.section.top-category-product')
 
  <!--============================ Top Category end ==============================-->
 

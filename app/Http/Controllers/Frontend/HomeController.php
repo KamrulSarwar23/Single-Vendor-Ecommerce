@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\FlashSale;
 use App\Models\Slider;
 use App\Models\FlashSaleItem;
+use App\Models\HomePageSetting;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -16,7 +17,8 @@ class HomeController extends Controller
         $sliders = Slider::where('status', 1)->orderBy('serial', 'asc')->get();
         $flashSaleDate = FlashSale::first();
         $flashSaleItem = FlashSaleItem::where('show_at_home', 1)->where('status', 1)->get();
-        return view('frontend.home.home', compact('sliders', 'flashSaleDate', 'flashSaleItem'));
+        $popularCategory= HomePageSetting::where('key', 'popular_category_section')->first();
+        return view('frontend.home.home', compact('sliders', 'flashSaleDate', 'flashSaleItem', 'popularCategory'));
         
     }
 
