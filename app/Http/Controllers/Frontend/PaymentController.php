@@ -125,7 +125,6 @@ class PaymentController extends Controller
 
         $provider = new PayPalClient($config);
         $provider->getAccessToken();
-        // $provider->setApiCredentials($config);
 
         // calculate payable amount depending on currency rate
 
@@ -155,7 +154,7 @@ class PaymentController extends Controller
                 }
             }
         } else {
-            return redirect()->away('user.paypal.cancel');
+            return redirect()->route('user.paypal.cancel');
         }
     }
 

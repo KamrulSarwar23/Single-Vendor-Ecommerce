@@ -24,7 +24,7 @@ class PaypalSettingController extends Controller
             'secret_key' => ['required'],
         ]);
 
-        PaypalSetting::UpdateOrCreate(
+        PaypalSetting::updateOrCreate(
 
             ['id' => $id],
             

@@ -119,16 +119,22 @@ function getCartDiscount()
 
 // get selected shipping fee
 
-function getShippingFee(){
+function getShippingFee()
+{
     if (Session::has('shipping_method')) {
         return Session::get('shipping_method')['cost'];
-    }else{
+    } else {
         return 0;
     }
 }
 
 // payable amount for shipping
 
-function getFinalPayableAmount(){
+function getFinalPayableAmount()
+{
     return getMainCartCount() + getShippingFee();
+}
+
+function limitText($text, $limit = 20){
+    return \Str::limit($text, $limit);
 }
