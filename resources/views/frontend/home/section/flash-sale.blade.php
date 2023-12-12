@@ -208,7 +208,7 @@
                                                                         </option>
                                                                     @endif
                                                                 @endforeach
-s
+                                                                s
                                                             </select>
                                                         </div>
                                                     @endif
@@ -234,7 +234,7 @@ s
                                         </ul>
 
                                     </form>
-                                    
+
                                     <p class="brand_model"><span>brand :</span> {{ $product->brand->name }}</p>
 
                                 </div>

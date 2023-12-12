@@ -13,11 +13,27 @@ class HomePageSettingController extends Controller
     {
         $categories = Category::where('status', 1)->get();
         $popularCategorySection = HomePageSetting::where('key', 'popular_category_section')->first();
-        return view('admin.home-page-setting.index', compact('categories', 'popularCategorySection'));
+        $productSliderOne = HomePageSetting::where('key', 'product_slider_one')->first();
+        return view('admin.home-page-setting.index', compact('categories', 'popularCategorySection', 'productSliderOne'));
     }
 
     public function updatePopularCategorySection(Request $request)
     {
+        $request->validate(
+            [
+                'cat_one' => ['required'],
+                'cat_two' => ['required'],
+                'cat_three' => ['required'],
+                'cat_four' => ['required']
+            ],
+            [
+                'cat_one.required' => 'Category 1 Field is Required',
+                'cat_two.required' => 'Category 2 Field is Required',
+                'cat_three.required' => 'Category 3 Field is Required',
+                'cat_four.required' => 'Category 4 Field is Required'
+            ]
+        );
+
         $data = [
             [
                 'category' => $request->cat_one,
@@ -47,6 +63,38 @@ class HomePageSettingController extends Controller
         HomePageSetting::updateOrCreate(
             [
                 'key' => 'popular_category_section',
+            ],
+
+            [
+                'value' => json_encode($data)
+            ]
+        );
+
+        toastr('Updated Successfully');
+        return redirect()->back();
+    }
+
+    public function productSliderOne(Request $request)
+    {
+
+        $request->validate(
+            [
+                'category' => ['required']
+            ],
+            [
+                'category.required' => 'Category Field is Required'
+            ]
+        );
+
+        $data = [
+            'category' => $request->category,
+            'sub_category' => $request->sub_category,
+            'child_category' => $request->child_category,
+        ];
+
+        HomePageSetting::updateOrCreate(
+            [
+                'key' => 'product_slider_one',
             ],
 
             [

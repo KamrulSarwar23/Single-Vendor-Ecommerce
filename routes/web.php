@@ -15,7 +15,6 @@ use App\Http\Controllers\Frontend\UserAddressController;
 use App\Http\Controllers\Frontend\UserOrderController;
 
 // Home Page Route
-
 Route::get('/', [HomeController::class, 'index'])->name('home.page');
 
 Route::middleware('auth')->group(function () {

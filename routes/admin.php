@@ -126,5 +126,4 @@ Route::get('transaction', [TransactionController::class, 'index'])->name('transa
 // Home Page Routes
 Route::get('home-page-setting', [HomePageSettingController::class, 'index'])->name('home-page-setting.index');
 Route::put('popular-category-section', [HomePageSettingController::class, 'updatePopularCategorySection'])->name('popular-category-section');
-
-
+Route::put('product-slider-one', [HomePageSettingController::class, 'productSliderOne'])->name('product-slider-one');
