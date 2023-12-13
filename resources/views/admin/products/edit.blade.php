@@ -48,7 +48,7 @@
                                         <div class="form-group">
                                             <label for="inputState">Category</label>
                                             <select id="inputState" class="form-control main-category" name="category">
-                                                <option>Select</option>
+                                                <option value="0">Select</option>
 
                                                 @foreach ($categories as $category)
                                                     <option {{ $category->id == $product->category_id ? 'selected' : '' }}

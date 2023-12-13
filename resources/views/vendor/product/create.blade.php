@@ -48,7 +48,7 @@
                             <div class="form-group wsus_input">
                                 <label for="inputState">Sub Category</label>
                                 <select id="inputState" class="form-control sub-category" name="subcategory">
-                                    <option value="">Select</option>
+                                    <option value="0">Select</option>
 
                                 </select>
                             </div>
@@ -59,7 +59,7 @@
                                 <label for="inputState">Child Category</label>
                                 <select id="inputState" class="form-control child-category"
                                     name="childcategory">
-                                    <option>Select</option>
+                                    <option value="0">Select</option>
                                 </select>
                             </div>
                         </div>

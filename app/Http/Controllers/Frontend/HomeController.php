@@ -24,7 +24,21 @@ class HomeController extends Controller
         $brands = Brand::where('is_featured', 1)->where('status', 1)->get();
         $typeBaseProduct = $this->getTypeBaseProduct();
         $categorySliderProductOne = HomePageSetting::where('key', 'product_slider_one')->first();
-        return view('frontend.home.home', compact('sliders', 'flashSaleDate', 'flashSaleItem', 'popularCategory', 'brands', 'typeBaseProduct', 'categorySliderProductOne'));
+        $categorySliderProductTwo = HomePageSetting::where('key', 'product_slider_two')->first();
+        return view(
+            'frontend.home.home',
+
+            compact(
+                'sliders',
+                'flashSaleDate',
+                'flashSaleItem',
+                'popularCategory',
+                'brands',
+                'typeBaseProduct',
+                'categorySliderProductOne',
+                'categorySliderProductTwo'
+            )
+        );
     }
 
     public function getTypeBaseProduct()

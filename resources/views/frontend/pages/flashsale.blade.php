@@ -5,9 +5,7 @@
 @endsection
 
 @section('content')
-    <!--============================
-                            BREADCRUMB START
-                        ==============================-->
+    <!--============================BREADCRUMB START==============================-->
     <section id="wsus__breadcrumb">
         <div class="wsus_breadcrumb_overlay">
             <div class="container">
@@ -23,14 +21,10 @@
             </div>
         </div>
     </section>
-    <!--============================
-                            BREADCRUMB END
-                        ==============================-->
+    <!--============================BREADCRUMB END==============================-->
 
 
-    <!--============================
-                            DAILY DEALS DETAILS START
-                        ==============================-->
+    <!--============================DAILY DEALS DETAILS START==============================-->
     <section id="wsus__daily_deals">
         <div class="container">
             <div class="wsus__offer_details_area">
@@ -316,10 +310,6 @@
     @endforeach
     <!--========================== PRODUCT MODAL VIEW END ===========================-->
 @endsection
-
-
-
-
 
 @push('scripts')
     <script>

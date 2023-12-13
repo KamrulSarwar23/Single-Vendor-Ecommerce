@@ -1,16 +1,16 @@
-<div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
+<div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
     @php
-        $productSliderOne = json_decode($productSliderOne->value);
+        $productSliderTwo = json_decode($productSliderTwo->value);
 
     @endphp
 
     <div class="tab-pane fade show active" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
         <div class="card">
             <div class="card-body">
-                <form action="{{ route('admin.product-slider-one') }}" method="POST">
+                <form action="{{ route('admin.product-slider-two') }}" method="POST">
                     @csrf
                     @method('PUT')
-                    <h5>Product Silder One</h5>
+                    <h5>Product Silder Two</h5>
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
@@ -18,7 +18,7 @@
                                 <select name="category" id="" class="form-control main-category">
                                     <option value="">Select</option>
                                     @foreach ($categories as $category)
-                                        <option {{ $category->id == $productSliderOne->category ? 'selected' : '' }}
+                                        <option {{ $category->id == $productSliderTwo->category ? 'selected' : '' }}
                                             value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
                                 </select>
@@ -27,7 +27,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 @php
-                                    $subCategories = \App\Models\SubCategory::where('category_id', $productSliderOne->category)->get();
+                                    $subCategories = \App\Models\SubCategory::where('category_id', $productSliderTwo->category)->get();
                                 @endphp
 
                                 <label>Sub Category</label>
@@ -35,7 +35,7 @@
                                     <option value="">Select</option>
                                     @foreach ($subCategories as $subCategory)
                                         <option
-                                            {{ $subCategory->id == $productSliderOne->sub_category ? 'selected' : '' }}
+                                            {{ $subCategory->id == $productSliderTwo->sub_category ? 'selected' : '' }}
                                             value="{{ $subCategory->id }}">{{ $subCategory->name }}</option>
                                     @endforeach
                                 </select>
@@ -44,7 +44,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 @php
-                                    $childCategories = \App\Models\ChildCategory::where('subcategory_id', $productSliderOne->child_category)->get();
+                                    $childCategories = \App\Models\ChildCategory::where('subcategory_id', $productSliderTwo->child_category)->get();
                                 @endphp
 
                                 <label>Child Category</label>
@@ -52,7 +52,7 @@
                                     <option value="">Select</option>
                                     @foreach ($childCategories as $childCategory)
                                         <option
-                                            {{ $childCategory->id == $productSliderOne->child_category ? 'selected' : '' }}
+                                            {{ $childCategory->id == $productSliderTwo->child_category ? 'selected' : '' }}
                                             value="{{ $childCategory->id }}">{{ $childCategory->name }}</option>
                                     @endforeach
                                 </select>

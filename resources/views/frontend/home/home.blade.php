@@ -69,7 +69,7 @@
 
     <!--============================ELECTRONIC PART TWO START ==============================-->
 
-    {{-- @include('frontend.home.section.category-product-slider-two')   --}}
+    @include('frontend.home.section.category-product-slider-two')  
 
     <!--============================ELECTRONIC PART TWO END ==============================-->
 
