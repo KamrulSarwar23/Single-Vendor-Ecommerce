@@ -25,6 +25,7 @@ class HomeController extends Controller
         $typeBaseProduct = $this->getTypeBaseProduct();
         $categorySliderProductOne = HomePageSetting::where('key', 'product_slider_one')->first();
         $categorySliderProductTwo = HomePageSetting::where('key', 'product_slider_two')->first();
+        $categorySliderProductThree = HomePageSetting::where('key', 'product_slider_three')->first();
         return view(
             'frontend.home.home',
 
@@ -36,7 +37,8 @@ class HomeController extends Controller
                 'brands',
                 'typeBaseProduct',
                 'categorySliderProductOne',
-                'categorySliderProductTwo'
+                'categorySliderProductTwo',
+                'categorySliderProductThree'
             )
         );
     }

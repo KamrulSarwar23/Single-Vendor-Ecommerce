@@ -3,14 +3,14 @@
         $productSliderTwo = json_decode($productSliderTwo->value);
 
     @endphp
-
+    <h5>Product Silder Two</h5>
     <div class="tab-pane fade show active" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
         <div class="card">
             <div class="card-body">
                 <form action="{{ route('admin.product-slider-two') }}" method="POST">
                     @csrf
                     @method('PUT')
-                    <h5>Product Silder Two</h5>
+
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">

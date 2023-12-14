@@ -128,3 +128,4 @@ Route::get('home-page-setting', [HomePageSettingController::class, 'index'])->na
 Route::put('popular-category-section', [HomePageSettingController::class, 'updatePopularCategorySection'])->name('popular-category-section');
 Route::put('product-slider-one', [HomePageSettingController::class, 'productSliderOne'])->name('product-slider-one');
 Route::put('product-slider-two', [HomePageSettingController::class, 'productSliderTwo'])->name('product-slider-two');
+Route::put('product-slider-three', [HomePageSettingController::class, 'productSliderThree'])->name('product-slider-three');

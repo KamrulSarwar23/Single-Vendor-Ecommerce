@@ -11,6 +11,7 @@
                 @method('PUT')
 
                 <h5>Category 1:</h5>
+                
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">

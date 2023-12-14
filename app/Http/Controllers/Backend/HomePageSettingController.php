@@ -15,7 +15,15 @@ class HomePageSettingController extends Controller
         $popularCategorySection = HomePageSetting::where('key', 'popular_category_section')->first();
         $productSliderOne = HomePageSetting::where('key', 'product_slider_one')->first();
         $productSliderTwo = HomePageSetting::where('key', 'product_slider_two')->first();
-        return view('admin.home-page-setting.index', compact('categories', 'popularCategorySection', 'productSliderOne', 'productSliderTwo'));
+        $productSliderThree = HomePageSetting::where('key', 'product_slider_three')->first();
+        return view('admin.home-page-setting.index', compact(
+                'categories',
+                'popularCategorySection',
+                'productSliderOne',
+                'productSliderTwo',
+                'productSliderThree'
+            )
+        );
     }
 
     public function updatePopularCategorySection(Request $request)
@@ -136,6 +144,49 @@ class HomePageSettingController extends Controller
         );
 
         toastr('Updated Successfully');
+        return redirect()->back();
+    }
+
+
+    public function productSliderThree(Request $request)
+    {
+        $request->validate(
+            [
+                'cat_one' => ['required'],
+                'cat_two' => ['required']
+            ],
+            [
+                'cat_one.required' => 'Category 1 Field is Required',
+                'cat_two.required' => 'Category 2 Field is Required',
+            ]
+        );
+
+        $data = [
+            [
+                'category' => $request->cat_one,
+                'sub_category' => $request->sub_cat_one,
+                'child_category' => $request->child_cat_one,
+            ],
+
+            [
+                'category' => $request->cat_two,
+                'sub_category' => $request->sub_cat_two,
+                'child_category' => $request->child_cat_two,
+            ],
+
+        ];
+
+        HomePageSetting::updateOrCreate(
+            [
+                'key' => 'product_slider_three',
+            ],
+
+            [
+                'value' =>  json_encode($data),
+            ],
+        );
+
+        toastr('Product Slider Three Updated Successfully');
         return redirect()->back();
     }
 }

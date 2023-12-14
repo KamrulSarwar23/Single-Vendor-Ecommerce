@@ -17,6 +17,7 @@ function setActive(array $route)
     }
 }
 
+
 // Check if product have discount
 function checkProductDiscount($product)
 {
@@ -135,6 +136,7 @@ function getFinalPayableAmount()
     return getMainCartCount() + getShippingFee();
 }
 
-function limitText($text, $limit = 20){
+function limitText($text, $limit = 20)
+{
     return \Str::limit($text, $limit);
 }

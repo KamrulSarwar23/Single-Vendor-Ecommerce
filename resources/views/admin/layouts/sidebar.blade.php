@@ -1,7 +1,4 @@
 <style>
-    .active {
-        background-color: rgb(93, 114, 236, 0.5)
-    }
 
     .fa-circle-chevron-down,
     .fa-gear,
