@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\ChildCategory;
 use App\Models\FlashSale;
 use App\Models\Slider;
 use App\Models\FlashSaleItem;
 use App\Models\HomePageSetting;
 use App\Models\Product;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -26,6 +28,10 @@ class HomeController extends Controller
         $categorySliderProductOne = HomePageSetting::where('key', 'product_slider_one')->first();
         $categorySliderProductTwo = HomePageSetting::where('key', 'product_slider_two')->first();
         $categorySliderProductThree = HomePageSetting::where('key', 'product_slider_three')->first();
+        $categories = Category::get();
+        $subcategories = SubCategory::all();
+        $childcategories = ChildCategory::all();
+
         return view(
             'frontend.home.home',
 
@@ -38,7 +44,10 @@ class HomeController extends Controller
                 'typeBaseProduct',
                 'categorySliderProductOne',
                 'categorySliderProductTwo',
-                'categorySliderProductThree'
+                'categorySliderProductThree',
+                'categories',
+                'subcategories',
+                'childcategories'
             )
         );
     }

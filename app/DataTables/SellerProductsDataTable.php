@@ -88,6 +88,7 @@ class SellerProductsDataTable extends DataTable
             return $query->vendor->shop_name;
         })
 
+
         ->addColumn('approve', function ($query) {
             return "<select id='inputState' class='form-control is_approve' name='is_approved' data-id= '$query->id'>
                     <option value='0'>Pending</option>

@@ -13,8 +13,6 @@
         ->get();
 @endphp
 
-
-
 <!--============================ MAIN  MENU START ==============================-->
 
 <nav class="wsus__main_menu d-none d-lg-block">
@@ -31,19 +29,24 @@
 
                         @foreach ($categories as $category)
                             <li><a class="{{ count($category->subcategories) > 0 ? 'wsus__droap_arrow' : '' }}"
-                                    href="#"><i class="{{ $category->icon }}"></i>
+                                    href="{{ route('products.index', ['category' => $category->slug]) }}"><i
+                                        class="{{ $category->icon }}"></i>
                                     {{ $category->name }}
                                 </a>
                                 <ul class="{{ count($category->subcategories) > 0 ? 'wsus_menu_cat_droapdown' : '' }}">
 
                                     @foreach ($category->subcategories as $subcategory)
-                                        <li><a href="#">{{ $subcategory->name }} <i
+                                        <li><a
+                                                href="{{ route('products.index', ['subcategory' => $subcategory->slug]) }}">{{ $subcategory->name }}
+                                                <i
                                                     class="{{ count($subcategory->childcategories) > 0 ? 'fas fa-angle-right' : '' }}"></i></a>
                                             <ul
                                                 class="{{ count($subcategory->childcategories) > 0 ? 'wsus__sub_category' : '' }}">
 
                                                 @foreach ($subcategory->childcategories as $childcategory)
-                                                    <li><a href="#">{{ $childcategory->name }}</a> </li>
+                                                    <li><a
+                                                            href="{{ route('products.index', ['childcategory' => $childcategory->slug]) }}">{{ $childcategory->name }}</a>
+                                                    </li>
                                                 @endforeach
 
                                             </ul>
@@ -53,78 +56,41 @@
                             </li>
                         @endforeach
 
-
                         <li><a href="#"><i class="fal fa-gem"></i> View All Categories</a></li>
                     </ul>
 
                     <ul class="wsus__menu_item">
                         <li><a class="active" href="{{ route('home.page') }}">home</a></li>
-                        <li><a href="product_grid_view.html">shop <i class="fas fa-caret-down"></i></a>
+                        <li><a href="#">shop <i class="fas fa-caret-down"></i></a>
                             <div class="wsus__mega_menu">
                                 <div class="row">
-                                    <div class="col-xl-3 col-lg-3">
-                                        <div class="wsus__mega_menu_colum">
-                                            <h4>women</h4>
-                                            <ul class="wsis__mega_menu_item">
-                                                <li><a href="#">New Arrivals</a></li>
-                                                <li><a href="#">Best Sellers</a></li>
-                                                <li><a href="#">Trending</a></li>
-                                                <li><a href="#">Clothing</a></li>
-                                                <li><a href="#">Shoes</a></li>
-                                                <li><a href="#">Bags</a></li>
-                                                <li><a href="#">Accessories</a></li>
-                                                <li><a href="#">Jewlery & Watches</a></li>
-                                            </ul>
+                                    @foreach ($categories->take(4) as $category)
+                                        <div class="col-xl-3 col-lg-3">
+                                            <div class="wsus__mega_menu_colum">
+                                                <h4> <a
+                                                        href="{{ route('products.index', ['category' => $category->slug]) }}">{{ $category->name }}</a>
+                                                </h4>
+
+                                                <ul class="wsis__mega_menu_item">
+                                                    @foreach ($category->subcategories as $subcategory)
+                                                        <li><a
+                                                                href="{{ route('products.index', ['subcategory' => $subcategory->slug]) }}">{{ $subcategory->name }}</a>
+                                                        </li>
+
+                                                        @foreach ($subcategory->childcategories as $childcategory)
+                                                            <li><a
+                                                                    href="{{ route('products.index', ['childcategory' => $childcategory->slug]) }}">{{ $childcategory->name }}</a>
+                                                            </li>
+                                                        @endforeach
+                                                    @endforeach
+                                                </ul>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-3">
-                                        <div class="wsus__mega_menu_colum">
-                                            <h4>men</h4>
-                                            <ul class="wsis__mega_menu_item">
-                                                <li><a href="#">New Arrivals</a></li>
-                                                <li><a href="#">Best Sellers</a></li>
-                                                <li><a href="#">Trending</a></li>
-                                                <li><a href="#">Clothing</a></li>
-                                                <li><a href="#">Shoes</a></li>
-                                                <li><a href="#">Bags</a></li>
-                                                <li><a href="#">Accessories</a></li>
-                                                <li><a href="#">Jewlery & Watches</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-3">
-                                        <div class="wsus__mega_menu_colum">
-                                            <h4>category</h4>
-                                            <ul class="wsis__mega_menu_item">
-                                                <li><a href="#"> Healthy & Beauty</a></li>
-                                                <li><a href="#">Gift Ideas</a></li>
-                                                <li><a href="#">Toy & Games</a></li>
-                                                <li><a href="#">Cooking</a></li>
-                                                <li><a href="#">Smart Phones</a></li>
-                                                <li><a href="#">Cameras & Photo</a></li>
-                                                <li><a href="#">Accessories</a></li>
-                                                <li><a href="#">View All Categories</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-3">
-                                        <div class="wsus__mega_menu_colum">
-                                            <h4>women</h4>
-                                            <ul class="wsis__mega_menu_item">
-                                                <li><a href="#">New Arrivals</a></li>
-                                                <li><a href="#">Best Sellers</a></li>
-                                                <li><a href="#">Trending</a></li>
-                                                <li><a href="#">Clothing</a></li>
-                                                <li><a href="#">Shoes</a></li>
-                                                <li><a href="#">Bags</a></li>
-                                                <li><a href="#">Accessories</a></li>
-                                                <li><a href="#">Jewlery & Watches</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </li>
+                        
                         <li><a href="vendor.html">vendor</a></li>
                         <li><a href="blog.html">blog</a></li>
                         <li><a href="daily_deals.html">campain</a></li>
@@ -197,7 +163,9 @@
                     <ul class="wsus_mobile_menu_category">
 
                         @foreach ($categories as $category)
-                            <li><a href="#" class="{{ count($category->subcategories) > 0 ? 'accordion-button' : '' }} collapsed" data-bs-toggle="collapse"
+                            <li><a href="#"
+                                    class="{{ count($category->subcategories) > 0 ? 'accordion-button' : '' }} collapsed"
+                                    data-bs-toggle="collapse"
                                     data-bs-target="#flush-collapseThreew-{{ $loop->index }}" aria-expanded="false"
                                     aria-controls="flush-collapseThreew-{{ $loop->index }}"><i
                                         class="{{ $category->icon }}"></i>

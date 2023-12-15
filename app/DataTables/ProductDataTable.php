@@ -141,7 +141,7 @@ class ProductDataTable extends DataTable
                 ->addClass('text-center'),
         ];
     }
-
+ 
     /**
      * Get the filename for export.
      */

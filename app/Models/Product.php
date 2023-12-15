@@ -18,6 +18,16 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function subcategory(){
+
+        return $this->belongsTo(SubCategory::class, 'category_id', 'id');
+    }
+
+    public function childcategory(){
+
+        return $this->belongsTo(ChildCategory::class, 'category_id', 'id');
+    }
+    
     public function productImageGallery(){
 
         return $this->hasMany(ProductImageGallery::class);
