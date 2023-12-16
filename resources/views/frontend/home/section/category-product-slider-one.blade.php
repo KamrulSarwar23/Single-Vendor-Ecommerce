@@ -82,7 +82,7 @@
                                 <span>(133 review)</span>
                             </p>
                             <a class="wsus__pro_name"
-                                href="{{ route('product-detail', $product->slug) }}">{{ $product->name }}</a>
+                                href="{{ route('product-detail', $product->slug) }}">{{ limitText($product->name, 30) }}</a>
 
                             @if (checkProductDiscount($product))
                                 <p class="wsus__price">{{ $setting->currency_icon }}{{ $product->offer_price }}

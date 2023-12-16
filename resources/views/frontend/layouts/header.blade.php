@@ -10,14 +10,15 @@
                 <div class="wsus_logo_area">
                     <a class="wsus__header_logo" href="{{ route('home.page') }}">
 
-                        <img src="{{ asset('frontend/images/logo_2.png') }}" alt="logo" class="img-fluid w-100">
+                        {{-- <img src="{{ asset('frontend/images/Iconic-transparent.png') }}" alt="logo" class="img-fluid w-100"> --}}
+                        <h3 class="text-white mt-2">eCommerce</h3>
                     </a>
                 </div>
             </div>
             <div class="col-xl-5 col-md-6 col-lg-4 d-none d-lg-block">
                 <div class="wsus__search">
-                    <form>
-                        <input type="text" placeholder="Search...">
+                    <form action="{{ route('products.index') }}" method="GET">
+                        <input type="text" placeholder="Search..." name="search" value="{{ request()->search }}">
                         <button type="submit"><i class="far fa-search"></i></button>
                     </form>
                 </div>

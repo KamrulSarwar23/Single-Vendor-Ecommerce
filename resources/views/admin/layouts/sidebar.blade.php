@@ -10,12 +10,13 @@
     .fa-list-check,
     .fa-money-check-dollar,
     .fa-windows {
-        color: rgb(93, 114, 236)
+        color: #5C8374;
     }
 
     ul li a {
         font-size: 14px;
     }
+
 </style>
 
 <div class="main-sidebar sidebar-style-2">
