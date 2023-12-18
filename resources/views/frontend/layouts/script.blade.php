@@ -21,7 +21,7 @@
                         fetchSidebarCartProducts()
                         $('.mini_cart_actions').removeClass('d-none');
                         toastr.success(data.message);
-                    }else if (data.status == 'error') {
+                    } else if (data.status == 'error') {
                         toastr.error(data.message);
                     }
 
@@ -44,6 +44,7 @@
                 }
             })
         }
+
 
         function fetchSidebarCartProducts() {
 
@@ -127,6 +128,56 @@
                 }
             })
         }
+
+        //add product to wishlist
+
+        $('.addToWishlist').on('click', function(e) {
+                e.preventDefault();
+                let id = $(this).data('id');
+
+                $.ajax({
+                    method: 'GET',
+                    url: "{{ route('user.wishlist.store') }}",
+                    data: {
+                        id: id
+                    },
+                    success: function(data) {
+                        if (data.status == 'success') {
+                            $('#wishList_count').text(data.count)
+                            toastr.success(data.message);
+                        } else if (data.status == 'error') {
+                            toastr.error(data.message);
+                        }
+                    },
+                    error: function(data) {
+                        console.log(data);
+                    }
+
+                })
+            }),
+
+            $('.removeFromWishList').on('click', function() {
+
+                let id = $(this).data('id');
+
+                $.ajax({
+                    method: 'GET',
+                    url: "{{ route('user.wishlist.remove') }}",
+                    data: {
+                        id: id
+                    },
+                    success: function(data) {
+                        if (data.status == 'success') {
+                            location.reload();
+                            toastr.success(data.message);
+                        }
+                    },
+                    error: function(data) {
+                        console.log(data);
+                    }
+
+                })
+            })
 
     })
 </script>

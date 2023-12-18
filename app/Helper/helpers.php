@@ -3,6 +3,7 @@
 
 // Set Sidebar item Active
 
+use App\Models\WishList;
 use Illuminate\Support\Facades\Session;
 
 function setActive(array $route)
@@ -140,3 +141,6 @@ function limitText($text, $limit = 20)
 {
     return \Str::limit($text, $limit);
 }
+
+
+

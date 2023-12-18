@@ -12,7 +12,9 @@ use App\Models\FlashSaleItem;
 use App\Models\HomePageSetting;
 use App\Models\Product;
 use App\Models\SubCategory;
+use App\Models\WishList;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -32,6 +34,7 @@ class HomeController extends Controller
         $subcategories = SubCategory::all();
         $childcategories = ChildCategory::all();
 
+
         return view(
             'frontend.home.home',
 
@@ -47,7 +50,7 @@ class HomeController extends Controller
                 'categorySliderProductThree',
                 'categories',
                 'subcategories',
-                'childcategories'
+                'childcategories',
             )
         );
     }

@@ -13,6 +13,7 @@ use App\Http\Controllers\Frontend\UserProfileController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\UserAddressController;
 use App\Http\Controllers\Frontend\UserOrderController;
+use App\Http\Controllers\Frontend\WishListController;
 
 // Home Page Route
 Route::get('/', [HomeController::class, 'index'])->name('home.page');
@@ -82,4 +83,9 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 
     // Orders route
     Route::get('orders', [UserOrderController::class, 'index'])->name('orders');
     Route::get('orders/show/{id}', [UserOrderController::class, 'show'])->name('orders.show');
+
+    // Wish List Routes
+    Route::get('wish/list', [WishListController::class, 'wishList'])->name('wishlist.index');
+    Route::get('wishlist/add-product', [WishListController::class, 'addTowishList'])->name('wishlist.store');
+    Route::get('wishlist/remove', [WishListController::class, 'removeFromWishList'])->name('wishlist.remove');
 });
