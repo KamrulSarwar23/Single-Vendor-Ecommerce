@@ -117,7 +117,12 @@
                     <ul class="wsus__menu_item wsus__menu_item_right">
                         <li><a href="contact.html">contact</a></li>
                         <li><a href="dsahboard.html">my account</a></li>
+                        @if (!auth()->user())
                         <li><a href="{{ route('login') }}">login</a></li>
+                        @else
+                        <li><a href="{{ route('login') }}">Dashboard</a></li>
+                        @endif
+                       
                     </ul>
                 </div>
             </div>

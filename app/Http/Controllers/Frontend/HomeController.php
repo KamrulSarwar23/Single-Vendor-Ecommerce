@@ -9,6 +9,8 @@ use App\Models\ChildCategory;
 use App\Models\FlashSale;
 use App\Models\Slider;
 use App\Models\FlashSaleItem;
+use App\Models\FooterInfo;
+use App\Models\FooterSocial;
 use App\Models\HomePageSetting;
 use App\Models\Product;
 use App\Models\SubCategory;
@@ -33,6 +35,8 @@ class HomeController extends Controller
         $categories = Category::get();
         $subcategories = SubCategory::all();
         $childcategories = ChildCategory::all();
+        $footerinfo = FooterInfo::first();
+        $footersocial = FooterSocial::get();
 
 
         return view(
@@ -51,6 +55,8 @@ class HomeController extends Controller
                 'categories',
                 'subcategories',
                 'childcategories',
+                'footerinfo',
+                'footersocial'
             )
         );
     }

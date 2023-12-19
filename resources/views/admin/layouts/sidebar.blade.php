@@ -1,5 +1,4 @@
 <style>
-
     .fa-circle-chevron-down,
     .fa-gear,
     .fa-house,
@@ -16,7 +15,6 @@
     ul li a {
         font-size: 14px;
     }
-
 </style>
 
 <div class="main-sidebar sidebar-style-2">
@@ -35,7 +33,7 @@
 
             </li>
             <li class="menu-header">Starter</li>
-            <li class="dropdown {{ setActive(['admin.slider.*','admin.home-page-setting.*' ]) }}">
+            <li class="dropdown {{ setActive(['admin.slider.*', 'admin.home-page-setting.*']) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
                         class="fa-solid fa-sliders"></i>
                     <span>Manage Website</span></a>
@@ -167,10 +165,24 @@
                     <li class="{{ setActive(['admin.vendor-profile.*']) }}"><a class="nav-link"
                             href="{{ route('admin.vendor-profile.index') }}">Vendor Profile</a></li>
 
-
-
                 </ul>
             </li>
+
+            <li class="dropdown {{ setActive(['admin.footer-info.*', 'admin.footer-social.*']) }}">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
+                        class="fa-solid fa-list-check"></i>
+                    <span>Manage Footer</span></a>
+
+                <ul class="dropdown-menu">
+                    <li class="{{ setActive(['admin.footer-info.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.footer-info.index') }}">Footer Info</a></li>
+
+                    <li class="{{ setActive(['admin.footer-social.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.footer-social.index') }}">Footer Social Icon</a></li>
+                </ul>
+            </li>
+
+
             <li class="{{ setActive(['admin.setting.index']) }}"><a class="nav-link"
                     href="{{ route('admin.setting.index') }}"><i class="fa-solid fa-gear"></i> <span>Site
                         Settings</span>

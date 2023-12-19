@@ -44,5 +44,4 @@ class WishListController extends Controller
         $wishlist->delete();
         return response(['status' => 'success', 'message' => 'Product removed from wishlist successfully']);
     }
-
 }

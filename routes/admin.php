@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\FooterSocialController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\ProfileController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\AdminVendorProfileController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\FlashSaleController;
+use App\Http\Controllers\Backend\FooterInfoController;
 use App\Http\Controllers\Backend\HomePageSettingController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\PaymentSettingController;
@@ -129,3 +131,10 @@ Route::put('popular-category-section', [HomePageSettingController::class, 'updat
 Route::put('product-slider-one', [HomePageSettingController::class, 'productSliderOne'])->name('product-slider-one');
 Route::put('product-slider-two', [HomePageSettingController::class, 'productSliderTwo'])->name('product-slider-two');
 Route::put('product-slider-three', [HomePageSettingController::class, 'productSliderThree'])->name('product-slider-three');
+
+// Footer info Route
+Route::resource('footer-info', FooterInfoController::class);
+
+// Footers social Route
+Route::put('footer-social/change-status', [FooterSocialController::class, 'changeStatus'])->name('footer-social.change-status');
+Route::resource('footer-social', FooterSocialController::class);
