@@ -8,8 +8,15 @@
     .fa-product-hunt,
     .fa-list-check,
     .fa-money-check-dollar,
-    .fa-windows {
+    .fa-windows,
+    .fa-bolt,
+    .fa-tags,
+    .fa-shield-halved,
+    .fa-sack-dollar,
+    .fa-window-maximize,
+    .fa-paperclip {
         color: #5C8374;
+        font-size: 15px;
     }
 
     ul li a {
@@ -35,7 +42,7 @@
             <li class="menu-header">Starter</li>
             <li class="dropdown {{ setActive(['admin.slider.*', 'admin.home-page-setting.*']) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
-                        class="fa-solid fa-sliders"></i>
+                        class="fa-solid fa-shield-halved"></i>
                     <span>Manage Website</span></a>
 
                 <ul class="dropdown-menu">
@@ -49,7 +56,7 @@
             </li>
 
             <li class="dropdown {{ setActive(['admin.category.*', 'admin.subcategory.*', 'admin.childcategory.*']) }}">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fa-solid fa-list"></i>
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fa-solid fa-bolt"></i>
                     <span>Manage Category</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ setActive(['admin.category.*']) }}"><a class="nav-link"
@@ -149,7 +156,7 @@
             <li
                 class="dropdown {{ setActive(['admin.vendor-profile.*', 'admin.flash-sale.*', 'admin.coupons.*', 'admin.shipping-rule.*']) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
-                        class="fa-solid fa-list-check"></i>
+                        class="fa-solid fa-paperclip"></i>
                     <span>Manage Ecommerce</span></a>
 
                 <ul class="dropdown-menu">
@@ -168,9 +175,10 @@
                 </ul>
             </li>
 
-            <li class="dropdown {{ setActive(['admin.footer-info.*', 'admin.footer-social.*']) }}">
+            <li
+                class="dropdown {{ setActive(['admin.footer-info.*', 'admin.footer-social.*', 'admin.footer-grid-two.*', 'admin.footer-grid-three.*']) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
-                        class="fa-solid fa-list-check"></i>
+                        class="fa-solid fa-tags"></i>
                     <span>Manage Footer</span></a>
 
                 <ul class="dropdown-menu">
@@ -179,6 +187,12 @@
 
                     <li class="{{ setActive(['admin.footer-social.*']) }}"><a class="nav-link"
                             href="{{ route('admin.footer-social.index') }}">Footer Social Icon</a></li>
+
+                    <li class="{{ setActive(['admin.footer-grid-two.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.footer-grid-two.index') }}">Footer Grid Two</a></li>
+
+                    <li class="{{ setActive(['admin.footer-grid-three.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.footer-grid-three.index') }}">Footer Grid Three</a></li>
                 </ul>
             </li>
 
@@ -189,7 +203,8 @@
                 </a></li>
 
             <li class="{{ setActive(['admin.payment-settings.*']) }}"><a class="nav-link"
-                    href="{{ route('admin.payment-settings.index') }}"><i class="fa-solid fa-gear"></i><span>Payment
+                    href="{{ route('admin.payment-settings.index') }}"><i
+                        class="fa-solid fa-sack-dollar"></i><span>Payment
                         Setting</span></a></li>
         </ul>
 

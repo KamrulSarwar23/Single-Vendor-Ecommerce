@@ -33,7 +33,7 @@ class FooterSocialController extends Controller
         $request->validate([
             'icon' => ['required'],
             'name' => ['required'],
-            'url' => ['required'],
+            'url' => ['required', 'url'],
             'status' => ['required'],
         ]);
 
@@ -43,7 +43,7 @@ class FooterSocialController extends Controller
         $footersocial->url = $request->url;
         $footersocial->status = $request->status;
         $footersocial->save();
-        toastr('Created Successfully');
+        toastr('Created Successfully', 'success', 'success');
         return redirect()->route('admin.footer-social.index');
         
     }
@@ -83,7 +83,7 @@ class FooterSocialController extends Controller
         $footersocial->url = $request->url;
         $footersocial->status = $request->status;
         $footersocial->save();
-        toastr('Updated Successfully');
+        toastr('Updated Successfully' , 'success', 'success');
         return redirect()->route('admin.footer-social.index');
         
     }

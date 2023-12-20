@@ -1,8 +1,18 @@
+@php
+    $footerinfo = \App\Models\FooterInfo::first();
+    $footersocial = \App\Models\FooterSocial::where('status', 1)->get();
+    $footertitle = \App\Models\FooterTitle::first();
+    $footergridtwo = \App\Models\FooterGridTwo::where('status', 1)->get();
+    $footertitle = \App\Models\FooterTitle::first();
+    $footergridthree = \App\Models\FooterGridThree::where('status', 1)->get();
+@endphp
+
+
 <footer class="footer_2">
     <div class="container">
         <div class="row justify-content-between">
             <div class="col-xl-3 col-sm-7 col-md-6 col-lg-3">
-                
+
                 <div class="wsus__footer_content">
                     <a class="wsus__footer_2_logo" href="#">
                         {{-- <h2 style="color:white">Sazao</h2> --}}
@@ -12,43 +22,41 @@
                         {{ @$footerinfo->phone }}</a>
                     <a class="action" href="mailto:example@gmail.com"><i class="far fa-envelope"></i>
                         {{ @$footerinfo->email }}</a>
-                    <p><i class="fal fa-map-marker-alt"></i>  {{ @$footerinfo->address }}</p>
+                    <p><i class="fal fa-map-marker-alt"></i> {{ @$footerinfo->address }}</p>
                     <ul class="wsus__footer_social">
 
                         @foreach ($footersocial as $item)
-                        <li><a class="{{ $item->name }}" href="{{ $item->url }}"><i class="{{ $item->icon }}"></i></a></li>
+                            <li><a class="behance" href="{{ $item->url }}"><i class="{{ $item->icon }}"></i></a>
+                            </li>
                         @endforeach
-                        
-                 
                     </ul>
                 </div>
 
             </div>
             <div class="col-xl-2 col-sm-5 col-md-4 col-lg-2">
                 <div class="wsus__footer_content">
-                    <h5>Company</h5>
+                    <h5>{{ $footertitle->footer_grid_two_title }}</h5>
                     <ul class="wsus__footer_menu">
-                        <li><a href="#"><i class="fas fa-caret-right"></i> About Us</a></li>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> Team Member</a></li>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> Career</a></li>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> Contact Us</a></li>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> Affilate</a></li>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> Order History</a></li>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> Team Member</a></li>
+
+                        @foreach ($footergridtwo as $item)
+                            <li><a href="{{ $item->url }}"><i class="fas fa-caret-right"></i>{{ $item->name }}</a>
+                            </li>
+                        @endforeach
+
                     </ul>
                 </div>
             </div>
             <div class="col-xl-2 col-sm-5 col-md-4 col-lg-2">
                 <div class="wsus__footer_content">
-                    <h5>Company</h5>
+                    <h5>{{ $footertitle->footer_grid_three_title }}</h5>
                     <ul class="wsus__footer_menu">
-                        <li><a href="#"><i class="fas fa-caret-right"></i> About Us</a></li>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> Team Member</a></li>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> Career</a></li>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> Contact Us</a></li>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> Affilate</a></li>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> Order History</a></li>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> Team Member</a></li>
+
+                        @foreach ($footergridthree as $item)
+                            <li><a href="{{ $item->url }}"><i
+                                        class="fas fa-caret-right"></i>{{ $item->name }}</a>
+                            </li>
+                        @endforeach
+
                     </ul>
                 </div>
             </div>
