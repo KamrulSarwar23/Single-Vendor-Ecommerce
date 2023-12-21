@@ -71,7 +71,7 @@
             <!-- Footer Start-->
             <footer class="main-footer">
                 <div class="footer-left">
-                    Copyright &copy; 2023 - All Rights Reserve by Kamrul Hasan
+                    Copyright &copy; 2023 - All Rights Reserve by Iconic solution (PVT.) Ltd
                 </div>
                 <div class="footer-right">
 

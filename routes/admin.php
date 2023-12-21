@@ -27,6 +27,7 @@ use App\Http\Controllers\Backend\SellerProductController;
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\ShippingRuleController;
 use App\Http\Controllers\Backend\StripeSettingController;
+use App\Http\Controllers\Backend\SubscriberController;
 use App\Http\Controllers\Backend\TransactionController;
 
 // Admin profile Routes
@@ -114,6 +115,12 @@ Route::put('stripe-setting/{id}', [StripeSettingController::class, 'update'])->n
 
 //Email Configuration Setting Routes
 Route::put('email-config', [SettingController::class, 'emailConfigSetting'])->name('email-config.update');
+
+//Subscriber Routes
+Route::get('subscribers', [SubscriberController::class, 'index'])->name('subscribers');
+Route::delete('subscribers-remove/{id}', [SubscriberController::class, 'destory'])->name('remove-subscriber');
+Route::post('send-mail-subscribers', [SubscriberController::class, 'sendMail'])->name('send-mail-subscribers');
+
 
 // Orders Route
 Route::get('order-status', [OrderController::class, 'changeOrderStatus'])->name('order.status');
