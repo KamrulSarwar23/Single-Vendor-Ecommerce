@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\NewsLetterController;
 use App\Http\Controllers\Frontend\PaymentController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -50,6 +51,8 @@ Route::get('cart/sidebar-product-total', [CartController::class, 'cartTotal'])->
 Route::get('apply-coupon', [CartController::class, 'applyCoupon'])->name('apply-coupon');
 Route::get('coupon-calculation', [CartController::class, 'couponCalculation'])->name('coupon-calculation');
 
+// News Letter route
+Route::post('news-letter-request', [NewsLetterController::class, 'newsLetterRequest'])->name('news-letter-request');
 
 // User Dashboard Routes Group
 Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 'user.'], function () {

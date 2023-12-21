@@ -112,6 +112,9 @@ Route::resource('paypal-setting', PaypalSettingController::class);
 // Stripe Setting
 Route::put('stripe-setting/{id}', [StripeSettingController::class, 'update'])->name('stripe-setting.update');
 
+//Email Configuration Setting Routes
+Route::put('email-config', [SettingController::class, 'emailConfigSetting'])->name('email-config.update');
+
 // Orders Route
 Route::get('order-status', [OrderController::class, 'changeOrderStatus'])->name('order.status');
 Route::get('payment-status', [OrderController::class, 'changePaymentStatus'])->name('payment.status');
