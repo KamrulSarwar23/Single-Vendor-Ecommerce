@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Advertisement;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\ChildCategory;
@@ -38,9 +39,20 @@ class HomeController extends Controller
         $categories = Category::get();
         $subcategories = SubCategory::all();
         $childcategories = ChildCategory::all();
+
+        $home_page_banner_section_one = Advertisement::where('key', 'home-page-banner-section-one')->first();
+        $home_page_banner_section_one = json_decode($home_page_banner_section_one->value);
+
+        $home_page_banner_section_two = Advertisement::where('key', 'home-page-banner-section-two')->first();
+        $home_page_banner_section_two = json_decode($home_page_banner_section_two->value);
+
+        $home_page_banner_section_three = Advertisement::where('key', 'home-page-banner-section-three')->first();
+        $home_page_banner_section_three = json_decode($home_page_banner_section_three->value);
+
+        $home_page_banner_section_four = Advertisement::where('key', 'home-page-banner-section-four')->first();
+        $home_page_banner_section_four = json_decode($home_page_banner_section_four->value);
         return view(
             'frontend.home.home',
-
             compact(
                 'sliders',
                 'flashSaleDate',
@@ -54,6 +66,10 @@ class HomeController extends Controller
                 'categories',
                 'subcategories',
                 'childcategories',
+                'home_page_banner_section_one',
+                'home_page_banner_section_two',
+                'home_page_banner_section_three',
+                'home_page_banner_section_four'
             )
         );
     }

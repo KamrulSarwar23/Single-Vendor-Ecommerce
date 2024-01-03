@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\AdvertisementController;
 use App\Http\Controllers\Backend\FooterGridTwoController;
 use App\Http\Controllers\Backend\FooterSocialController;
 use Illuminate\Support\Facades\Route;
@@ -121,7 +122,6 @@ Route::get('subscribers', [SubscriberController::class, 'index'])->name('subscri
 Route::delete('subscribers-remove/{id}', [SubscriberController::class, 'destory'])->name('remove-subscriber');
 Route::post('send-mail-subscribers', [SubscriberController::class, 'sendMail'])->name('send-mail-subscribers');
 
-
 // Orders Route
 Route::get('order-status', [OrderController::class, 'changeOrderStatus'])->name('order.status');
 Route::get('payment-status', [OrderController::class, 'changePaymentStatus'])->name('payment.status');
@@ -156,8 +156,16 @@ Route::put('footer-grid-two/change-status', [FooterGridTwoController::class, 'ch
 Route::put('footer-grid-two/change-title', [FooterGridTwoController::class, 'changeTitle'])->name('footer-grid-two.change-title');
 Route::resource('footer-grid-two', FooterGridTwoController::class);
 
-
 // Footers Grid Three Route
 Route::put('footer-grid-three/change-status', [FooterGridThreeController::class, 'changeStatus'])->name('footer-grid-three.change-status');
 Route::put('footer-grid-three/change-title', [FooterGridThreeController::class, 'changeTitle'])->name('footer-grid-three.change-title');
 Route::resource('footer-grid-three', FooterGridThreeController::class);
+
+// Advertisement routes
+Route::get('advertisement', [AdvertisementController::class, 'index'])->name('advertisement.index');
+Route::put('advertisement/home-page-banner-section-one', [AdvertisementController::class, 'homePageBannerSectionOne'])->name('home-page-banner-section-one');
+Route::put('advertisement/home-page-banner-section-two', [AdvertisementController::class, 'homePageBannerSectionTwo'])->name('home-page-banner-section-two');
+Route::put('advertisement/home-page-banner-section-three', [AdvertisementController::class, 'homePageBannerSectionThree'])->name('home-page-banner-section-three');
+Route::put('advertisement/home-page-banner-section-four', [AdvertisementController::class, 'homePageBannerSectionFour'])->name('home-page-banner-section-four');
+Route::put('advertisement/product-page-banner', [AdvertisementController::class, 'productPageBanner'])->name('product-page-banner');
+Route::put('advertisement/cart-page-banner', [AdvertisementController::class, 'cartPageBanner'])->name('cart-page-banner');

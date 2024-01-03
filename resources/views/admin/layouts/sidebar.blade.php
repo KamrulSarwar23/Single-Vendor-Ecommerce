@@ -82,7 +82,8 @@
                     'admin.cancel.*',
                 ]) }}">
 
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fa-solid fa-comment"></i>
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
+                        class="fa-solid fa-comment"></i>
                     <span>Manage Orders</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ setActive(['admin.order.*']) }}"><a class="nav-link"
@@ -110,10 +111,6 @@
                             href="{{ route('admin.cancel.order') }}">Cancel Orders</a></li>
                 </ul>
             </li>
-
-            <li class="{{ setActive(['admin.transaction']) }}"><a class="nav-link"
-                    href="{{ route('admin.transaction') }}"><i class="fa-solid fa-money-check-dollar"></i><span>Manage
-                        Transaction</span></a></li>
 
             <li
                 class="dropdown 
@@ -196,9 +193,20 @@
                 </ul>
             </li>
 
+            <li class="{{ setActive(['admin.transaction']) }}"><a class="nav-link"
+                    href="{{ route('admin.transaction') }}"><i
+                        class="fa-solid fa-money-check-dollar"></i><span>Manage
+                        Transaction</span></a></li>
+
             <li class="{{ setActive(['admin.subscribers']) }}"><a class="nav-link"
-                href="{{ route('admin.subscribers') }}"><i class="fa-solid fa-people-roof"></i> <span>Subscribers</span>
-            </a></li>
+                    href="{{ route('admin.subscribers') }}"><i class="fa-solid fa-people-roof"></i>
+                    <span>Subscribers</span>
+                </a></li>
+
+            <li class="{{ setActive(['admin.advertisement.index']) }}"><a class="nav-link"
+                    href="{{ route('admin.advertisement.index') }}"><i class="fa-solid fa-people-roof"></i>
+                    <span>Advertisement</span>
+                </a></li>
 
             <li class="{{ setActive(['admin.setting.index']) }}"><a class="nav-link"
                     href="{{ route('admin.setting.index') }}"><i class="fa-solid fa-gear"></i> <span>Site

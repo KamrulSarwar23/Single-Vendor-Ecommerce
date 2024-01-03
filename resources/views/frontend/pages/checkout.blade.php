@@ -32,8 +32,9 @@
             <div class="row">
                 <div class="col-xl-8 col-lg-7">
                     <div class="wsus__check_form">
-                        <h5>Shipping Details <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">add
-                                new address</a></h5>
+                        <h5>Shipping Details <a class="btn btn-success" href="#" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">Add
+                                New Address</a></h5>
 
                         <div class="row">
                             @foreach ($addresses as $address)

@@ -152,32 +152,38 @@
     <section id="wsus__single_banner">
         <div class="container">
             <div class="row">
-                <div class="col-xl-6 col-lg-6">
-                    <div class="wsus__single_banner_content">
-                        <div class="wsus__single_banner_img">
-                            <img src="{{ asset('frontend/images/single_banner_2.jpg') }}" alt="banner"
-                                class="img-fluid w-100">
-                        </div>
-                        <div class="wsus__single_banner_text">
-                            <h6>sell on <span>35% off</span></h6>
-                            <h3>smart watch</h3>
-                            <a class="shop_btn" href="#">shop now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-6">
-                    <div class="wsus__single_banner_content single_banner_2">
-                        <div class="wsus__single_banner_img">
-                            <img src="{{ asset('frontend/images/single_banner_3.jpg') }}" alt="banner"
-                                class="img-fluid w-100">
-                        </div>
-                        <div class="wsus__single_banner_text">
-                            <h6>New Collection</h6>
-                            <h3>Cosmetics</h3>
-                            <a class="shop_btn" href="#">shop now</a>
+                @if ($cart_page_banner->banner_one->banner_one_status == 1)
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="wsus__single_banner_content">
+                            <div class="wsus__single_banner_img">
+                                <img src="{{ asset($cart_page_banner->banner_one->banner_one_image) }}" alt="banner"
+                                    class="img-fluid w-100">
+                            </div>
+                            <div class="wsus__single_banner_text">
+                                <h6>{{ $cart_page_banner->banner_one->banner_one_text_one}}</h6>
+                                <h3>{{ $cart_page_banner->banner_one->banner_one_text_two}}</h3>
+                                <a class="shop_btn" href="{{ $cart_page_banner->banner_one->banner_one_url }}">shop now</a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endif
+
+                @if ($cart_page_banner->banner_two->banner_two_status == 1)
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="wsus__single_banner_content single_banner_2">
+                            <div class="wsus__single_banner_img">
+                                <img src="{{ asset($cart_page_banner->banner_two->banner_two_image) }}" alt="banner"
+                                    class="img-fluid w-100">
+                            </div>
+                            <div class="wsus__single_banner_text">
+                                <h6>{{ $cart_page_banner->banner_two->banner_two_text_one}}</h6>
+                                <h3>{{ $cart_page_banner->banner_two->banner_two_text_two}}</h3>
+                                <a class="shop_btn" href="{{ $cart_page_banner->banner_two->banner_two_url }}">shop now</a>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+
             </div>
         </div>
     </section>

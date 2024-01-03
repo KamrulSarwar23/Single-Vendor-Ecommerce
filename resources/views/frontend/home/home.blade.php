@@ -65,14 +65,17 @@
 
     <!--============================ELECTRONIC PART ONE END ==============================-->
 
+    <!--============================Three add banner ==============================-->
 
+    @include('frontend.home.section.three-add-banner')
+
+    <!--===========================Three add banner ==============================-->
 
     <!--============================ELECTRONIC PART TWO START ==============================-->
 
     @include('frontend.home.section.category-product-slider-two')  
 
     <!--============================ELECTRONIC PART TWO END ==============================-->
-
 
 
 
@@ -90,7 +93,6 @@
     @include('frontend.home.section.weekly-best-item')
 
     <!--============================WEEKLY BEST ITEM END ==============================-->
-
 
 
 

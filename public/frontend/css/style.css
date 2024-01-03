@@ -2923,7 +2923,7 @@ PPRODUCT PAGE START
 
 .wsus__pro_page_bammer img {
   object-fit: cover;
-  height: 100%;
+  height: 350px;
 }
 
 .wsus__pro_page_bammer_text {
@@ -4168,14 +4168,15 @@ PRODUCT DETAILS START
 }
 
 .wsus__pro_det_review .wsus__comment_text ul li {
-  width: 70px !important;
-  height: 70px !important;
+  width: 12% !important;
+  height: 15% !important;
   margin-right: 10px;
   float: left;
 }
 
 .wsus__pro_det_review .wsus__comment_text ul li img {
-  height: 100%;
+  width: 100px;
+  height: 100px;
   object-fit: cover;
 }
 
@@ -9548,4 +9549,3 @@ a:not([href]):not([class]):hover {
   outline: none;
   border-radius: 3px;
 } */
-

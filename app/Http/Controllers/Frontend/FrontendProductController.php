@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Advertisement;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\ChildCategory;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\FlashSale;
+use App\Models\Review;
 use App\Models\SubCategory;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class FrontendProductController extends Controller
@@ -112,7 +115,11 @@ class FrontendProductController extends Controller
 
         $categories = Category::where('status', 1)->get();
         $brands = Brand::where('status', 1)->where('is_featured', 1)->get();
-        return view('frontend.pages.product', compact('products', 'categories', 'brands'));
+
+        $product_page_banner = Advertisement::where('key', 'product-page-banner')->first();
+        $product_page_banner = json_decode($product_page_banner->value);
+
+        return view('frontend.pages.product', compact('products', 'categories', 'brands', 'product_page_banner'));
     }
 
 
@@ -120,7 +127,8 @@ class FrontendProductController extends Controller
     {
         $product = Product::with('vendor', 'category', 'productImageGallery', 'variant', 'brand')->where('slug', $slug)->where('status', 1)->first();
         $flashSaleDate = FlashSale::first();
-        return view('frontend.pages.product-details', compact('product', 'flashSaleDate'));
+        $productReview = Review::where('product_id', $product->id)->where('status', 0)->paginate(10);
+        return view('frontend.pages.product-details', compact('product', 'flashSaleDate', 'productReview'));
     }
 
     public function productListView(Request $request)

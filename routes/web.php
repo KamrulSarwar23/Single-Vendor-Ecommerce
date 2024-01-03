@@ -12,9 +12,12 @@ use App\Http\Controllers\Frontend\FrontendProductController;
 use App\Http\Controllers\Frontend\UserDashboardController;
 use App\Http\Controllers\Frontend\UserProfileController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\ReviewController;
 use App\Http\Controllers\Frontend\UserAddressController;
 use App\Http\Controllers\Frontend\UserOrderController;
 use App\Http\Controllers\Frontend\WishListController;
+
+require __DIR__ . '/auth.php';
 
 // Home Page Route
 Route::get('/', [HomeController::class, 'index'])->name('home.page');
@@ -24,8 +27,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
-require __DIR__ . '/auth.php';
 
 // Admin Login Route
 Route::get('/admin/login', [AdminController::class, 'login'])->name('admin.login');
@@ -92,4 +93,7 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 
     Route::get('wish/list', [WishListController::class, 'wishList'])->name('wishlist.index');
     Route::get('wishlist/add-product', [WishListController::class, 'addTowishList'])->name('wishlist.store');
     Route::get('wishlist/remove', [WishListController::class, 'removeFromWishList'])->name('wishlist.remove');
+
+    // Review Routes
+    Route::post('review', [ReviewController::class, 'create'])->name('review.create');
 });

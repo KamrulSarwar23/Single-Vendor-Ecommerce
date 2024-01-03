@@ -30,13 +30,12 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="wsus__pro_page_bammer">
-                        <img src="{{ asset('frontend/images/pro_banner_1.jpg') }}" alt="banner" class="img-fluid w-100">
+                        <img src="{{ asset($product_page_banner->banner_one->banner_image) }}" alt="banner" class="img-fluid w-100">
                         <div class="wsus__pro_page_bammer_text">
                             <div class="wsus__pro_page_bammer_text_center">
-                                <p>up to <span>70% off</span></p>
-                                <h5>wemen's jeans Collection</h5>
-                                <h3>fashion for wemen's</h3>
-                                <a href="#" class="add_cart">Discover Now</a>
+                                <p>{{ $product_page_banner->banner_one->banner_text_one }}</p>
+                                <h5 class="mb-3">{{ $product_page_banner->banner_one->banner_text_two }}</h5>
+                                <a href="{{ $product_page_banner->banner_one->banner_url }}" class="add_cart">Discover Now</a>
                             </div>
                         </div>
                     </div>
