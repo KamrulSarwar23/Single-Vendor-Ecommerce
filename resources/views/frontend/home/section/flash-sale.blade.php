@@ -33,7 +33,8 @@
                             <img src="{{ asset($product->thumb_image) }}" alt="product"
                                 class="img-fluid w-100 img_1" />
 
-                            <img src=" @if (isset($product->productImageGallery[0]->image)) {{ asset($product->productImageGallery[0]->image) }}
+                            <img src=" 
+                            @if (isset($product->productImageGallery[0]->image)) {{ asset($product->productImageGallery[0]->image) }}
                             @else
                             {{ asset($product->thumb_image) }} @endif "
                                 alt="product" class="img-fluid w-100 img_2" />

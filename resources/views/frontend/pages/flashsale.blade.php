@@ -159,9 +159,7 @@
                             </div>
                         </div>
                     @endforeach
-
                 </div>
-
 
                 <div class="mt-5">
                     @if ($flashSaleItem->hasPages())

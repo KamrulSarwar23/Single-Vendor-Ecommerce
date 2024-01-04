@@ -10,19 +10,19 @@
 
     if (array_keys($lastKey)[0] == 'category') {
         $category = \App\Models\Category::find($lastKey['category']);
-        $products = \App\Models\Product::where('category_id', $category->id)
+        $products = \App\Models\Product::with('reviews')->where('category_id', $category->id)
             ->orderBy('id', 'DESC')
             ->take(12)
             ->get();
     } elseif (array_keys($lastKey)[0] == 'sub_category') {
         $category = \App\Models\SubCategory::find($lastKey['sub_category']);
-        $products = \App\Models\Product::where('subcategory_id', $category->id)
+        $products = \App\Models\Product::with('reviews')->where('subcategory_id', $category->id)
             ->orderBy('id', 'DESC')
             ->take(12)
             ->get();
     } else {
         $category = \App\Models\ChildCategory::find($lastKey['child_category']);
-        $products = \App\Models\Product::where('childcategory_id', $category->id)
+        $products = \App\Models\Product::with('reviews')->where('childcategory_id', $category->id)
             ->orderBy('id', 'DESC')
             ->take(12)
             ->get();
