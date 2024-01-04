@@ -51,12 +51,20 @@
                                 <div class="wsus__product_details">
                                     <a class="wsus__category" href="#">{{ $product->category->name }} </a>
                                     <p class="wsus__pro_rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star-half-alt"></i>
-                                        <span>(133 review)</span>
+                                        @php
+                                            $avgrating = $product->reviews()->avg('rating');
+                                            $fullrating = round($avgrating);
+                                        @endphp
+        
+                                        @for ($i = 1; $i <= 5; $i++)
+                                            @if ($i <= $fullrating)
+                                                <i class="fas fa-star"></i>
+                                            @else
+                                                <i class="far fa-star"></i>
+                                            @endif
+                                        @endfor
+        
+                                        <span>({{ count($product->reviews) }} review)</span>
                                     </p>
                                     <a class="wsus__pro_name"
                                         href="{{ route('product-detail', $product->slug) }}">{{ limitText($product->name, 30) }}</a>
@@ -174,13 +182,21 @@
                                                 <h4>{{ $setting->currency_icon }}{{ $product->price }}</h4>
                                             @endif
 
-                                            <p class="review">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star-half-alt"></i>
-                                                <span>20 review</span>
+                                            <p class="wsus__pro_rating">
+                                                @php
+                                                    $avgrating = $product->reviews()->avg('rating');
+                                                    $fullrating = round($avgrating);
+                                                @endphp
+                
+                                                @for ($i = 1; $i <= 5; $i++)
+                                                    @if ($i <= $fullrating)
+                                                        <i class="fas fa-star"></i>
+                                                    @else
+                                                        <i class="far fa-star"></i>
+                                                    @endif
+                                                @endfor
+                
+                                                <span>({{ count($product->reviews) }} review)</span>
                                             </p>
 
                                             <p class="description">{{ $product->short_description }}</p>

@@ -122,6 +122,7 @@
                 'admin.product-image-gallery.*',
                 'admin.product-variant.*',
                 'admin.product-variant-item.*',
+                'admin.review.*',
             ]) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
                         class="fa-brands fa-product-hunt"></i>
@@ -146,6 +147,9 @@
 
                     <li class="{{ setActive(['admin.seller-pending-products.*']) }}"><a class="nav-link"
                             href="{{ route('admin.seller-pending-products.index') }}">Seller Pending Products</a></li>
+
+                    <li class="{{ setActive(['admin.review.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.review.index') }}">Product Reviews</a></li>
 
                 </ul>
             </li>

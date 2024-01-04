@@ -84,12 +84,20 @@
                             @endif
 
                             <p class="review">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                                <span>20 review</span>
+                                @php
+                                    $avgrating = $product->reviews()->avg('rating');
+                                    $fullrating = round($avgrating);
+                                @endphp
+
+                                @for ($i = 1; $i <= 5; $i++)
+                                    @if ($i <= $fullrating)
+                                        <i class="fas fa-star"></i>
+                                    @else
+                                        <i class="far fa-star"></i>
+                                    @endif
+                                @endfor
+
+                                <span>({{ count($product->reviews) }} review)</span>
                             </p>
                             <p class="description">
 
@@ -251,12 +259,20 @@
                                                 <div class="wsus__pro_det_vendor_text">
                                                     <h4>{{ $product->vendor->user->name }}</h4>
                                                     <p class="rating">
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <span>(41 review)</span>
+                                                        @php
+                                                        $avgrating = $product->reviews()->avg('rating');
+                                                        $fullrating = round($avgrating);
+                                                    @endphp
+                    
+                                                    @for ($i = 1; $i <= 5; $i++)
+                                                        @if ($i <= $fullrating)
+                                                            <i class="fas fa-star"></i>
+                                                        @else
+                                                            <i class="far fa-star"></i>
+                                                        @endif
+                                                    @endfor
+                    
+                                                    <span>({{ count($product->reviews) }} review)</span>
                                                     </p>
                                                     <p><span>Store Name:</span> {{ $product->vendor->shop_name }}</p>
                                                     <p><span>Address:</span> {{ $product->vendor->address }}</p>
@@ -288,11 +304,12 @@
                                                                 <div class="wsus__comment_img">
 
                                                                     <img src="{{ asset($review->user->image) }}"
-                                                                    alt="user" class="img-fluid w-100">
+                                                                        alt="user" class="img-fluid w-100">
 
                                                                 </div>
                                                                 <div class="wsus__comment_text reply">
-                                                                    <h6>{{ $review->user->name }} <span>{{ $review->rating }}<i
+                                                                    <h6>{{ $review->user->name }}
+                                                                        <span>{{ $review->rating }}<i
                                                                                 class="fas fa-star"></i></span>
                                                                     </h6>
                                                                     <span>{{ date('d, M, Y', strtotime($review->created_at)) }}</span>
@@ -303,23 +320,25 @@
 
                                                                     <ul class="mb-3">
 
-                                                                        @if(count($review->reviewimage) > 0)
-                                                                        @foreach ($review->reviewimage as $image)
-                                                                        <li><img src="{{ asset($image->image) }}" class="img-fluid w-100" alt=""></li>
-                                                                        @endforeach
+                                                                        @if (count($review->reviewimage) > 0)
+                                                                            @foreach ($review->reviewimage as $image)
+                                                                                <li><img src="{{ asset($image->image) }}"
+                                                                                        class="img-fluid w-100"
+                                                                                        alt=""></li>
+                                                                            @endforeach
                                                                         @endif
-                                                                      
+
                                                                     </ul>
-                                                               
+
                                                                 </div>
-                                                          
+
                                                             </div>
                                                         @endforeach
 
                                                         <div class="mt-5">
-                                                                @if ($productReview->hasPages())
-                                                                    {{ $productReview->links() }}
-                                                                @endif
+                                                            @if ($productReview->hasPages())
+                                                                {{ $productReview->links() }}
+                                                            @endif
                                                         </div>
                                                     </div>
                                                 </div>

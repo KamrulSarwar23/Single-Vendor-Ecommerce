@@ -1,10 +1,12 @@
 <?php
 
+use App\DataTables\AdminProductReviewDataTable;
 use App\Http\Controllers\Backend\AdvertisementController;
 use App\Http\Controllers\Backend\FooterGridTwoController;
 use App\Http\Controllers\Backend\FooterSocialController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Backend\AdminProductReviewController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\CategoryController;
@@ -169,3 +171,8 @@ Route::put('advertisement/home-page-banner-section-three', [AdvertisementControl
 Route::put('advertisement/home-page-banner-section-four', [AdvertisementController::class, 'homePageBannerSectionFour'])->name('home-page-banner-section-four');
 Route::put('advertisement/product-page-banner', [AdvertisementController::class, 'productPageBanner'])->name('product-page-banner');
 Route::put('advertisement/cart-page-banner', [AdvertisementController::class, 'cartPageBanner'])->name('cart-page-banner');
+
+// Review Routes
+Route::put('review-status', [AdminProductReviewController::class, 'changeReviewStatus'])->name('review.status');
+Route::get('reviews', [AdminProductReviewController::class, 'index'])->name('review.index');
+Route::delete('reviews-remove/{id}', [AdminProductReviewController::class, 'destory'])->name('remove-reviews');

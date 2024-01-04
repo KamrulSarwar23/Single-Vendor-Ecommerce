@@ -127,7 +127,7 @@ class FrontendProductController extends Controller
     {
         $product = Product::with('vendor', 'category', 'productImageGallery', 'variant', 'brand')->where('slug', $slug)->where('status', 1)->first();
         $flashSaleDate = FlashSale::first();
-        $productReview = Review::where('product_id', $product->id)->where('status', 0)->paginate(10);
+        $productReview = Review::where('product_id', $product->id)->where('status', 1)->paginate(10);
         return view('frontend.pages.product-details', compact('product', 'flashSaleDate', 'productReview'));
     }
 
