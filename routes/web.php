@@ -15,46 +15,10 @@ use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\ReviewController;
 use App\Http\Controllers\Frontend\UserAddressController;
 use App\Http\Controllers\Frontend\UserOrderController;
+use App\Http\Controllers\Frontend\UserVendorrequestController;
 use App\Http\Controllers\Frontend\WishListController;
 
 require __DIR__ . '/auth.php';
-
-// Home Page Route
-Route::get('/', [HomeController::class, 'index'])->name('home.page');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-// Admin Login Route
-Route::get('/admin/login', [AdminController::class, 'login'])->name('admin.login');
-
-// Flash Sale Route
-Route::get('flash-sale', [FlashSaleController::class, 'index'])->name('flash-sale');
-
-// Product Details Routes
-Route::get('products', [FrontendProductController::class, 'productIndex'])->name('products.index');
-Route::get('product-detail/{slug}', [FrontendProductController::class, 'showProduct'])->name('product-detail');
-Route::get('change-product-list-view', [FrontendProductController::class, 'productListView'])->name('change-product-list-view');
-
-// Add to cart routes
-Route::post('add-to-cart', [CartController::class, 'addCart'])->name('add-to-cart');
-Route::get('cart-details', [CartController::class, 'cartDetails'])->name('cart-details');
-Route::post('cart/update-quantity', [CartController::class, 'updateProductQuantity'])->name('cart.update-quantity');
-Route::get('clear-cart', [CartController::class, 'clearCart'])->name('clear.cart');
-Route::get('clear/remove-product/{rowId}', [CartController::class, 'clearProduct'])->name('remove.product');
-Route::get('cart-count', [CartController::class, 'getCartCount'])->name('cart-count');
-Route::get('cart-products', [CartController::class, 'getCartProduct'])->name('cart-products');
-Route::post('cart/remove-sidebar-product', [CartController::class, 'removeSidebarProduct'])->name('cart.remove-sidebar-product');
-Route::get('cart/sidebar-product-total', [CartController::class, 'cartTotal'])->name('cart.sidebar-product-total');
-Route::get('apply-coupon', [CartController::class, 'applyCoupon'])->name('apply-coupon');
-Route::get('coupon-calculation', [CartController::class, 'couponCalculation'])->name('coupon-calculation');
-
-// News Letter route
-Route::post('news-letter-request', [NewsLetterController::class, 'newsLetterRequest'])->name('news-letter-request');
-Route::get('news-letter-verify/{token}', [NewsLetterController::class, 'newsLetterEmailVerify'])->name('news-letter-verify-email');
 
 // User Dashboard Routes Group
 Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 'user.'], function () {
@@ -98,4 +62,48 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 
     Route::get('reviews', [ReviewController::class, 'index'])->name('review.index');
     Route::post('review', [ReviewController::class, 'create'])->name('review.create');
 
+    // Vendors Request
+    Route::get('vendor-request', [UserVendorrequestController::class, 'vendorRequest'])->name('vendor.request');
+    Route::post('vendor-request-send', [UserVendorrequestController::class, 'vendorRequestSend'])->name('vendor-request-send');
 });
+
+// Home Page Route
+Route::get('/', [HomeController::class, 'index'])->name('home.page');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+// Admin Login Route
+Route::get('/admin/login', [AdminController::class, 'login'])->name('admin.login');
+
+// Flash Sale Route
+Route::get('flash-sale', [FlashSaleController::class, 'index'])->name('flash-sale');
+
+// Product Details Routes
+Route::get('products', [FrontendProductController::class, 'productIndex'])->name('products.index');
+Route::get('product-detail/{slug}', [FrontendProductController::class, 'showProduct'])->name('product-detail');
+Route::get('change-product-list-view', [FrontendProductController::class, 'productListView'])->name('change-product-list-view');
+
+// Add to cart routes
+Route::post('add-to-cart', [CartController::class, 'addCart'])->name('add-to-cart');
+Route::get('cart-details', [CartController::class, 'cartDetails'])->name('cart-details');
+Route::post('cart/update-quantity', [CartController::class, 'updateProductQuantity'])->name('cart.update-quantity');
+Route::get('clear-cart', [CartController::class, 'clearCart'])->name('clear.cart');
+Route::get('clear/remove-product/{rowId}', [CartController::class, 'clearProduct'])->name('remove.product');
+Route::get('cart-count', [CartController::class, 'getCartCount'])->name('cart-count');
+Route::get('cart-products', [CartController::class, 'getCartProduct'])->name('cart-products');
+Route::post('cart/remove-sidebar-product', [CartController::class, 'removeSidebarProduct'])->name('cart.remove-sidebar-product');
+Route::get('cart/sidebar-product-total', [CartController::class, 'cartTotal'])->name('cart.sidebar-product-total');
+Route::get('apply-coupon', [CartController::class, 'applyCoupon'])->name('apply-coupon');
+Route::get('coupon-calculation', [CartController::class, 'couponCalculation'])->name('coupon-calculation');
+
+// News Letter route
+Route::post('news-letter-request', [NewsLetterController::class, 'newsLetterRequest'])->name('news-letter-request');
+Route::get('news-letter-verify/{token}', [NewsLetterController::class, 'newsLetterEmailVerify'])->name('news-letter-verify-email');
+
+// Vendors route
+Route::get('vendor', [HomeController::class, 'vendorPage'])->name('vendor.index');
+Route::get('vendor-product/{id}', [HomeController::class, 'vendorProduct'])->name('vendor.product');

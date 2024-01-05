@@ -20,7 +20,6 @@ class FrontendProductController extends Controller
 
     public function productIndex(Request $request)
     {
-        // dd($request->all());
         if ($request->has('category')) {
             $category = Category::where('slug', $request->category)->first();
             $products = Product::where([
