@@ -90,7 +90,7 @@
                                 </div>
                             </div>
                         </li>
-                        
+
                         <li><a href="{{ route('vendor.index') }}">vendor</a></li>
                         <li><a href="blog.html">blog</a></li>
                         <li><a href="daily_deals.html">campain</a></li>
@@ -117,12 +117,19 @@
                     <ul class="wsus__menu_item wsus__menu_item_right">
                         <li><a href="contact.html">contact</a></li>
                         <li><a href="dsahboard.html">my account</a></li>
-                        @if (!auth()->user())
-                        <li><a href="{{ route('login') }}">login</a></li>
+
+                        @auth
+                            @if (auth()->user()->role === 'user')
+                                <li><a href="{{ route('user.dashboard') }}">{{ auth()->user()->name }}</a></li>
+                            @elseif(auth()->user()->role === 'vendor')
+                                <li><a href="{{ route('vendor.dashboard') }}">{{ auth()->user()->name }}</a></li>
+                            @elseif(auth()->user()->role === 'admin')
+                                <li><a href="{{ route('admin.dashboard') }}">{{ auth()->user()->name }}</a></li>
+                            @endif
                         @else
-                        <li><a href="{{ route('login') }}">Dashboard</a></li>
-                        @endif
-                       
+                            <li><a href="{{ route('login') }}">Login</a></li>
+                        @endauth
+
                     </ul>
                 </div>
             </div>

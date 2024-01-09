@@ -197,6 +197,20 @@
                 </ul>
             </li>
 
+            <li class="dropdown {{ setActive(['admin.vendor-request.*', 'admin.customer.*']) }}">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
+                        class="fa-solid fa-tags"></i>
+                    <span>Manage Users</span></a>
+
+                <ul class="dropdown-menu">
+                    <li class="{{ setActive(['admin.vendor-request.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.vendor-request.index') }}">Vendors</a></li>
+                    <li class="{{ setActive(['admin.customer.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.customer.index') }}">Customers</a></li>
+
+                </ul>
+            </li>
+
             <li class="{{ setActive(['admin.transaction']) }}"><a class="nav-link"
                     href="{{ route('admin.transaction') }}"><i
                         class="fa-solid fa-money-check-dollar"></i><span>Manage

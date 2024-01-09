@@ -87,7 +87,7 @@ class HomeController extends Controller
 
     public function vendorPage()
     {
-        $vendor = Vendor::paginate(10);
+        $vendor = Vendor::where('status', 1)->paginate(10);
         return view('frontend.pages.vendor', compact('vendor'));
     }
 

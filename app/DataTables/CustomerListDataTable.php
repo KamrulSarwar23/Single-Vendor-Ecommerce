@@ -2,8 +2,8 @@
 
 namespace App\DataTables;
 
-use App\Models\AdminProductReview;
-use App\Models\Review;
+use App\Models\CustomerList;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -13,7 +13,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class AdminProductReviewDataTable extends DataTable
+class CustomerListDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
@@ -24,45 +24,32 @@ class AdminProductReviewDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
 
-            ->addColumn('action', function ($query) {
-                $deleteBtn = "<a href='" . route('admin.remove-reviews', $query->id) . "' class= 'btn btn-danger ml-3 delete-item'><i class='fas fa-trash'></i> </a>";
-
-                return $deleteBtn;
-            })
-            ->addColumn('product', function ($query) {
-                return "<a href='" . route('product-detail', $query->product->slug) . "'>" . $query->product->name . "</a>";
-            })
-
-            ->addColumn('status', function ($query) {
-                if ($query->status == 1) {
-                    $button = '<label class="custom-switch">
+        ->addColumn('status', function ($query) {
+            if ($query->status == 'active') {
+                $button = '<label class="custom-switch">
                 <input type="checkbox" checked name="custom-switch-checkbox" data-id = "' . $query->id . '"class="custom-switch-input change-status">
                 <span class="custom-switch-indicator"></span>
               </label>';
-                } else {
-                    $button = '<label class="custom-switch">
+            } else {
+                $button = '<label class="custom-switch">
                 <input type="checkbox" name="custom-switch-checkbox" data-id = "' . $query->id . '"class="custom-switch-input change-status">
                 <span class="custom-switch-indicator"></span>
               </label>';
-                }
+            }
 
-                return $button;
-            })
+            return $button;
+        })
 
-            ->addColumn('user', function ($query) {
-                return @$query->user->name;
-            })
-
-            ->rawColumns(['action', 'product', 'status'])
+            ->rawColumns(['status'])
             ->setRowId('id');
     }
 
     /**
      * Get the query source of dataTable.
      */
-    public function query(Review $model): QueryBuilder
+    public function query(User $model): QueryBuilder
     {
-        return $model->newQuery();
+        return $model->where('role', 'user')->newQuery();
     }
 
     /**
@@ -71,7 +58,7 @@ class AdminProductReviewDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-            ->setTableId('adminproductreview-table')
+            ->setTableId('customerlist-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             //->dom('Bfrtip')
@@ -90,16 +77,14 @@ class AdminProductReviewDataTable extends DataTable
     /**
      * Get the dataTable columns definition.
      */
+
     public function getColumns(): array
     {
         return [
             Column::make('id'),
-            Column::make('product'),
-            Column::make('user'),
-            Column::make('rating'),
-            Column::make('status'),
-            Column::make('review')->width(400),
-            Column::make('action'),
+            Column::make('name'),
+            Column::make('email'),
+            Column::make('status')->width(100),
         ];
     }
 
@@ -108,6 +93,6 @@ class AdminProductReviewDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'AdminProductReview_' . date('YmdHis');
+        return 'CustomerList_' . date('YmdHis');
     }
 }

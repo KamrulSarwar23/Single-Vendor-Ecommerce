@@ -15,6 +15,7 @@ use App\Http\Controllers\Backend\ChildCategoryController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\AdminVendorProfileController;
 use App\Http\Controllers\Backend\CouponController;
+use App\Http\Controllers\Backend\CustomerListControlller;
 use App\Http\Controllers\Backend\FlashSaleController;
 use App\Http\Controllers\Backend\FooterGridThreeController;
 use App\Http\Controllers\Backend\FooterInfoController;
@@ -32,6 +33,7 @@ use App\Http\Controllers\Backend\ShippingRuleController;
 use App\Http\Controllers\Backend\StripeSettingController;
 use App\Http\Controllers\Backend\SubscriberController;
 use App\Http\Controllers\Backend\TransactionController;
+use App\Http\Controllers\Backend\VendorRequestController;
 
 // Admin profile Routes
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
@@ -176,3 +178,12 @@ Route::put('advertisement/cart-page-banner', [AdvertisementController::class, 'c
 Route::put('review-status', [AdminProductReviewController::class, 'changeReviewStatus'])->name('review.status');
 Route::get('reviews', [AdminProductReviewController::class, 'index'])->name('review.index');
 Route::delete('reviews-remove/{id}', [AdminProductReviewController::class, 'destory'])->name('remove-reviews');
+
+// Vendor Request Routes
+Route::get('vendor-status', [VendorRequestController::class, 'changeVendorStatus'])->name('vendor-request.status');
+Route::get('vendor-request', [VendorRequestController::class, 'index'])->name('vendor-request.index');
+Route::get('vendor-request/{id}/show', [VendorRequestController::class, 'show'])->name('vendor-request.show');
+
+// Vendor Request Routes
+Route::get('customers', [CustomerListControlller::class, 'index'])->name('customer.index');
+Route::put('customers-change-status', [CustomerListControlller::class, 'changeStatus'])->name('customer.change-status');
