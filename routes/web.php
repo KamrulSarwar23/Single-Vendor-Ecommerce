@@ -12,6 +12,7 @@ use App\Http\Controllers\Frontend\FrontendProductController;
 use App\Http\Controllers\Frontend\UserDashboardController;
 use App\Http\Controllers\Frontend\UserProfileController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\PageController;
 use App\Http\Controllers\Frontend\ReviewController;
 use App\Http\Controllers\Frontend\UserAddressController;
 use App\Http\Controllers\Frontend\UserOrderController;
@@ -107,3 +108,9 @@ Route::get('news-letter-verify/{token}', [NewsLetterController::class, 'newsLett
 // Vendors route
 Route::get('vendor', [HomeController::class, 'vendorPage'])->name('vendor.index');
 Route::get('vendor-product/{id}', [HomeController::class, 'vendorProduct'])->name('vendor.product');
+
+// about page route
+Route::get('/about', [PageController::class, 'aboutPage'])->name('about.index');
+
+// terms & condition page route
+Route::get('/terms-condiiton', [PageController::class, 'termsConditionPage'])->name('terms-condition.index');

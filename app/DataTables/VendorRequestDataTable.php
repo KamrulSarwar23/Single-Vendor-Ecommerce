@@ -55,7 +55,7 @@ class VendorRequestDataTable extends DataTable
      */
     public function query(Vendor $model): QueryBuilder
     {
-        return $model->newQuery();
+        return $model->where('status', 0)->newQuery();
     }
 
     /**
