@@ -21,6 +21,7 @@ use App\Http\Controllers\Backend\FlashSaleController;
 use App\Http\Controllers\Backend\FooterGridThreeController;
 use App\Http\Controllers\Backend\FooterInfoController;
 use App\Http\Controllers\Backend\HomePageSettingController;
+use App\Http\Controllers\Backend\ManageUserController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\PaymentSettingController;
 use App\Http\Controllers\Backend\PaypalSettingController;
@@ -209,3 +210,7 @@ Route::put('about/update', [AboutController::class, 'update'])->name('about.upda
 // Terms & Conditions Page Routes
 Route::get('terms-condition', [TermsConditionController::class, 'index'])->name('terms-condition.index');
 Route::put('terms-condition/update', [TermsConditionController::class, 'update'])->name('terms-condition.update');
+
+// Manage User Routes
+Route::get('manage-user', [ManageUserController::class, 'index'])->name('manage-user.index');
+Route::post('create-user', [ManageUserController::class, 'create'])->name('manage-user.create');
