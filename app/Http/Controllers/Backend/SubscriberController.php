@@ -6,6 +6,7 @@ use App\DataTables\NewsLettersubscriberDataTable;
 use App\Http\Controllers\Controller;
 use App\Mail\NewsLetter;
 use App\Models\NewsLettersubscriber;
+use App\Helper\MailHelper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -29,6 +30,8 @@ class SubscriberController extends Controller
         ]);
 
         $emails = NewsLettersubscriber::where('is_verified', 1)->pluck('email')->toArray();
+        // set mail config
+        MailHelper::setMailConfig();
 
         Mail::to($emails)->send(new NewsLetter($request->subject, $request->message));
 

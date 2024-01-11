@@ -4,7 +4,6 @@
     {{ $setting->site_name }} || Wish List
 @endsection
 
-
 @section('content')
     <!--============================BREADCRUMB START==============================-->
     <section id="wsus__breadcrumb">

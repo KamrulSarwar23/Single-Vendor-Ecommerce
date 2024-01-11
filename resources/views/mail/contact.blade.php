@@ -17,8 +17,7 @@
         <p style="font-size:1.1em">Hi,</p>
         <p>Thank you for choosing Your Brand. Use the following OTP to complete your Sign Up procedures. OTP is valid for 5 minutes</p>
         <h2 style="background: #00466a;margin: 0 auto;width: max-content;padding: 0 10px;color: #fff;border-radius: 4px;">
-            <p>Click the link for verify your email.</p>
-            <a href="{{ route('news-letter-verify-email', $subscriber->verified_token) }}">Click Here</a>
+             {{ $contactmessage }}
         </h2>
         <p style="font-size:0.9em;">Regards,<br />Your Brand</p>
         <hr style="border:none;border-top:1px solid #eee" />

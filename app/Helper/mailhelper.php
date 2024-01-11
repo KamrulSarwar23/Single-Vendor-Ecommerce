@@ -6,7 +6,7 @@ use App\Models\EmailConfig;
 
 class MailHelper
 {
-    public static function  setMailConfig()
+    public static function setMailConfig()
     {
         $emailConfig = EmailConfig::first();
 

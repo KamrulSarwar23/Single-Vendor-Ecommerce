@@ -115,19 +115,22 @@
                         <li><a href="daily_deals.html">daily deals</a></li>
                     </ul>
                     <ul class="wsus__menu_item wsus__menu_item_right">
-                        <li><a href="contact.html">contact</a></li>
+                        <li><a href="{{ route('contact.index') }}">contact</a></li>
                         <li><a href="dsahboard.html">my account</a></li>
 
                         @auth
                             @if (auth()->user()->role === 'user')
-                                <li><a href="{{ route('user.dashboard') }}">{{ auth()->user()->name }}</a></li>
+                                <li><a class="btn btn-secondary text-white"
+                                        href="{{ route('user.dashboard') }}">{{ auth()->user()->name }}</a></li>
                             @elseif(auth()->user()->role === 'vendor')
-                                <li><a href="{{ route('vendor.dashboard') }}">{{ auth()->user()->name }}</a></li>
+                                <li><a class="btn btn-secondary text-white"
+                                        href="{{ route('vendor.dashboard') }}">{{ auth()->user()->name }}</a></li>
                             @elseif(auth()->user()->role === 'admin')
-                                <li><a href="{{ route('admin.dashboard') }}">{{ auth()->user()->name }}</a></li>
+                                <li><a class="btn btn-secondary text-white"
+                                        href="{{ route('admin.dashboard') }}">{{ auth()->user()->name }}</a></li>
                             @endif
                         @else
-                            <li><a href="{{ route('login') }}">Login</a></li>
+                            <li><a class="btn btn-secondary text-white" href="{{ route('login') }}">Login</a></li>
                         @endauth
 
                     </ul>

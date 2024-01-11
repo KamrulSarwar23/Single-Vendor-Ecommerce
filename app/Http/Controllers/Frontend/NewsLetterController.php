@@ -29,6 +29,7 @@ class NewsLetterController extends Controller
                 MailHelper::setMailConfig();
                 //Send mail
                 Mail::to($existsubscriber->email)->send(new SubscriptionVerification($existsubscriber));
+                
                 return response(['status' => 'success', 'message' => 'A Verification Link has been sent to this email! Please Check']);
             } elseif ($existsubscriber->is_verified == 1) {
                 return response(['status' => 'error', 'message' => 'You already subscribed with this email']);
@@ -48,7 +49,6 @@ class NewsLetterController extends Controller
             return response(['status' => 'success', 'message' => 'A Verification Link has been sent to this email! Please Check']);
         }
     }
-
 
     public function newsLetterEmailVerify($token)
     {

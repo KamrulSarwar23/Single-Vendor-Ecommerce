@@ -66,6 +66,7 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 
     // Vendors Request
     Route::get('vendor-request', [UserVendorrequestController::class, 'vendorRequest'])->name('vendor.request');
     Route::post('vendor-request-send', [UserVendorrequestController::class, 'vendorRequestSend'])->name('vendor-request-send');
+
 });
 
 // Home Page Route
@@ -114,3 +115,7 @@ Route::get('/about', [PageController::class, 'aboutPage'])->name('about.index');
 
 // terms & condition page route
 Route::get('/terms-condiiton', [PageController::class, 'termsConditionPage'])->name('terms-condition.index');
+
+// contact route
+Route::get('/contact', [PageController::class, 'contactPage'])->name('contact.index');
+Route::post('/send-message', [PageController::class, 'sendMessage'])->name('send-message');
