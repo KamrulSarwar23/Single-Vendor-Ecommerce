@@ -1,12 +1,12 @@
 <?php
 
-use App\DataTables\AdminProductReviewDataTable;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\AboutController;
 use App\Http\Controllers\Backend\AdvertisementController;
 use App\Http\Controllers\Backend\FooterGridTwoController;
 use App\Http\Controllers\Backend\FooterSocialController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Backend\AdminListController;
 use App\Http\Controllers\Backend\AdminProductReviewController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\SliderController;
@@ -39,8 +39,6 @@ use App\Http\Controllers\Backend\TransactionController;
 use App\Http\Controllers\Backend\VendorConditionController;
 use App\Http\Controllers\Backend\VendorListController;
 use App\Http\Controllers\Backend\VendorRequestController;
-use App\Models\TermsCondition;
-use App\Models\VendorCondition;
 
 // Admin profile Routes
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
@@ -214,3 +212,8 @@ Route::put('terms-condition/update', [TermsConditionController::class, 'update']
 // Manage User Routes
 Route::get('manage-user', [ManageUserController::class, 'index'])->name('manage-user.index');
 Route::post('create-user', [ManageUserController::class, 'create'])->name('manage-user.create');
+
+// Customer List Routes
+Route::get('admin-list', [AdminListController::class, 'index'])->name('admin-list.index');
+Route::put('admin-list-change-status', [AdminListController::class, 'changeStatus'])->name('admin-list.change-status');
+Route::delete('admin-destroy/{id}', [AdminListController::class, 'destroy'])->name('admin-list.destroy');

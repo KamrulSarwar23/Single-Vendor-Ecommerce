@@ -205,7 +205,8 @@
                 </ul>
             </li>
 
-            <li class="dropdown {{ setActive(['admin.vendor-request.*', 'admin.customer.*', 'admin.vendor.*', 'admin.manage-user.*']) }}">
+            <li
+                class="dropdown {{ setActive(['admin.vendor-request.*', 'admin.customer.*', 'admin.vendor.*', 'admin.manage-user.*', 'admin.admin-list.*']) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
                         class="fa-solid fa-tags"></i>
                     <span>Manage Users</span></a>
@@ -217,8 +218,10 @@
                             href="{{ route('admin.vendor.index') }}">Vendors</a></li>
                     <li class="{{ setActive(['admin.customer.*']) }}"><a class="nav-link"
                             href="{{ route('admin.customer.index') }}">Customers</a></li>
-                            <li class="{{ setActive(['admin.manage-user.*']) }}"><a class="nav-link"
-                                href="{{ route('admin.manage-user.index') }}">Create User by Role</a></li>
+                    <li class="{{ setActive(['admin.admin-list.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.admin-list.index') }}">Admin List</a></li>
+                    <li class="{{ setActive(['admin.manage-user.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.manage-user.index') }}">Create User by Role</a></li>
                 </ul>
             </li>
 

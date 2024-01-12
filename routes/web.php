@@ -13,6 +13,7 @@ use App\Http\Controllers\Frontend\UserDashboardController;
 use App\Http\Controllers\Frontend\UserProfileController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\PageController;
+use App\Http\Controllers\Frontend\ProductTrackController;
 use App\Http\Controllers\Frontend\ReviewController;
 use App\Http\Controllers\Frontend\UserAddressController;
 use App\Http\Controllers\Frontend\UserOrderController;
@@ -66,7 +67,6 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 
     // Vendors Request
     Route::get('vendor-request', [UserVendorrequestController::class, 'vendorRequest'])->name('vendor.request');
     Route::post('vendor-request-send', [UserVendorrequestController::class, 'vendorRequestSend'])->name('vendor-request-send');
-
 });
 
 // Home Page Route
@@ -119,3 +119,6 @@ Route::get('/terms-condiiton', [PageController::class, 'termsConditionPage'])->n
 // contact route
 Route::get('/contact', [PageController::class, 'contactPage'])->name('contact.index');
 Route::post('/send-message', [PageController::class, 'sendMessage'])->name('send-message');
+
+// product tract route
+Route::get('/product-tracking', [ProductTrackController::class, 'index'])->name('product-track.index');

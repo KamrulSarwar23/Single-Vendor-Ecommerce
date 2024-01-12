@@ -33,14 +33,14 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input type="text" class="form-control"name="password" value="">
+                                            <input type="password" class="form-control"name="password" value="">
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Confirm Password</label>
-                                            <input type="text" class="form-control"name="password_confirmation"
+                                            <input type="password" class="form-control"name="password_confirmation"
                                                 value="">
                                         </div>
                                     </div>

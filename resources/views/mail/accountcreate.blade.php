@@ -15,8 +15,10 @@
             <p>Thank you for choosing Sazao Brand.</p>
             <h4
                 style="background: #00466a;margin: 0 auto;width: max-content;padding: 0 10px;color: #fff;border-radius: 4px;">
-                 {{ $contactmessage }}
-          
+                ( Your Name: {{ $name }})
+                ( Your Email: {{ $email }})
+                ( Your Password: {{ $password }})
+
             </h4>
             <p style="font-size:0.9em;">Regards,<br />Sazao</p>
             <hr style="border:none;border-top:1px solid #eee" />
@@ -26,5 +28,3 @@
 </body>
 
 </html>
-
-

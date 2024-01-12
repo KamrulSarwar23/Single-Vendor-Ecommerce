@@ -47,4 +47,5 @@ class PageController extends Controller
         Mail::to($email->email)->send(new Contact($request->subject, $request->message, $request->email));
         return response(['status' => 'success', 'message' => 'Message Sent']);
     }
+
 }
