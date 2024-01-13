@@ -11,6 +11,8 @@
     .fa-windows,
     .fa-bolt,
     .fa-tags,
+    .fa-pen,
+    .fa-user-tie,
     .fa-shield-halved,
     .fa-sack-dollar,
     .fa-window-maximize,
@@ -184,6 +186,21 @@
                 </ul>
             </li>
 
+
+            <li class="dropdown {{ setActive(['admin.blog-category.*', 'admin.blog.*']) }}">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fa-solid fa-pen"></i>
+                    <span>Manage Blog</span></a>
+
+                <ul class="dropdown-menu">
+                    <li class="{{ setActive(['admin.blog-category.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.blog-category.index') }}">Blog Categories</a></li>
+                    <li class="{{ setActive(['admin.blog.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.blog.index') }}">Blog</a></li>
+
+                </ul>
+            </li>
+
+
             <li
                 class="dropdown {{ setActive(['admin.footer-info.*', 'admin.footer-social.*', 'admin.footer-grid-two.*', 'admin.footer-grid-three.*']) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
@@ -207,8 +224,7 @@
 
             <li
                 class="dropdown {{ setActive(['admin.vendor-request.*', 'admin.customer.*', 'admin.vendor.*', 'admin.manage-user.*', 'admin.admin-list.*']) }}">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
-                        class="fa-solid fa-tags"></i>
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fa-solid fa-user-tie"></i>
                     <span>Manage Users</span></a>
 
                 <ul class="dropdown-menu">

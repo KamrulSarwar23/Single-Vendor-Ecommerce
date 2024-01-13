@@ -15,6 +15,8 @@ use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\ChildCategoryController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\AdminVendorProfileController;
+use App\Http\Controllers\Backend\BlogCategoryController;
+use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\CustomerListControlller;
 use App\Http\Controllers\Backend\FlashSaleController;
@@ -217,3 +219,11 @@ Route::post('create-user', [ManageUserController::class, 'create'])->name('manag
 Route::get('admin-list', [AdminListController::class, 'index'])->name('admin-list.index');
 Route::put('admin-list-change-status', [AdminListController::class, 'changeStatus'])->name('admin-list.change-status');
 Route::delete('admin-destroy/{id}', [AdminListController::class, 'destroy'])->name('admin-list.destroy');
+
+// Blog Category Routes
+Route::put('blog-category-change-status', [BlogCategoryController::class, 'changeStatus'])->name('blog-category.change-status');
+Route::resource('blog-category', BlogCategoryController::class);
+
+// Blog Routes
+Route::put('blog-change-status', [BlogController::class, 'changeStatus'])->name('blog.change-status');
+Route::resource('blog', BlogController::class);

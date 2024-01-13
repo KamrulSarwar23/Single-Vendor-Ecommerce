@@ -100,7 +100,6 @@ class FooterSocialController extends Controller
 
     public function changeStatus(Request $request)
     {
-
         $footersocial = FooterSocial::findOrFail($request->id);
         $footersocial->status = $request->status == 'true' ? 1 : 0;
         $footersocial->save();
