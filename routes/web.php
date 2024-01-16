@@ -67,6 +67,9 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 
     // Vendors Request
     Route::get('vendor-request', [UserVendorrequestController::class, 'vendorRequest'])->name('vendor.request');
     Route::post('vendor-request-send', [UserVendorrequestController::class, 'vendorRequestSend'])->name('vendor-request-send');
+
+    // Vendors Request
+    Route::post('blog-comment', [PageController::class, 'blogComment'])->name('blog-comment');
 });
 
 // Home Page Route
@@ -122,3 +125,10 @@ Route::post('/send-message', [PageController::class, 'sendMessage'])->name('send
 
 // product tract route
 Route::get('/product-tracking', [ProductTrackController::class, 'index'])->name('product-track.index');
+
+
+// blog details
+Route::get('/blog-details/{slug}', [PageController::class, 'blogdetailspage'])->name('blog-details');
+
+// blog routes
+Route::get('/blog', [PageController::class, 'blog'])->name('blog');

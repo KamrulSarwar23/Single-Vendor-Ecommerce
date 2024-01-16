@@ -92,7 +92,9 @@
                         </li>
 
                         <li><a href="{{ route('vendor.index') }}">vendor</a></li>
-                        <li><a href="blog.html">blog</a></li>
+
+                        <li><a href="{{ route('blog') }}">blog</a></li>
+
                         <li><a href="daily_deals.html">campain</a></li>
                         <li class="wsus__relative_li"><a href="#">pages <i class="fas fa-caret-down"></i></a>
                             <ul class="wsus__menu_droapdown">
@@ -116,8 +118,7 @@
                     </ul>
                     <ul class="wsus__menu_item wsus__menu_item_right">
                         <li><a href="{{ route('contact.index') }}">contact</a></li>
-                        <li><a href="dsahboard.html">my account</a></li>
-
+                    
                         @auth
                             @if (auth()->user()->role === 'user')
                                 <li><a class="btn btn-secondary text-white"

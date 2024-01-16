@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\DataTables\BlogCommentDataTable;
 use App\DataTables\BlogDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\BlogCategory;
+use App\Models\BlogComment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Traits\ImageUploadTrait;
@@ -19,6 +21,11 @@ class BlogController extends Controller
     public function index(BlogDataTable $datatable)
     {
         return $datatable->render('admin.blog.index');
+    }
+
+    public function blogComment(BlogCommentDataTable $datatable)
+    {
+        return $datatable->render('admin.blog.blog-comment.index');
     }
 
     /**
@@ -118,6 +125,7 @@ class BlogController extends Controller
     {
         $blog = Blog::findOrFail($id);
         $this->deleteImage($blog->image);
+        $blog->comments()->delete();
         $blog->delete();
         return response(['status' => 'success', 'message' => 'Deleted Successfully']);
     }
@@ -131,4 +139,12 @@ class BlogController extends Controller
 
         return response(['message' => 'Status has been Updated!']);
     }
+
+    public function blogDestroy(string $id)
+    {
+        $blogcomment = BlogComment::findOrFail($id);
+        $blogcomment->delete();
+        return response(['status' => 'success', 'message' => 'Deleted Successfully']);
+    }
+
 }

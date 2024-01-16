@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Advertisement;
+use App\Models\Blog;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\ChildCategory;
@@ -15,6 +16,7 @@ use App\Models\FooterGridTwo;
 use App\Models\FooterInfo;
 use App\Models\FooterSocial;
 use App\Models\FooterTitle;
+use App\Models\GeneralSetting;
 use App\Models\HomePageSetting;
 use App\Models\Product;
 use App\Models\SubCategory;
@@ -26,8 +28,7 @@ use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     public function index()
-    {
-
+    {        
         $sliders = Slider::where('status', 1)->orderBy('serial', 'asc')->get();
         $flashSaleDate = FlashSale::first();
         $flashSaleItem = FlashSaleItem::where('show_at_home', 1)->where('status', 1)->get();
@@ -52,6 +53,8 @@ class HomeController extends Controller
 
         $home_page_banner_section_four = Advertisement::where('key', 'home-page-banner-section-four')->first();
         $home_page_banner_section_four = json_decode($home_page_banner_section_four->value);
+
+        $recentblog = Blog::with('category')->where('status', 1)->orderBy('id', 'DESC')->take(8)->get();
         return view(
             'frontend.home.home',
             compact(
@@ -70,7 +73,8 @@ class HomeController extends Controller
                 'home_page_banner_section_one',
                 'home_page_banner_section_two',
                 'home_page_banner_section_three',
-                'home_page_banner_section_four'
+                'home_page_banner_section_four',
+                'recentblog'
             )
         );
     }

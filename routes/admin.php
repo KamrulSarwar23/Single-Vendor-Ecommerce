@@ -227,3 +227,5 @@ Route::resource('blog-category', BlogCategoryController::class);
 // Blog Routes
 Route::put('blog-change-status', [BlogController::class, 'changeStatus'])->name('blog.change-status');
 Route::resource('blog', BlogController::class);
+Route::get('blog-comment', [BlogController::class, 'blogComment'])->name('blog-comment');
+Route::delete('blog-comment/{id}', [BlogController::class, 'blogDestroy'])->name('blog-comment.destroy');

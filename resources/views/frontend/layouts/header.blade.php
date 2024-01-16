@@ -1,3 +1,7 @@
+@php
+    $generalsetting = \App\Models\GeneralSetting::first();
+@endphp
+
 <header>
     <div class="container">
         <div class="row">
@@ -30,8 +34,8 @@
                             <i class="fas fa-user-headset"></i>
                         </div>
                         <div class="wsus__call_text">
-                            <p>admin@gmail.com</p>
-                            <p>01845-362545</p>
+                            <p>{{ $generalsetting->contact_email }}</p>
+                            <p>{{ $generalsetting->contact_phone }}</p>
                         </div>
                     </div>
                     <ul class="wsus__icon_area">
@@ -43,7 +47,7 @@
                                     @if (auth()->check())
                                         {{ \App\Models\WishList::where('user_id', auth()->user()->id)->count() }}
                                     @else
-                                    0
+                                        0
                                     @endif
                                 </span>
                             </a>

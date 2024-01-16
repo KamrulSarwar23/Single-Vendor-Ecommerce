@@ -187,8 +187,9 @@
             </li>
 
 
-            <li class="dropdown {{ setActive(['admin.blog-category.*', 'admin.blog.*']) }}">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fa-solid fa-pen"></i>
+            <li class="dropdown {{ setActive(['admin.blog-category.*', 'admin.blog.*', 'admin.blog-comment']) }}">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
+                        class="fa-solid fa-pen"></i>
                     <span>Manage Blog</span></a>
 
                 <ul class="dropdown-menu">
@@ -196,7 +197,8 @@
                             href="{{ route('admin.blog-category.index') }}">Blog Categories</a></li>
                     <li class="{{ setActive(['admin.blog.*']) }}"><a class="nav-link"
                             href="{{ route('admin.blog.index') }}">Blog</a></li>
-
+                    <li class="{{ setActive(['admin.blog-comment']) }}"><a class="nav-link"
+                            href="{{ route('admin.blog-comment') }}">Blog Comments</a></li>
                 </ul>
             </li>
 
@@ -224,7 +226,8 @@
 
             <li
                 class="dropdown {{ setActive(['admin.vendor-request.*', 'admin.customer.*', 'admin.vendor.*', 'admin.manage-user.*', 'admin.admin-list.*']) }}">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fa-solid fa-user-tie"></i>
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
+                        class="fa-solid fa-user-tie"></i>
                     <span>Manage Users</span></a>
 
                 <ul class="dropdown-menu">

@@ -11,6 +11,10 @@ use App\Models\TermsCondition;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Helper\MailHelper;
+use App\Models\Blog;
+use App\Models\BlogCategory;
+use App\Models\BlogComment;
+use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
@@ -48,4 +52,45 @@ class PageController extends Controller
         return response(['status' => 'success', 'message' => 'Message Sent']);
     }
 
+    public function blogdetailspage(string $slug)
+    {
+        $blog = Blog::with(['user', 'comments'])->where('slug', $slug)->where('status', 1)->firstOrFail();
+        
+        $recentblog = Blog::with('category')->where('slug', '!=', $slug)->where('category_id',$blog->category_id)->where('status', 1)->orderBy('id', 'DESC')->take(10)->get();
+        $comments = $blog->comments()->paginate(5);
+        $blogcategory = BlogCategory::where('status', 1)->get();
+        $latestblog = Blog::where('slug', '!=', $slug)->where('status', 1)->take(5)->latest('created_at')->get();
+        return view('frontend.pages.blog-details', compact('blog', 'recentblog', 'comments', 'latestblog', 'blogcategory'));
+    }
+
+    public function blogComment(Request $request)
+    {
+        $request->validate([
+            'comment' => ['required', 'max:1000']
+        ]);
+
+        $blogcomment = new BlogComment();
+        $blogcomment->user_id = Auth::user()->id;
+        $blogcomment->blog_id = $request->blog_id;
+        $blogcomment->comment = $request->comment;
+        $blogcomment->save();
+
+        toastr('Comment Added Successfully');
+        return redirect()->back();
+    }
+
+    public function blog(Request $request)
+    {
+        if ($request->has('search')) {
+            $blogs = Blog::where('title', 'like', '%' . $request->search . '%')
+                ->orwhere('description', 'like', '%' . $request->search . '%')
+                ->where('status', 1)->orderBy('id', 'DESC')->paginate(12);
+        } else if ($request->has('category')) {
+            $category = BlogCategory::where('slug', $request->category)->where('status', 1)->firstOrFail();
+            $blogs = Blog::where('category_id', $category->id)->where('status', 1)->orderBy('id', 'DESC')->paginate(12);
+        } else {
+            $blogs = Blog::where('status', 1)->orderBy('id', 'DESC')->paginate(12);
+        }
+        return view('frontend.pages.blog', compact('blogs'));
+    }
 }
