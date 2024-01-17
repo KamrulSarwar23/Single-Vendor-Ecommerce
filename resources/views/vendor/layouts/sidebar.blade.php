@@ -12,14 +12,14 @@
     <a href="dsahboard.html" class="dash_logo"><img src="{{ asset('frontend/images/logo.png') }}" alt="logo"
             class="img-fluid"></a>
     <ul class="dashboard_link">
-
+        <li class=""><a class="" href="{{ route('home.page') }}"><i class="fas fa-home"></i>Go To Home Page</a></li>
         <li class="{{ setActive(['vendor.dashboard']) }}"><a class="" href="{{ route('vendor.dashboard') }}"><i
                     class="fas fa-tachometer"></i>Dashboard</a></li>
         <li class="{{ setActive(['vendor.orders']) }}"><a class="" href="{{ route('vendor.orders') }}"><i
                     class="fas fa-tachometer"></i>Orders</a></li>
         <li class="{{ setActive(['vendor.products.*']) }}"><a href="{{ route('vendor.products.index') }}"><i
                     class="far fa-user"></i>Products</a></li>
-        <li class="{{ setActive(['vendor.review.index']) }}"><a href="{{ route('vendor.review.index') }}"><i class="far fa-user"></i> User Reviews</a></li>
+        <li class="{{ setActive(['vendor.review.index']) }}"><a href="{{ route('vendor.review.index') }}"><i class="far fa-user"></i>Reviews</a></li>
         <li class="{{ setActive(['vendor.shop-profile.*']) }}"><a href="{{ route('vendor.shop-profile.index') }}"><i
                     class="far fa-user"></i> Seller Profile</a></li>
         <li class="{{ setActive(['vendor.profile']) }}"><a href="{{ route('vendor.profile') }}"><i

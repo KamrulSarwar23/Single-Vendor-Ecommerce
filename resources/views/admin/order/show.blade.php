@@ -114,18 +114,18 @@
                                                         <td>
                                                             @foreach ($variant as $key => $variant)
                                                                 {{ $key }}: {{ $variant->name }}
-                                                                ({{ $setting->currency_icon }}{{ $variant->price }})
+                                                                ({{ @$setting->currency_icon }}{{ $variant->price }})
                                                             @endforeach
                                                         </td>
 
                                                         <td>{{ $product->vendor->shop_name }}</td>
 
                                                         <td class="text-center">
-                                                            {{ $setting->currency_icon }}{{ $product->unit_price }}
+                                                            {{ @$setting->currency_icon }}{{ $product->unit_price }}
                                                         </td>
                                                         <td class="text-center">{{ $product->qty }}</td>
                                                         <td class="text-right">
-                                                            {{ $setting->currency_icon }}{{ ($product->unit_price + $product->variants_total) * $product->qty }}
+                                                            {{ @$setting->currency_icon }}{{ ($product->unit_price + $product->variants_total) * $product->qty }}
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -168,7 +168,7 @@
                                                 <div class="invoice-detail-item">
                                                     <div class="invoice-detail-name">Subtotal</div>
                                                     <div class="invoice-detail-value">
-                                                        {{ $setting->currency_icon }}{{ $order->sub_total }}</div>
+                                                        {{ @$setting->currency_icon }}{{ $order->sub_total }}</div>
                                                 </div>
 
                                                 <div class="invoice-detail-item">
@@ -176,7 +176,7 @@
                                                     @if ($coupon)
                                                         @if ($coupon->discount_type == 'amount')
                                                             <div class="invoice-detail-value">
-                                                                {{ $setting->currency_icon }}{{ $coupon->discount }}</div>
+                                                                {{ @$setting->currency_icon }}{{ $coupon->discount }}</div>
                                                         @elseif($coupon->discount_type == 'percent')
                                                             <div class="invoice-detail-value">%{{ @$coupon->discount }}
                                                             </div>
@@ -191,7 +191,7 @@
                                                 <div class="invoice-detail-item">
                                                     <div class="invoice-detail-name">Shipping (+)</div>
                                                     <div class="invoice-detail-value">
-                                                        {{ $setting->currency_icon }}{{ @$shipping->cost }}
+                                                        {{ @$setting->currency_icon }}{{ @$shipping->cost }}
                                                     </div>
                                                 </div>
 
@@ -199,7 +199,7 @@
                                                 <div class="invoice-detail-item">
                                                     <div class="invoice-detail-name">Total</div>
                                                     <div class="invoice-detail-value invoice-detail-value-lg">
-                                                        {{ $setting->currency_icon }}{{ $order->amount }}</div>
+                                                        {{ @$setting->currency_icon }}{{ $order->amount }}</div>
                                                 </div>
                                             </div>
                                         </div>

@@ -13,6 +13,8 @@
             class="img-fluid"></a>
     <ul class="dashboard_link">
 
+        <li class=""><a href="{{ route('home.page') }}"><i class="fas fa-home"></i>Go To Home Page</a></li>
+
         <li class="{{ setActive(['user.dashboard']) }}"><a href="{{ route('user.dashboard') }}"><i
                     class="fas fa-tachometer"></i>Dashboard</a></li>
 

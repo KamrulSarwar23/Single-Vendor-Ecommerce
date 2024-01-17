@@ -343,23 +343,26 @@
                                                     </div>
                                                 </div>
 
-                                                @php
-                                                    $isBrought = false;
-                                                    $orders = App\Models\Order::where(['user_id' => auth()->user()->id, 'order_status' => 'delivered'])->get();
-
-                                                    foreach ($orders as $key => $order) {
-                                                        $existitem = $order
-                                                            ->orderProduct()
-                                                            ->where('product_id', $product->id)
-                                                            ->first();
-                                                        if ($existitem) {
-                                                            $isBrought = true;
-                                                        }
-                                                    }
-                                                @endphp
-
-                                                @if ($isBrought)
+                                                @auth
                                                     <div class="col-xl-4 col-lg-5 mt-4 mt-lg-0">
+                                                                                                                 
+                                                        
+                                                        @php
+                                                        $isBrought = false;
+                                                        $orders = App\Models\Order::where(['user_id' => auth()->user()->id, 'order_status' => 'delivered'])->get();
+    
+                                                        foreach ($orders as $key => $order) {
+                                                            $existitem = $order
+                                                                ->orderProduct()
+                                                                ->where('product_id', $product->id)
+                                                                ->first();
+                                                            if ($existitem) {
+                                                                $isBrought = true;
+                                                            }
+                                                        }
+                                                    @endphp
+
+                                                        @if ($isBrought == true)
                                                         <div class="wsus__post_comment rev_mar" id="sticky_sidebar3">
                                                             <h4>write a Review</h4>
                                                             <form action="{{ route('user.review.create') }}"
@@ -407,7 +410,7 @@
                                                         </div>
                                                     </div>
                                                 @endif
-
+                                                @endauth
                                             </div>
                                         </div>
                                     </div>

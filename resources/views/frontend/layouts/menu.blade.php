@@ -122,13 +122,13 @@
                         @auth
                             @if (auth()->user()->role === 'user')
                                 <li><a class="btn btn-secondary text-white"
-                                        href="{{ route('user.dashboard') }}">{{ auth()->user()->name }}</a></li>
+                                        href="{{ route('user.dashboard') }}">Go Dashboard</a></li>
                             @elseif(auth()->user()->role === 'vendor')
                                 <li><a class="btn btn-secondary text-white"
-                                        href="{{ route('vendor.dashboard') }}">{{ auth()->user()->name }}</a></li>
+                                        href="{{ route('vendor.dashboard') }}">Go Dashboard</a></li>
                             @elseif(auth()->user()->role === 'admin')
                                 <li><a class="btn btn-secondary text-white"
-                                        href="{{ route('admin.dashboard') }}">{{ auth()->user()->name }}</a></li>
+                                        href="{{ route('admin.dashboard') }}">Go Dashboard</a></li>
                             @endif
                         @else
                             <li><a class="btn btn-secondary text-white" href="{{ route('login') }}">Login</a></li>

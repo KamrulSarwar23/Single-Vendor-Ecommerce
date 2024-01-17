@@ -17,6 +17,7 @@
     .fa-sack-dollar,
     .fa-window-maximize,
     .fa-comment,
+    .fa-tachometer-alt,
     .fa-paperclip {
         color: #5C8374;
         font-size: 15px;
@@ -32,17 +33,23 @@
         <div class="sidebar-brand">
             <a href="{{ route('admin.dashboard') }}">Admin Dashboard</a>
         </div>
+
         <div class="sidebar-brand sidebar-brand-sm">
             <a href="index.html">St</a>
         </div>
+
         <ul class="sidebar-menu">
-            <li class="menu-header">Dashboard</li>
+
+            <li class="menu-header">Starter</li>
+            <li class=""><a class="nav-link" href="{{ route('home.page') }}"><i class="fa-solid fa-house"></i>
+                    <span>Go To Home Page</span>
+                </a></li>
+
             <li class="dropdown {{ setActive(['admin.dashboard']) }}">
                 <a href="{{ route('admin.dashboard') }}" class="nav-link"><i
-                        class="fa-solid fa-house"></i><span>Dashboard</span></a>
+                        class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
 
             </li>
-            <li class="menu-header">Starter</li>
             <li
                 class="dropdown {{ setActive(['admin.slider.*', 'admin.home-page-setting.*', 'admin.vendor-condition.*', 'admin.about.*', 'admin.terms-condition.*']) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i

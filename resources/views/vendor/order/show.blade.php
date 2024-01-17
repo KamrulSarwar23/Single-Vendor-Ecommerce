@@ -26,9 +26,7 @@
 
                         <!--============================INVOICE PAGE START ==============================-->
 
-                       
-
-                       
+                    
 
                         <div class="wsus__invoice_area">
                             <div class="invoice-print">
