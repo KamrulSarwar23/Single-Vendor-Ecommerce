@@ -10,19 +10,22 @@
 
     if (array_keys($lastKey)[0] == 'category') {
         $category = \App\Models\Category::find($lastKey['category']);
-        $products = \App\Models\Product::with('reviews')->where('category_id', $category->id)
+        $products = \App\Models\Product::with('reviews')
+            ->where('category_id', $category->id)
             ->orderBy('id', 'DESC')
             ->take(12)
             ->get();
     } elseif (array_keys($lastKey)[0] == 'sub_category') {
         $category = \App\Models\SubCategory::find($lastKey['sub_category']);
-        $products = \App\Models\Product::with('reviews')->where('subcategory_id', $category->id)
+        $products = \App\Models\Product::with('reviews')
+            ->where('subcategory_id', $category->id)
             ->orderBy('id', 'DESC')
             ->take(12)
             ->get();
     } else {
         $category = \App\Models\ChildCategory::find($lastKey['child_category']);
-        $products = \App\Models\Product::with('reviews')->where('childcategory_id', $category->id)
+        $products = \App\Models\Product::with('reviews')
+            ->where('childcategory_id', $category->id)
             ->orderBy('id', 'DESC')
             ->take(12)
             ->get();
@@ -33,10 +36,14 @@
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
-                <div class="wsus__section_header">
-                    <h3>{{ $category->name }}</h3>
-                    <a class="see_btn" href="#">see more <i class="fas fa-caret-right"></i></a>
-                </div>
+
+                @if (count($products) != 0)
+                    <div class="wsus__section_header">
+                        <h3>{{ $category->name }}</h3>
+                        <a class="see_btn" href="{{ route('products.index') }}">see more <i
+                                class="fas fa-caret-right"></i></a>
+                    </div>
+                @endif
             </div>
         </div>
         <div class="row flash_sell_slider">
@@ -69,26 +76,27 @@
                                     data-bs-target="#categorySliderTwo-{{ $product->id }}"><i
                                         class="far fa-eye"></i></a>
                             </li>
-                            <li><a data-id="{{ $product->id }}" class="addToWishlist" href="#"><i class="far fa-heart"></i></a></li>
+                            <li><a data-id="{{ $product->id }}" class="addToWishlist" href="#"><i
+                                        class="far fa-heart"></i></a></li>
                             {{-- <li><a href="#"><i class="far fa-random"></i></a> --}}
                         </ul>
                         <div class="wsus__product_details">
                             <a class="wsus__category" href="#">{{ $product->category->name }} </a>
                             <p class="wsus__pro_rating">
                                 @php
-                                $avgrating = $product->reviews()->avg('rating');
-                                $fullrating = round($avgrating);
-                            @endphp
+                                    $avgrating = $product->reviews()->avg('rating');
+                                    $fullrating = round($avgrating);
+                                @endphp
 
-                            @for ($i = 1; $i <= 5; $i++)
-                                @if ($i <= $fullrating)
-                                    <i class="fas fa-star"></i>
-                                @else
-                                    <i class="far fa-star"></i>
-                                @endif
-                            @endfor
+                                @for ($i = 1; $i <= 5; $i++)
+                                    @if ($i <= $fullrating)
+                                        <i class="fas fa-star"></i>
+                                    @else
+                                        <i class="far fa-star"></i>
+                                    @endif
+                                @endfor
 
-                            <span>({{ count($product->reviews) }} review)</span>
+                                <span>({{ count($product->reviews) }} review)</span>
                             </p>
                             <a class="wsus__pro_name"
                                 href="{{ route('product-detail', $product->slug) }}">{{ limitText($product->name, 30) }}</a>
@@ -201,19 +209,19 @@
 
                                         <p class="review">
                                             @php
-                                            $avgrating = $product->reviews()->avg('rating');
-                                            $fullrating = round($avgrating);
-                                        @endphp
-        
-                                        @for ($i = 1; $i <= 5; $i++)
-                                            @if ($i <= $fullrating)
-                                                <i class="fas fa-star"></i>
-                                            @else
-                                                <i class="far fa-star"></i>
-                                            @endif
-                                        @endfor
-        
-                                        <span>({{ count($product->reviews) }} review)</span>
+                                                $avgrating = $product->reviews()->avg('rating');
+                                                $fullrating = round($avgrating);
+                                            @endphp
+
+                                            @for ($i = 1; $i <= 5; $i++)
+                                                @if ($i <= $fullrating)
+                                                    <i class="fas fa-star"></i>
+                                                @else
+                                                    <i class="far fa-star"></i>
+                                                @endif
+                                            @endfor
+
+                                            <span>({{ count($product->reviews) }} review)</span>
                                         </p>
 
                                         <p class="description">{{ $product->short_description }}</p>
@@ -263,7 +271,8 @@
                                                 <li><button type="submit" class="add_cart" data-href="#">add to
                                                         cart</button></li>
                                                 <li><a class="buy_now" href="#">buy now</a></li>
-                                                <li><a data-id="{{ $product->id }}" class="addToWishlist" href="#"><i class="fal fa-heart"></i></a></li>
+                                                <li><a data-id="{{ $product->id }}" class="addToWishlist"
+                                                        href="#"><i class="fal fa-heart"></i></a></li>
                                                 {{-- <li><a href="#"><i class="far fa-random"></i></a></li> --}}
                                             </ul>
 

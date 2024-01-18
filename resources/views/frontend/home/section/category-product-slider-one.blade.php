@@ -33,10 +33,14 @@
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
+
+                @if (count($products) != 0)
                 <div class="wsus__section_header">
                     <h3>{{ $category->name }}</h3>
-                    <a class="see_btn" href="#">see more <i class="fas fa-caret-right"></i></a>
+                    <a class="see_btn" href="{{ route('products.index') }}">see more <i class="fas fa-caret-right"></i></a>
                 </div>
+                @endif
+            
             </div>
         </div>
         <div class="row flash_sell_slider">

@@ -149,11 +149,17 @@
                             toastr.error(data.message);
                         }
                     },
-                    error: function(data) {
-                        console.log(data);
+                    error: function(xhr, status, error) {
+                        if (xhr.status == 401) {
+                            // Handle authentication error, e.g., redirect to login page
+                            toastr.error('Login before adding to wishlist');
+                        } else {
+                            // Handle other errors
+                            console.log(error);
+                        }
                     }
+                });
 
-                })
             }),
 
             $('.removeFromWishList').on('click', function() {

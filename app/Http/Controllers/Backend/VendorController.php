@@ -41,7 +41,6 @@ class VendorController extends Controller
 
         $todaysearning = OrderProduct::whereDate('created_at', Carbon::today())->whereHas('order', function ($query) {
             $query->where('order_status', 'delivered')
-                ->whereDate('created_at', Carbon::today())
                 ->where('vendor_id', Auth::user()->vendor->id);
         })
             ->select(DB::raw('SUM(unit_price * qty) as todays_earning'))
@@ -51,16 +50,14 @@ class VendorController extends Controller
 
         $thismonthearning = OrderProduct::whereMonth('created_at', Carbon::now()->month)->whereHas('order', function ($query) {
             $query->where('order_status', 'delivered')
-                ->whereDate('created_at', Carbon::today())
                 ->where('vendor_id', Auth::user()->vendor->id);
         })
             ->select(DB::raw('SUM(unit_price * qty) as month_earning'))
             ->first()
             ->month_earning;
 
-        $thisyearearning = OrderProduct::whereMonth('created_at', Carbon::now()->month)->whereHas('order', function ($query) {
+        $thisyearearning = OrderProduct::whereYear('created_at', Carbon::now()->year)->whereHas('order', function ($query) {
             $query->where('order_status', 'delivered')
-                ->whereDate('created_at', Carbon::today())
                 ->where('vendor_id', Auth::user()->vendor->id);
         })
             ->select(DB::raw('SUM(unit_price * qty) as year_earning'))
@@ -69,7 +66,6 @@ class VendorController extends Controller
 
         $totalearning = OrderProduct::whereHas('order', function ($query) {
             $query->where('order_status', 'delivered')
-                ->whereDate('created_at', Carbon::today())
                 ->where('vendor_id', Auth::user()->vendor->id);
         })
             ->select(DB::raw('SUM(unit_price * qty) as total_earning'))
