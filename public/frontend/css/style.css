@@ -857,7 +857,7 @@ header {
 
 .wsus__menu_item>li:hover>a,
 .wsus__menu_item li a.active {
-  color: #5C8374;
+  color: green;
 }
 
 .wsus__menu_item_right li {
@@ -1172,7 +1172,7 @@ header {
   width: 35px;
   height: 35px;
   line-height: 36px;
-  background: #08C;
+  background: #1B4242;
   color: #fff;
   border-radius: 50%;
   text-align: center;
@@ -1192,7 +1192,7 @@ header {
 }
 
 .wsus__pop_up_text h5 span {
-  color: #08C;
+  color: #1B4242;
   font-size: 35px;
   font-weight: 700;
   margin-left: 10px;
@@ -1214,7 +1214,7 @@ header {
 }
 
 .wsus__pop_up_text form .news_input {
-  border: 1px solid#08C;
+  border: 1px solid #1B4242;
   padding: 10px;
   color: #353535;
   border-radius: 30px;
@@ -1303,7 +1303,7 @@ PRODUCT MODAL VIEW START
 }
 
 .product_popup_modal .btn-close:hover {
-  background: #08C;
+  background: #5C8374;
 }
 
 .report_modal .btn-close {
@@ -1390,7 +1390,7 @@ PRODUCT MODAL VIEW END
 }
 
 .wsus__single_slider_text h3 {
-  color: #08C;
+  color: #5C8374;
   text-transform: capitalize;
   font-weight: 600;
   font-size: 25px;
@@ -1405,7 +1405,7 @@ PRODUCT MODAL VIEW END
 }
 
 .wsus__single_slider_text h6 {
-  color: #08C;
+  color: #5C8374;
   text-transform: capitalize;
   font-weight: 600;
   font-size: 18px;
@@ -1535,7 +1535,7 @@ PRODUCT MODAL VIEW END
   font-size: 20px;
   font-weight: 600;
   text-transform: capitalize;
-  color: #08C;
+  color: #5C8374;
   margin-right: 10px;
 }
 
@@ -1763,7 +1763,7 @@ PRODUCT MODAL VIEW END
 }
 
 .wsus__product_details .wsus__pro_name:hover {
-  color: #08C;
+  color: #5C8374;
 }
 
 .wsus__product_details .wsus__price {
@@ -2113,7 +2113,7 @@ HOME BLOGS END
 }
 
 .wsus__single_banner_text h6 span {
-  color: #08C;
+  color: #5C8374;
   font-weight: 900;
   font-size: 30px;
   margin-left: 10px;
@@ -2230,7 +2230,7 @@ HOME BLOGS END
 }
 
 .wsus__hot_title:hover {
-  color: #08C;
+  color: #5C8374;
 }
 
 .wsus__hot_deals_text .wsus__rating {
@@ -2340,7 +2340,7 @@ HOME BLOGS END
 }
 
 .wsus__hot_deals__single:hover h5 {
-  color: #08C;
+  color: #5C8374;
 }
 
 .wsus__hot_large_item {
@@ -2489,7 +2489,7 @@ HOME SERVOCES START
 }
 
 .wsus__home_services_single i {
-  color: #08C;
+  color: #5C8374;
   font-size: 30px;
   margin-bottom: 20px;
   transition: all linear 0.3s;
@@ -2515,7 +2515,7 @@ HOME SERVOCES START
 }
 
 .wsus__home_services_single:hover h5 {
-  color: #08C;
+  color: #5C8374;
 }
 
 .wsus__home_services_single:hover i {
@@ -2677,7 +2677,7 @@ footer {
 }
 
 .wsus__footer_content .action:hover {
-  color: #08C;
+  color: #5C8374;
 }
 
 .wsus__footer_social {
@@ -2756,7 +2756,7 @@ footer {
 }
 
 .wsus__footer_menu li {
-  color: #08C;
+  color: #5C8374;
 }
 
 .wsus__footer_menu li a {
@@ -2777,7 +2777,7 @@ footer {
 }
 
 .wsus__footer_menu li a:hover {
-  color: #08C !important;
+  color: #5C8374 !important;
 }
 
 .wsus__footer_bottom {
@@ -3694,8 +3694,8 @@ PRODUCT DETAILS START
 
 .wsus_pro__det_size ul li a:hover {
   color: #fff;
-  border-color: #08C;
-  background: #08C;
+  border-color: #5C8374;
+  background: #5C8374;
 }
 
 .wsus_pro__det_size ul li:last-child a {
@@ -4992,7 +4992,7 @@ WISHLIST PAGE START
 }
 
 .wishlist .wsus__pro_img a:hover {
-  background: #08C;
+  background: #5C8374;
 }
 
 .wishlist .wsus__pro_name {
@@ -5348,7 +5348,7 @@ WISHLIST PAGE START
 .wsus__login_input i {
   width: 57px;
   height: 47px;
-  background: #08C;
+  background: #5C8374;
   line-height: 45px;
   text-align: center;
   margin-right: 10px;

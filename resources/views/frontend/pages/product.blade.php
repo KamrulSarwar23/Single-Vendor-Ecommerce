@@ -151,25 +151,8 @@
                                         </button>
                                     </div>
 
-                                    <div class="wsus__topbar_select">
-                                        <select class="select_2" name="state">
-                                            <option>default shorting</option>
-                                            <option>short by rating</option>
-                                            <option>short by latest</option>
-                                            <option>low to high </option>
-                                            <option>high to low</option>
-                                        </select>
-                                    </div>
-
                                 </div>
-                                <div class="wsus__topbar_select">
-                                    <select class="select_2" name="state">
-                                        <option>show 12</option>
-                                        <option>show 15</option>
-                                        <option>show 18</option>
-                                        <option>show 21</option>
-                                    </select>
-                                </div>
+                
 
                             </div>
                         </div>

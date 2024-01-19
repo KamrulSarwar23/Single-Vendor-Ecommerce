@@ -40,7 +40,8 @@ class VendorController extends Controller
         $totalproduct = Product::where('vendor_id', Auth::user()->vendor->id)->count();
 
         $todaysearning = OrderProduct::whereDate('created_at', Carbon::today())->whereHas('order', function ($query) {
-            $query->where('order_status', 'delivered')
+            $query->where('order_status','!=', 'cancel')
+                ->where('payment_status', 1)
                 ->where('vendor_id', Auth::user()->vendor->id);
         })
             ->select(DB::raw('SUM(unit_price * qty) as todays_earning'))
@@ -49,7 +50,8 @@ class VendorController extends Controller
 
 
         $thismonthearning = OrderProduct::whereMonth('created_at', Carbon::now()->month)->whereHas('order', function ($query) {
-            $query->where('order_status', 'delivered')
+            $query->where('order_status','!=', 'cancel')
+                ->where('payment_status', 1)
                 ->where('vendor_id', Auth::user()->vendor->id);
         })
             ->select(DB::raw('SUM(unit_price * qty) as month_earning'))
@@ -57,7 +59,8 @@ class VendorController extends Controller
             ->month_earning;
 
         $thisyearearning = OrderProduct::whereYear('created_at', Carbon::now()->year)->whereHas('order', function ($query) {
-            $query->where('order_status', 'delivered')
+            $query->where('order_status','!=', 'cancel')
+                ->where('payment_status', 1)
                 ->where('vendor_id', Auth::user()->vendor->id);
         })
             ->select(DB::raw('SUM(unit_price * qty) as year_earning'))
@@ -65,7 +68,8 @@ class VendorController extends Controller
             ->year_earning;
 
         $totalearning = OrderProduct::whereHas('order', function ($query) {
-            $query->where('order_status', 'delivered')
+            $query->where('order_status','!=', 'cancel')
+                ->where('payment_status', 1)
                 ->where('vendor_id', Auth::user()->vendor->id);
         })
             ->select(DB::raw('SUM(unit_price * qty) as total_earning'))

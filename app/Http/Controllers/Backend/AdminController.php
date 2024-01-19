@@ -31,10 +31,12 @@ class AdminController extends Controller
         $totalPendingOrder = Order::where('order_status', '!=', 'delivered')->where('order_status', '!=', 'cancel')->count();
         $totalCancelOrder = Order::where('order_status', '=', 'cancel')->count();
         $totalOrder = Order::count();
-        $todaysEarning = Order::whereDate('created_at', Carbon::today())->sum('sub_total');
-        $monthEarning = Order::whereMonth('created_at', Carbon::now()->month)->sum('sub_total');
-        $yearEarning = Order::whereYear('created_at', Carbon::now()->year)->sum('sub_total');
-        $totalEarning = Order::sum('sub_total');
+
+        $todaysEarning = Order::where('order_status','!=', 'cancel')->where('payment_status', 1)->whereDate('created_at', Carbon::today())->sum('sub_total');
+        $monthEarning = Order::where('order_status','!=', 'cancel')->where('payment_status', 1)->whereMonth('created_at', Carbon::now()->month)->sum('sub_total');
+        $yearEarning = Order::where('order_status','!=', 'cancel')->where('payment_status', 1)->whereYear('created_at', Carbon::now()->year)->sum('sub_total');
+        $totalEarning = Order::where('order_status','!=', 'cancel')->where('payment_status', 1)->sum('sub_total');
+
         $totalReview = Review::count();
         $totalBrand = Brand::count();
         $totalCategory = Category::count();

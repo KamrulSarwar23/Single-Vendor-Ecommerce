@@ -41,6 +41,7 @@ use App\Http\Controllers\Backend\TransactionController;
 use App\Http\Controllers\Backend\VendorConditionController;
 use App\Http\Controllers\Backend\VendorListController;
 use App\Http\Controllers\Backend\VendorRequestController;
+use App\Http\Controllers\Backend\CodSettingController;
 
 // Admin profile Routes
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
@@ -117,6 +118,7 @@ Route::resource('shipping-rule', ShippingRuleController::class);
 // General Setting
 Route::get('settings', [SettingController::class, 'index'])->name('setting.index');
 Route::put('general-setting-update', [SettingController::class, 'generalSettingUpdate'])->name('general-setting-update');
+Route::put('logo-setting-update', [SettingController::class, 'logoSettingUpdate'])->name('logo-setting-update');
 
 // Paypal Setting Route
 Route::get('payment-settings', [PaymentSettingController::class, 'index'])->name('payment-settings.index');
@@ -229,3 +231,7 @@ Route::put('blog-change-status', [BlogController::class, 'changeStatus'])->name(
 Route::resource('blog', BlogController::class);
 Route::get('blog-comment', [BlogController::class, 'blogComment'])->name('blog-comment');
 Route::delete('blog-comment/{id}', [BlogController::class, 'blogDestroy'])->name('blog-comment.destroy');
+
+// Cash on Delivery Setting Route
+Route::get('cash-on-delivery', [CodSettingController::class, 'index'])->name('cod-setting-index');
+Route::put('cash-on-delivery', [CodSettingController::class, 'CodSetting'])->name('cod-setting-update');

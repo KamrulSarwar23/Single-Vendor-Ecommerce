@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\GeneralSetting;
 use App\Models\Order;
 use App\Models\OrderProduct;
+use App\Models\CodSetting;
 use App\Models\PaypalSetting;
 use App\Models\Product;
 use App\Models\StripeSetting;
@@ -215,5 +216,23 @@ class PaymentController extends Controller
             toastr('Something went wrong try later!', 'error', 'Error');
             return redirect()->route('user.payment');
         }
+    }
+
+    public function payWithCod(Request $request){
+
+        $codSetting = CodSetting::first();
+        $setting = GeneralSetting::first();
+        if($codSetting->status == 0){
+            toastr('Cash on Delivery Not Avaiable at this time', 'error', 'Error');
+            return redirect()->back();
+        }
+
+        $total = getFinalPayableAmount();
+        $payableAmount = round($total, 2);
+
+        $this->storeOrder('Cash On Delivery', 0, \Str::random(10), $payableAmount, $setting->currency_name);
+        $this->clearSession();
+        toastr('Payment Success');
+        return redirect()->route('user.payment.success');
     }
 }

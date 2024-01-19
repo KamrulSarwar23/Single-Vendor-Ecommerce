@@ -14,8 +14,7 @@
             <div class="col-xl-3 col-sm-7 col-md-6 col-lg-3">
 
                 <div class="wsus__footer_content">
-                    <a class="wsus__footer_2_logo" href="#">
-                        {{-- <h2 style="color:white">Sazao</h2> --}}
+                    <a class="wsus__footer_2_logo" href="{{route('home.page')}}">
                         <img src="{{ asset(@$footerinfo->logo) }}" alt="logo">
                     </a>
                     <a class="action" href="callto:+8896254857456"><i class="fas fa-phone-alt"></i>
@@ -93,14 +92,4 @@
     </div>
 </footer>
 
-{{-- @push('scripts')
-    <script>
-        $(document).ready(function(e){
-            e.preventDefault();
-            
-            $('#newsletter').on('submit', function(){
 
-            })
-        })
-    </script>
-@endpush --}}

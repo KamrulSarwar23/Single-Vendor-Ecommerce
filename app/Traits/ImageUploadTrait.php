@@ -11,8 +11,6 @@ trait ImageUploadTrait
 
   public function uploadImage(Request $request, $inputName, $path)
   {
-
-
     if ($request->hasFile($inputName)) {
 
       $image = $request->{$inputName};
@@ -45,6 +43,7 @@ trait ImageUploadTrait
     }
   }
 
+  
   public function updateImage(Request $request, $inputName, $path, $oldPath = null)
   {
     if ($request->hasFile($inputName)) {

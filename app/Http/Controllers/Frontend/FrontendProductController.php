@@ -29,9 +29,16 @@ class FrontendProductController extends Controller
             ])
                 ->when($request->has('range'), function ($query) use ($request) {
                     $price = explode(';', $request->range);
-                    $from = $price[0];
-                    $to = $price[1];
-                    return $query->where('price', '>=', $from)->where('price', '<=', $to);
+
+                    if (isset($price[0]) && isset($price[1])) {
+                        $from = $price[0];
+                        $to = $price[1];
+        
+                        return $query->where('price', '>=', $from)->where('price', '<=', $to);
+                    } else {
+                    
+                        return $query;
+                    }
                 })
                 ->paginate(12);
         } elseif ($request->has('subcategory')) {
@@ -43,9 +50,16 @@ class FrontendProductController extends Controller
             ])
                 ->when($request->has('range'), function ($query) use ($request) {
                     $price = explode(';', $request->range);
-                    $from = $price[0];
-                    $to = $price[1];
-                    return $query->where('price', '>=', $from)->where('price', '<=', $to);
+
+                    if (isset($price[0]) && isset($price[1])) {
+                        $from = $price[0];
+                        $to = $price[1];
+        
+                        return $query->where('price', '>=', $from)->where('price', '<=', $to);
+                    } else {
+                    
+                        return $query;
+                    }
                 })
                 ->paginate(12);
         } elseif ($request->has('childcategory')) {
@@ -58,9 +72,16 @@ class FrontendProductController extends Controller
 
                 ->when($request->has('range'), function ($query) use ($request) {
                     $price = explode(';', $request->range);
-                    $from = $price[0];
-                    $to = $price[1];
-                    return $query->where('price', '>=', $from)->where('price', '<=', $to);
+
+                    if (isset($price[0]) && isset($price[1])) {
+                        $from = $price[0];
+                        $to = $price[1];
+        
+                        return $query->where('price', '>=', $from)->where('price', '<=', $to);
+                    } else {
+                    
+                        return $query;
+                    }
                 })
                 ->paginate(12);
         } elseif ($request->has('brand')) {
@@ -73,9 +94,17 @@ class FrontendProductController extends Controller
             ])
                 ->when($request->has('range'), function ($query) use ($request) {
                     $price = explode(';', $request->range);
-                    $from = $price[0];
-                    $to = $price[1];
-                    return $query->where('price', '>=', $from)->where('price', '<=', $to);
+
+                    if (isset($price[0]) && isset($price[1])) {
+                        $from = $price[0];
+                        $to = $price[1];
+        
+                        return $query->where('price', '>=', $from)->where('price', '<=', $to);
+                    } else {
+                    
+                        return $query;
+                    }
+                    
                 })
                 ->paginate(12);
         } elseif ($request->has('search')) {

@@ -9,7 +9,7 @@
 
     <title>  @yield('title') </title>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <link rel="icon" type="image/png" href="{{ asset('frontend/images/favicon.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset($logosetting->favicon) }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/select2.min.css') }}">
@@ -30,7 +30,10 @@
     <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="{{asset('backend/assets/modules/bootstrap-daterangepicker/daterangepicker.css')}}">
-    <!-- <link rel="stylesheet" href="css/rtl.css"> -->
+    
+    @if(@$setting->layout == 'RTL')
+    <link rel="stylesheet" href="{{ asset('frontend/css/rtl.css') }}"> 
+    @endif
 </head>
 
 <body>

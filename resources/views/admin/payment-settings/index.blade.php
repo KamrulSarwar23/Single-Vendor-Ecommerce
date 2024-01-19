@@ -24,6 +24,8 @@
                                         <a class="list-group-item list-group-item-action" id="list-stripe-list"
                                             data-toggle="list" href="#list-stripe" role="tab">Stripe</a>
 
+                                            <a class="list-group-item list-group-item-action" id="list-cod-list"
+                                            data-toggle="list" href="#list-cod" role="tab">Cash on Delivery</a>
 
                                     </div>
                                 </div>
@@ -33,6 +35,7 @@
 
                                         @include('admin.payment-settings.section.stripe-setting')
 
+                                        @include('admin.payment-settings.section.cod-setting')
                                     </div>
                                 </div>
                             </div>

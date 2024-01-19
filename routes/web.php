@@ -47,7 +47,9 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 
     Route::get('paypal/payment', [PaymentController::class, 'payWithPaypal'])->name('paypal.payment');
     Route::get('paypal/success', [PaymentController::class, 'paypalSuccess'])->name('paypal.success');
     Route::get('paypal/cancel', [PaymentController::class, 'paypalCancel'])->name('paypal.cancel');
-
+    
+   // cash on delivery routes
+   Route::get('/cod.payment', [PaymentController::class, 'payWithCod'])->name('cod-payment');
     //Stripe Route
     Route::post('stripe/payment', [PaymentController::class, 'payWithStripe'])->name('stripe.payment');
 
@@ -70,6 +72,7 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 
 
     // Vendors Request
     Route::post('blog-comment', [PageController::class, 'blogComment'])->name('blog-comment');
+ 
 });
 
 // Home Page Route
@@ -126,9 +129,9 @@ Route::post('/send-message', [PageController::class, 'sendMessage'])->name('send
 // product tract route
 Route::get('/product-tracking', [ProductTrackController::class, 'index'])->name('product-track.index');
 
-
 // blog details
 Route::get('/blog-details/{slug}', [PageController::class, 'blogdetailspage'])->name('blog-details');
 
 // blog routes
 Route::get('/blog', [PageController::class, 'blog'])->name('blog');
+

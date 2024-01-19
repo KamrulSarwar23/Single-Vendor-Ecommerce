@@ -13,9 +13,7 @@
             <div class="col-xl-2 col-7 col-md-8 col-lg-2">
                 <div class="wsus_logo_area">
                     <a class="wsus__header_logo" href="{{ route('home.page') }}">
-
-                        {{-- <img src="{{ asset('frontend/images/Iconic-transparent.png') }}" alt="logo" class="img-fluid w-100"> --}}
-                        <h3 class="text-white mt-2">eCommerce</h3>
+                        <img src="{{ asset($logosetting->logo) }}" alt="logo" class="img-fluid w-100">
                     </a>
                 </div>
             </div>

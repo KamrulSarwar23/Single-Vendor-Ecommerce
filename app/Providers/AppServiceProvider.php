@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\View;
 use Illuminate\Pagination\Paginator;
 use App\Models\GeneralSetting;
+use App\Models\LogoSetting;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -28,11 +29,12 @@ class AppServiceProvider extends ServiceProvider
         // Set Time Zone
 
         $generalSetting = GeneralSetting::first();
+        $logosetting = LogoSetting::first();
 
         Config::set('app.timezone', $generalSetting->time_zone);
 
-        View::composer('*', function ($view) use ($generalSetting) {
-            $view->with('setting', $generalSetting);
+        View::composer('*', function ($view) use ($generalSetting, $logosetting) {
+            $view->with(['setting'=> $generalSetting, 'logosetting' => $logosetting]);
             });
         }
 }

@@ -10,7 +10,8 @@
   <title> @yield('title') </title>
 
   <meta name="csrf-token" content="{{ csrf_token() }}"/>
-  <link rel="icon" type="image/png" href="{{ asset('frontend/images/favicon.png') }}">
+
+    <link rel="icon" type="image/png" href="{{ asset($logosetting->favicon) }}">
   <link rel="stylesheet" href="{{ asset('frontend/css/all.min.css') }}">
   <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ asset('frontend/css/select2.min.css') }}">
@@ -30,7 +31,9 @@
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
   <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
-  <!-- <link rel="stylesheet" href="css/rtl.css"> -->
+  @if(@$setting->layout == 'RTL')
+  <link rel="stylesheet" href="{{ asset('frontend/css/rtl.css') }}"> 
+  @endif
 </head>
 
 <body>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\PaypalSetting;
 use App\Models\RazorpaySetting;
 use App\Models\StripeSetting;
+use App\Models\CodSetting;
 use Illuminate\Http\Request;
 
 class PaymentSettingController extends Controller
@@ -14,6 +15,7 @@ class PaymentSettingController extends Controller
     {
         $paypalSetting = PaypalSetting::first();
         $stripeSetting = StripeSetting::first();
-        return view('admin.payment-settings.index', compact('paypalSetting', 'stripeSetting'));
+        $CodSetting = CodSetting::first();
+        return view('admin.payment-settings.index', compact('paypalSetting', 'stripeSetting', 'CodSetting'));
     }
 }
