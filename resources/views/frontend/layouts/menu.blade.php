@@ -25,8 +25,7 @@
                     </div>
 
                     <ul class="wsus_menu_cat_item show_home toggle_menu">
-                        <li><a href="#"><i class="fas fa-star"></i> hot promotions</a></li>
-
+                        
                         @foreach ($categories as $category)
                             <li><a class="{{ count($category->subcategories) > 0 ? 'wsus__droap_arrow' : '' }}"
                                     href="{{ route('products.index', ['category' => $category->slug]) }}"><i
@@ -140,15 +139,13 @@
 <!--============================ MAIN MENU END ==============================-->
 
 
-
-
 <!--============================ MOBILE MENU START==============================-->
 
 <section id="wsus__mobile_menu">
     <span class="wsus__mobile_menu_close"><i class="fal fa-times"></i></span>
     <ul class="wsus__mobile_menu_header_icon d-inline-flex">
 
-     
+
         <li>
             <a href="{{ route('user.wishlist.index') }}">
                 <i class="fal fa-heart"></i>
@@ -162,12 +159,27 @@
             </a>
         </li>
 
-        {{-- <li><a href="compare.html"><i class="far fa-random"></i> </i><span>3</span></a></li> --}}
+        <li>
+            @auth
+            @if (auth()->user()->role === 'user')
+                <li><a class="text-white" href="{{ route('user.dashboard') }}"><i class="fal fa-user"></i></a></li>
+            @elseif(auth()->user()->role === 'vendor')
+                <li><a class="text-white" href="{{ route('vendor.dashboard') }}"><i class="fal fa-user"></i></a></li>
+            @elseif(auth()->user()->role === 'admin')
+                <li><a class="text-white" href="{{ route('admin.dashboard') }}"><i class="fal fa-user"></i></a></li>
+            @endif
+        @else
+            <li><a class="text-white" href="{{ route('login') }}">Login</a></li>
+        @endauth
+
+        </li>
     </ul>
-    <form>
-        <input type="text" placeholder="Search">
+
+    <form action="{{ route('products.index') }}" method="GET">
+        <input type="text" placeholder="Search" name="search" value="{{ request()->search }}">
         <button type="submit"><i class="far fa-search"></i></button>
     </form>
+
 
     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
         <li class="nav-item" role="presentation">
@@ -201,7 +213,9 @@
                                         <div class="accordion-body">
                                             <ul>
                                                 @foreach ($category->subcategories as $subcategory)
-                                                    <li><a href="{{ route('products.index', ['subcategory' => $subcategory->slug]) }}">{{ $subcategory->name }}</a></li>
+                                                    <li><a
+                                                            href="{{ route('products.index', ['subcategory' => $subcategory->slug]) }}">{{ $subcategory->name }}</a>
+                                                    </li>
                                                 @endforeach
                                             </ul>
                                         </div>
@@ -247,13 +261,30 @@
                                     <ul>
                                         <li><a href="{{ route('about.index') }}">about us</a></li>
                                         <li><a href="{{ route('terms-condition.index') }}">privacy & policy</a></li>
-                            
                                     </ul>
                                 </div>
                             </div>
                         </li>
                         <li><a href="{{ route('product-track.index') }}">track order</a></li>
+                        <li><a href="{{ route('flash-sale') }}">flash sale</a></li>
+                        <ul class="">
 
+                            @auth
+                                @if (auth()->user()->role === 'user')
+                                    <li><a class="text-white" href="{{ route('user.dashboard') }}">Go
+                                            Dashboard</a></li>
+                                @elseif(auth()->user()->role === 'vendor')
+                                    <li><a class="text-white" href="{{ route('vendor.dashboard') }}">Go
+                                            Dashboard</a></li>
+                                @elseif(auth()->user()->role === 'admin')
+                                    <li><a class="text-white" href="{{ route('admin.dashboard') }}">Go
+                                            Dashboard</a></li>
+                                @endif
+                            @else
+                                <li><a class="text-white" href="{{ route('login') }}">Login</a></li>
+                            @endauth
+
+                        </ul>
                     </ul>
                 </div>
             </div>

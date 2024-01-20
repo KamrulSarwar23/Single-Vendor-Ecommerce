@@ -44,9 +44,9 @@
                             <li><a href="#" data-bs-toggle="modal"
                                     data-bs-target="#exampleModal-{{ $product->id }}"><i class="far fa-eye"></i></a>
                             </li>
-                            <li><a data-id="{{ $product->id }}" class="addToWishlist" href=""><i
+                            <li><a data-id="{{ $product->id }}" class="addToWishlist" href="#"><i
                                         class="far fa-heart"></i></a></li>
-                            {{-- <li><a href="#"><i class="far fa-random"></i></a> --}}
+                        
                         </ul>
                         <div class="wsus__product_details">
                             <a class="wsus__category" href="#">{{ $product->category->name }} </a>
@@ -172,7 +172,7 @@
                             </div>
                             <div class="col-xl-6 col-12 col-sm-12 col-md-12 col-lg-6">
                                 <div class="wsus__pro_details_text">
-                                    <a class="title" href="#">{{ $product->name }}</a>
+                                    <a class="title" href="javascript:;">{{ $product->name }}</a>
                                     <p class="wsus__stock_area"><span class="in_stock">in stock</span> (167 item)</p>
 
 
@@ -231,7 +231,7 @@
                                                         </div>
                                                     @endif
                                                 @endforeach
-
+                                                
                                             </div>
                                         </div>
 
@@ -246,10 +246,9 @@
                                         <ul class="wsus__button_area">
                                             <li><button type="submit" class="add_cart" data-href="#">add to
                                                     cart</button></li>
-                                            <li><a class="buy_now" href="#">buy now</a></li>
+                                            <li><a class="buy_now" href="{{ route('user.checkout') }}">buy now</a></li>
                                             <li><a data-id="{{ $product->id }}" class="addToWishlist"
                                                     href="#"><i class="fal fa-heart"></i></a></li>
-                                            {{-- <li><a href="#"><i class="far fa-random"></i></a></li> --}}
                                         </ul>
 
                                     </form>

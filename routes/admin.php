@@ -1,27 +1,25 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\AboutController;
-use App\Http\Controllers\Backend\AdvertisementController;
-use App\Http\Controllers\Backend\FooterGridTwoController;
-use App\Http\Controllers\Backend\FooterSocialController;
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\AdminListController;
 use App\Http\Controllers\Backend\AdminProductReviewController;
-use App\Http\Controllers\Backend\ProfileController;
-use App\Http\Controllers\Backend\SliderController;
-use App\Http\Controllers\Backend\CategoryController;
-use App\Http\Controllers\Backend\SubCategoryController;
-use App\Http\Controllers\Backend\ChildCategoryController;
-use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\AdminVendorProfileController;
+use App\Http\Controllers\Backend\AdvertisementController;
 use App\Http\Controllers\Backend\BlogCategoryController;
 use App\Http\Controllers\Backend\BlogController;
+use App\Http\Controllers\Backend\BrandController;
+use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\ChildCategoryController;
+use App\Http\Controllers\Backend\CodSettingController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\CustomerListControlller;
+use App\Http\Controllers\Backend\EcommerceServiceController;
 use App\Http\Controllers\Backend\FlashSaleController;
 use App\Http\Controllers\Backend\FooterGridThreeController;
+use App\Http\Controllers\Backend\FooterGridTwoController;
 use App\Http\Controllers\Backend\FooterInfoController;
+use App\Http\Controllers\Backend\FooterSocialController;
 use App\Http\Controllers\Backend\HomePageSettingController;
 use App\Http\Controllers\Backend\ManageUserController;
 use App\Http\Controllers\Backend\OrderController;
@@ -31,17 +29,21 @@ use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ProductImageGalleryController;
 use App\Http\Controllers\Backend\ProductVariantController;
 use App\Http\Controllers\Backend\ProductVariantItemController;
+use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\SellerProductController;
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\ShippingRuleController;
+use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\StripeSettingController;
+use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\SubscriberController;
 use App\Http\Controllers\Backend\TermsConditionController;
 use App\Http\Controllers\Backend\TransactionController;
 use App\Http\Controllers\Backend\VendorConditionController;
 use App\Http\Controllers\Backend\VendorListController;
 use App\Http\Controllers\Backend\VendorRequestController;
-use App\Http\Controllers\Backend\CodSettingController;
+use Illuminate\Support\Facades\Route;
+
 
 // Admin profile Routes
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
@@ -235,3 +237,7 @@ Route::delete('blog-comment/{id}', [BlogController::class, 'blogDestroy'])->name
 // Cash on Delivery Setting Route
 Route::get('cash-on-delivery', [CodSettingController::class, 'index'])->name('cod-setting-index');
 Route::put('cash-on-delivery', [CodSettingController::class, 'CodSetting'])->name('cod-setting-update');
+
+// ecommerce service route
+Route::put('ecommerce-service-change-status', [EcommerceServiceController::class, 'changeStatus'])->name('ecommerce-service.change-status');
+Route::resource('ecommerce-service', EcommerceServiceController::class);

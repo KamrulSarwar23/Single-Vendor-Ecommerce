@@ -131,6 +131,7 @@
                     </div>
                     <div class="modal-body p-0">
                         <div class="wsus__check_form p-3">
+
                             <form action="{{ route('user.checkout.create.address') }}" method="POST">
                                 @csrf
                                 <div class="row">
@@ -203,6 +204,7 @@
                                     </div>
                                 </div>
                             </form>
+                            
                         </div>
                     </div>
                 </div>

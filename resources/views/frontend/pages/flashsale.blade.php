@@ -28,32 +28,6 @@
     <section id="wsus__daily_deals">
         <div class="container">
             <div class="wsus__offer_details_area">
-                <div class="row">
-                    <div class="col-xl-6 col-md-6">
-                        <div class="wsus__offer_details_banner">
-                            <img src="{{ asset('frontend/images/offer_banner_2.png') }}" alt="offrt img"
-                                class="img-fluid w-100">
-                            <div class="wsus__offer_details_banner_text">
-                                <p>apple watch</p>
-                                <span>up 50% 0ff</span>
-                                <p>for all poduct</p>
-                                <p><b>today only</b></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-md-6">
-                        <div class="wsus__offer_details_banner">
-                            <img src="{{ asset('frontend/images/offer_banner_3.png') }}" alt="offrt img"
-                                class="img-fluid w-100">
-                            <div class="wsus__offer_details_banner_text">
-                                <p>xiaomi power bank</p>
-                                <span>up 37% 0ff</span>
-                                <p>for all poduct</p>
-                                <p><b>today only</b></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="row">
                     <div class="col-xl-12">
@@ -102,7 +76,7 @@
                                                 class="far fa-eye"></i></a></li>
                                     <li><a data-id="{{ $product->id }}" class="addToWishlist" href=""><i
                                                 class="far fa-heart"></i></a></li>
-                                    {{-- <li><a href="#"><i class="far fa-random"></i></a> --}}
+            
                                 </ul>
                                 <div class="wsus__product_details">
                                     <a class="wsus__category" href="#">{{ $product->category->name }} </a>
@@ -231,9 +205,8 @@
                                 </div>
                                 <div class="col-xl-6 col-12 col-sm-12 col-md-12 col-lg-6">
                                     <div class="wsus__pro_details_text">
-                                        <a class="title" href="#">{{ $product->name }}</a>
+                                        <a class="title" href="javascript:;">{{ $product->name }}</a>
                                         <p class="wsus__stock_area"><span class="in_stock">in stock</span> (167 item)</p>
-
 
                                         @if (checkProductDiscount($product))
                                             <h4>{{ $setting->currency_icon }}{{ $product->offer_price }}
@@ -275,7 +248,6 @@
                                                             <div class="col-xl-6 col-sm-6 mb-2">
                                                                 <h5 class="mb-2">{{ $variant->name }}:</h5>
                                                                 <select class="select_2" name="variants_items[]">
-
                                                                     @foreach ($variant->productVariantItems as $variantitem)
                                                                         @if ($variantitem->status != 0)
                                                                             <option value="{{ $variantitem->id }}"
@@ -285,7 +257,6 @@
                                                                             </option>
                                                                         @endif
                                                                     @endforeach
-                                                                    s
                                                                 </select>
                                                             </div>
                                                         @endif
@@ -305,10 +276,9 @@
                                             <ul class="wsus__button_area">
                                                 <li><button type="submit" class="add_cart" data-href="#">add to
                                                         cart</button></li>
-                                                <li><a class="buy_now" href="#">buy now</a></li>
+                                                <li><a class="buy_now" href="{{ route('user.checkout') }}">buy now</a></li>
                                                 <li><a data-id="{{ $product->id }}" class="addToWishlist"
                                                         href="#"><i class="fal fa-heart"></i></a></li>
-                                                {{-- <li><a href="#"><i class="far fa-random"></i></a></li> --}}
                                             </ul>
 
                                         </form>

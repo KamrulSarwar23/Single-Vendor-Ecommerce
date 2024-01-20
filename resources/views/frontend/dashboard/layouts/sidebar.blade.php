@@ -9,7 +9,7 @@
         <i class="far fa-bars dash_bar"></i>
         <i class="far fa-times dash_close"></i>
     </span>
-    <a href="dsahboard.html" class="dash_logo"><img src="{{ asset(@$logosetting->logo) }}" alt="logo"
+    <a href="javascrupt:;" class="dash_logo"><img src="{{ asset(@$logosetting->logo) }}" alt="logo"
             class="img-fluid"></a>
     <ul class="dashboard_link">
 
@@ -29,7 +29,8 @@
                 Orders</a></li>
         <li class="{{ setActive(['user.review.index']) }}"><a href="{{ route('user.review.index') }}"><i
                     class="far fa-star"></i> Reviews</a></li>
-        <li class="{{ setActive(['user.profile']) }}"><a href="{{ route('user.profile') }}"><i class="far fa-user"></i>
+        <li class="{{ setActive(['user.profile']) }}"><a href="{{ route('user.profile') }}"><i
+                    class="far fa-user"></i>
                 My Profile</a></li>
 
         <li class="{{ setActive(['user.address.index']) }}"><a href="{{ route('user.address.index') }}"><i

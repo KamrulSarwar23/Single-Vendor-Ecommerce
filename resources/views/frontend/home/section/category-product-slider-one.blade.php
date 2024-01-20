@@ -10,19 +10,22 @@
 
     if (array_keys($lastKey)[0] == 'category') {
         $category = \App\Models\Category::find($lastKey['category']);
-        $products = \App\Models\Product::with('reviews')->where('category_id', $category->id)
+        $products = \App\Models\Product::with('reviews')
+            ->where('category_id', $category->id)
             ->orderBy('id', 'DESC')
             ->take(12)
             ->get();
     } elseif (array_keys($lastKey)[0] == 'sub_category') {
         $category = \App\Models\SubCategory::find($lastKey['sub_category']);
-        $products = \App\Models\Product::with('reviews')->where('subcategory_id', $category->id)
+        $products = \App\Models\Product::with('reviews')
+            ->where('subcategory_id', $category->id)
             ->orderBy('id', 'DESC')
             ->take(12)
             ->get();
     } else {
         $category = \App\Models\ChildCategory::find($lastKey['child_category']);
-        $products = \App\Models\Product::with('reviews')->where('childcategory_id', $category->id)
+        $products = \App\Models\Product::with('reviews')
+            ->where('childcategory_id', $category->id)
             ->orderBy('id', 'DESC')
             ->take(12)
             ->get();
@@ -35,12 +38,13 @@
             <div class="col-xl-12">
 
                 @if (count($products) != 0)
-                <div class="wsus__section_header">
-                    <h3>{{ $category->name }}</h3>
-                    <a class="see_btn" href="{{ route('products.index') }}">see more <i class="fas fa-caret-right"></i></a>
-                </div>
+                    <div class="wsus__section_header">
+                        <h3>{{ $category->name }}</h3>
+                        <a class="see_btn" href="{{ route('products.index') }}">see more <i
+                                class="fas fa-caret-right"></i></a>
+                    </div>
                 @endif
-            
+
             </div>
         </div>
         <div class="row flash_sell_slider">
@@ -75,10 +79,9 @@
                             </li>
                             <li><a data-id="{{ $product->id }}" class="addToWishlist" href="#"><i
                                         class="far fa-heart"></i></a></li>
-                            {{-- <li><a href="#"><i class="far fa-random"></i></a> --}}
                         </ul>
                         <div class="wsus__product_details">
-                            <a class="wsus__category" href="#">{{ $product->category->name }} </a>
+                            <a class="wsus__category" href="javascript:;">{{ $product->category->name }} </a>
                             <p class="wsus__pro_rating">
                                 @php
                                     $avgrating = $product->reviews()->avg('rating');
@@ -194,7 +197,7 @@
                                 </div>
                                 <div class="col-xl-6 col-12 col-sm-12 col-md-12 col-lg-6">
                                     <div class="wsus__pro_details_text">
-                                        <a class="title" href="#">{{ $product->name }}</a>
+                                        <a class="title" href="javascript:;">{{ $product->name }}</a>
                                         <p class="wsus__stock_area"><span class="in_stock">in stock</span> (167
                                             item)</p>
 
@@ -250,7 +253,6 @@
                                                                             </option>
                                                                         @endif
                                                                     @endforeach
-                                                                    s
                                                                 </select>
                                                             </div>
                                                         @endif
@@ -270,14 +272,12 @@
                                             <ul class="wsus__button_area">
                                                 <li><button type="submit" class="add_cart" data-href="#">add to
                                                         cart</button></li>
-                                                <li><a class="buy_now" href="#">buy now</a></li>
+                                                <li><a class="buy_now" href="{{ route('user.checkout') }}">buy
+                                                        now</a></li>
                                                 <li><a data-id="{{ $product->id }}" class="addToWishlist"
                                                         href="#"><i class="fal fa-heart"></i></a></li>
-                                                {{-- <li><a href="#"><i class="far fa-random"></i></a></li> --}}
                                             </ul>
-
                                         </form>
-
                                         <p class="brand_model"><span>brand :</span> {{ $product->brand->name }}
                                         </p>
 

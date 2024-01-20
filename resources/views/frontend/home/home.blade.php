@@ -95,7 +95,7 @@
 
     <!--============================Home Services Start==============================-->
 
-    {{--  @include('frontend.home.section.home-services')  --}}
+     @include('frontend.home.section.home-services') 
 
     <!--============================Home Services End==============================-->
 

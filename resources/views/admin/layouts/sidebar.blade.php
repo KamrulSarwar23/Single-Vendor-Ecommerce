@@ -31,17 +31,14 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="{{ route('admin.dashboard') }}">Admin Dashboard</a>
+            <a style="font-size: 22px; color:#5C8374" href="{{ route('admin.dashboard') }}">{{ @$setting->site_name }}</a>
         </div>
 
-        <div class="sidebar-brand sidebar-brand-sm">
-            <a href="index.html">St</a>
-        </div>
 
         <ul class="sidebar-menu">
 
-            <li class="menu-header">Starter</li>
-            <li class=""><a class="nav-link" href="{{ route('home.page') }}"><i class="fa-solid fa-house"></i>
+            <li class="menu-header">Ecommerce</li>
+            <li><a class="nav-link" href="{{ route('home.page') }}"><i class="fa-solid fa-house"></i>
                     <span>Go To Home Page</span>
                 </a></li>
 
@@ -51,7 +48,7 @@
 
             </li>
             <li
-                class="dropdown {{ setActive(['admin.slider.*', 'admin.home-page-setting.*', 'admin.vendor-condition.*', 'admin.about.*', 'admin.terms-condition.*']) }}">
+                class="dropdown {{ setActive(['admin.slider.*', 'admin.home-page-setting.*', 'admin.vendor-condition.*', 'admin.about.*', 'admin.terms-condition.*', 'admin.ecommerce-service.*']) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
                         class="fa-solid fa-shield-halved"></i>
                     <span>Manage Website</span></a>
@@ -69,7 +66,8 @@
                             href="{{ route('admin.about.index') }}">About Page</a></li>
                     <li class="{{ setActive(['admin.terms-condition.*']) }}"><a class="nav-link"
                             href="{{ route('admin.terms-condition.index') }}">Terms & Conditions</a></li>
-
+                <li class="{{ setActive(['admin.ecommerce-service.*']) }}"><a class="nav-link"
+                                href="{{ route('admin.ecommerce-service.index') }}">Ecommerce Service</a></li>
                 </ul>
             </li>
 

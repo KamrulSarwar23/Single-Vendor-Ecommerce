@@ -218,7 +218,7 @@
                                                     @if (checkProductDiscount($product))
                                                         <p class="wsus__price">
                                                             {{ $setting->currency_icon }}{{ $product->offer_price }}
-                                                            <del>${{ $product->price }}</del>
+                                                            <del>{{ $setting->currency_icon }}{{ $product->price }}</del>
                                                         </p>
                                                     @else
                                                         <p class="wsus__price">

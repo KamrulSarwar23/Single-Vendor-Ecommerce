@@ -8,6 +8,7 @@ use App\Models\Blog;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\ChildCategory;
+use App\Models\EcommerceService;
 use App\Models\FlashSale;
 use App\Models\FooterGridThree;
 use App\Models\Slider;
@@ -55,6 +56,7 @@ class HomeController extends Controller
         $home_page_banner_section_four = json_decode($home_page_banner_section_four->value);
 
         $recentblog = Blog::with('category')->where('status', 1)->orderBy('id', 'DESC')->take(8)->get();
+        $service = EcommerceService::where('status', 1)->get();
         return view(
             'frontend.home.home',
             compact(
@@ -74,7 +76,8 @@ class HomeController extends Controller
                 'home_page_banner_section_two',
                 'home_page_banner_section_three',
                 'home_page_banner_section_four',
-                'recentblog'
+                'recentblog',
+                'service'
             )
         );
     }

@@ -39,40 +39,29 @@
 <body>
 
 
-    <!--=============================
-    DASHBOARD MENU START
-  ==============================-->
+    <!--=============================DASHBOARD MENU START==============================-->
+
     <div class="wsus__dashboard_menu">
         <div class="wsusd__dashboard_user">
             <img src="{{ asset(Auth::user()->image) }}" alt="img" class="img-fluid">
             <p>{{ Auth::user()->name }}</p>
         </div>
     </div>
-    <!--=============================
-    DASHBOARD MENU END
-  ==============================-->
+    <!--=============================DASHBOARD MENU END==============================-->
 
 
-    <!--=============================
-    DASHBOARD START
-  ==============================-->
+<!--=============================DASHBOARD START==============================-->
 
     @yield('content')
 
-    <!--=============================
-    DASHBOARD START
-  ==============================-->
+<!--=============================DASHBOARD START==============================-->
 
 
-    <!--============================
-      SCROLL BUTTON START
-    ==============================-->
+    <!--============================SCROLL BUTTON START==============================-->
     <div class="wsus__scroll_btn">
         <i class="fas fa-chevron-up"></i>
     </div>
-    <!--============================
-    SCROLL BUTTON  END
-  ==============================-->
+    <!--============================ SCROLL BUTTON  END==============================-->
 
   <script src="{{ asset('backend/assets/modules/moment.min.js') }}"></script>
     <!--jquery library js-->
