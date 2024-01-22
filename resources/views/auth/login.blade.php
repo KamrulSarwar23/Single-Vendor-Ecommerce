@@ -73,13 +73,7 @@
                                         </div>
                                         
                                         <button class="common_btn" type="submit">login</button>
-                                        {{-- <p class="social_text">Sign in with social account</p> --}}
-                                        {{-- <ul class="wsus__login_link">
-                                            <li><a href="#"><i class="fab fa-google"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                        </ul> --}}
+                                  
                                     </form>
 
                                 </div>

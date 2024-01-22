@@ -90,8 +90,6 @@
                                 @endforeach
                             </div>
 
-
-
                         </div>
 
                         <div class="wsus__comment_area">

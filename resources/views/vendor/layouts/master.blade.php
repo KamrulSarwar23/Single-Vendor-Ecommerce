@@ -7,7 +7,7 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densityDpi=device-dpi" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <title>  @yield('title') </title>
+    <title> @yield('title') </title>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link rel="icon" type="image/png" href="{{ asset($logosetting->favicon) }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/all.min.css') }}">
@@ -29,10 +29,10 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
-    <link rel="stylesheet" href="{{asset('backend/assets/modules/bootstrap-daterangepicker/daterangepicker.css')}}">
-    
-    @if(@$setting->layout == 'RTL')
-    <link rel="stylesheet" href="{{ asset('frontend/css/rtl.css') }}"> 
+    <link rel="stylesheet" href="{{ asset('backend/assets/modules/bootstrap-daterangepicker/daterangepicker.css') }}">
+
+    @if (@$setting->layout == 'RTL')
+        <link rel="stylesheet" href="{{ asset('frontend/css/rtl.css') }}">
     @endif
 </head>
 
@@ -50,11 +50,11 @@
     <!--=============================DASHBOARD MENU END==============================-->
 
 
-<!--=============================DASHBOARD START==============================-->
+    <!--=============================DASHBOARD START==============================-->
 
     @yield('content')
 
-<!--=============================DASHBOARD START==============================-->
+    <!--=============================DASHBOARD START==============================-->
 
 
     <!--============================SCROLL BUTTON START==============================-->
@@ -63,7 +63,7 @@
     </div>
     <!--============================ SCROLL BUTTON  END==============================-->
 
-  <script src="{{ asset('backend/assets/modules/moment.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/modules/moment.min.js') }}"></script>
     <!--jquery library js-->
     <script src="{{ asset('frontend/js/jquery-3.6.0.min.js') }}"></script>
     <!--bootstrap js-->
@@ -82,7 +82,8 @@
     <script src="{{ asset('frontend/js/jquery.nice-number.min.js') }}"></script>
     <!--counter js-->
     <script src="{{ asset('frontend/js/jquery.waypoints.min.js') }}"></script>
-    <script src="{{ asset('frontend/') }}js/jquery.countup.min.js"></script>
+    <script src="{{ asset('frontend/js/jquery.countup.min.js') }}"></script>
+
     <!--add row js-->
     <script src="{{ asset('frontend/js/add_row_custon.js') }}"></script>
     <!--multiple-image-video js-->
@@ -106,21 +107,21 @@
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
     <script src="{{ asset('backend/assets/modules/bootstrap-daterangepicker/daterangepicker.js') }} "></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
- 
 
 
-<script>
-  $('.summernote').summernote({
-    height:200
-  })
 
-  $('.datepicker').daterangepicker({
-    locale: {
-      format: 'YYYY-MM-DD'
-    },
-      singleDatePicker: true
-  });
-</script>
+    <script>
+        $('.summernote').summernote({
+            height: 200
+        })
+
+        $('.datepicker').daterangepicker({
+            locale: {
+                format: 'YYYY-MM-DD'
+            },
+            singleDatePicker: true
+        });
+    </script>
 
 
     <script>
@@ -132,73 +133,73 @@
     </script>
 
 
-<script>
-  $(document).ready(function() {
+    <script>
+        $(document).ready(function() {
 
 
-      $.ajaxSetup({
-          headers: {
-              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-          }
-      });
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
 
-      $('body').on('click', '.delete-item', function(event) {
+            $('body').on('click', '.delete-item', function(event) {
 
-          event.preventDefault();
+                event.preventDefault();
 
-          let deleteUrl = $(this).attr('href');
+                let deleteUrl = $(this).attr('href');
 
-          Swal.fire({
-              title: 'Are you sure?',
-              text: "You won't be able to revert this!",
-              icon: 'warning',
-              showCancelButton: true,
-              confirmButtonColor: '#3085d6',
-              cancelButtonColor: '#d33',
-              confirmButtonText: 'Yes, delete it!'
-          }).then((result) => {
-              if (result.isConfirmed) {
-                  
-                  $.ajax({
-                      type: 'DELETE',
-                      url: deleteUrl,
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
 
-                      success: function(data) {
-                          if (data.status == 'success') {
-                              Swal.fire(
-                                  'Deleted!',
-                                  data.message,
-                                  'success'
-                              )
+                        $.ajax({
+                            type: 'DELETE',
+                            url: deleteUrl,
 
-                              window.location.reload();
+                            success: function(data) {
+                                if (data.status == 'success') {
+                                    Swal.fire(
+                                        'Deleted!',
+                                        data.message,
+                                        'success'
+                                    )
 
-                          }else if (data.status == 'error') {
-                              Swal.fire(
-                                  'Cant Delete',
-                                  data.message,
-                                  'error'
-                              )
-                          }
+                                    window.location.reload();
 
-                      },
+                                } else if (data.status == 'error') {
+                                    Swal.fire(
+                                        'Cant Delete',
+                                        data.message,
+                                        'error'
+                                    )
+                                }
 
-                      error: function(xhr, status, error) {
-                          console.log(error);
-                      }
-                  })
+                            },
 
-
-              }
-
-          })
-      })
-
-  })
-</script>
+                            error: function(xhr, status, error) {
+                                console.log(error);
+                            }
+                        })
 
 
-@stack('scripts');
+                    }
+
+                })
+            })
+
+        })
+    </script>
+
+
+    @stack('scripts');
 
 </body>
 

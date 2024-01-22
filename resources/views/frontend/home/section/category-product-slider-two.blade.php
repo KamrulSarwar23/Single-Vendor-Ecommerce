@@ -189,8 +189,13 @@
                                 <div class="col-xl-6 col-12 col-sm-12 col-md-12 col-lg-6">
                                     <div class="wsus__pro_details_text">
                                         <a class="title" href="javascript:;">{{ $product->name }}</a>
-                                        <p class="wsus__stock_area"><span class="in_stock">in stock</span> (167
+                                        @if ($product->qty > 0)
+                                        <p class="wsus__stock_area"><span class="in_stock">in stock</span> ({{ $product->qty }}
                                             item)</p>
+                                    @elseif ($product->qty == 0)
+                                        <p class="wsus__stock_area"><span class="in_stock">Stock Out</span> ({{ $product->qty }}
+                                            item)</p>
+                                    @endif
 
 
                                         @if (checkProductDiscount($product))
@@ -263,7 +268,7 @@
                                             <ul class="wsus__button_area">
                                                 <li><button type="submit" class="add_cart" data-href="#">add to
                                                         cart</button></li>
-                                                <li><a class="buy_now" href="{{ route('user.checkout') }}">buy now</a></li>
+                                        
                                                 <li><a data-id="{{ $product->id }}" class="addToWishlist"
                                                         href="#"><i class="fal fa-heart"></i></a></li>
                                     

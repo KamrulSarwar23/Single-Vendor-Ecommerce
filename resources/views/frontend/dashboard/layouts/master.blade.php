@@ -93,7 +93,7 @@
   <script src="{{ asset('frontend/js/jquery.nice-number.min.js') }}"></script>
   <!--counter js-->
   <script src="{{ asset('frontend/js/jquery.waypoints.min.js') }}"></script>
-  <script src="{{ asset('frontend/') }}js/jquery.countup.min.js"></script>
+  <script src="{{ asset('frontend/js/jquery.countup.min.js') }}"></script>
   <!--add row js-->
   <script src="{{ asset('frontend/js/add_row_custon.js') }}"></script>
   <!--multiple-image-video js-->

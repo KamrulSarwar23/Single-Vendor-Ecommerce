@@ -118,7 +118,7 @@
                                                                 class="far fa-eye"></i></a></li>
                                                     <li><a data-id="{{ $product->id }}" class="addToWishlist"
                                                             href="#"><i class="far fa-heart"></i></a></li>
-                                                    {{-- <li><a href="#"><i class="far fa-random"></i></a> --}}
+                                                   
                                                 </ul>
                                                 <div class="wsus__product_details">
                                                     <a class="wsus__category"
@@ -210,14 +210,22 @@
                                                 <div class="wsus__product_details">
                                                     <a class="wsus__category"
                                                         href="#">{{ $product->category->name }} </a>
-                                                    <p class="wsus__pro_rating">
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star-half-alt"></i>
-                                                        <span>(17 review)</span>
-                                                    </p>
+                                                        <p class="wsus__pro_rating">
+                                                            @php
+                                                                $avgrating = $product->reviews()->avg('rating');
+                                                                $fullrating = round($avgrating);
+                                                            @endphp
+                            
+                                                            @for ($i = 1; $i <= 5; $i++)
+                                                                @if ($i <= $fullrating)
+                                                                    <i class="fas fa-star"></i>
+                                                                @else
+                                                                    <i class="far fa-star"></i>
+                                                                @endif
+                                                            @endfor
+                            
+                                                            <span>({{ count($product->reviews) }} review)</span>
+                                                        </p>
                                                     <a class="wsus__pro_name"
                                                         href="{{ route('product-detail', $product->slug) }}">{{ $product->name }}</a>
 
@@ -260,7 +268,7 @@
                                                         </form>
                                                         <li><a data-id="{{ $product->id }}" class="addToWishlist"
                                                                 href="#"><i class="far fa-heart"></i></a></li>
-                                                        {{-- <li><a href="#"><i class="far fa-random"></i></a> --}}
+                                               
                                                     </ul>
                                                 </div>
                                             </div>
@@ -343,7 +351,14 @@
                                 <div class="col-xl-6 col-12 col-sm-12 col-md-12 col-lg-6">
                                     <div class="wsus__pro_details_text">
                                         <a class="title" href="#">{{ $product->name }}</a>
-                                        <p class="wsus__stock_area"><span class="in_stock">in stock</span> (167 item)</p>
+                                        
+                                        @if ($product->qty > 0)
+                                        <p class="wsus__stock_area"><span class="in_stock">in stock</span> ({{ $product->qty }}
+                                            item)</p>
+                                    @elseif ($product->qty == 0)
+                                        <p class="wsus__stock_area"><span class="in_stock">Stock Out</span> ({{ $product->qty }}
+                                            item)</p>
+                                    @endif
 
 
                                         @if (checkProductDiscount($product))
@@ -354,13 +369,21 @@
                                             <h4>{{ $setting->currency_icon }}{{ $product->price }}</h4>
                                         @endif
 
-                                        <p class="review">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
-                                            <span>20 review</span>
+                                        <p class="wsus__pro_rating">
+                                            @php
+                                                $avgrating = $product->reviews()->avg('rating');
+                                                $fullrating = round($avgrating);
+                                            @endphp
+            
+                                            @for ($i = 1; $i <= 5; $i++)
+                                                @if ($i <= $fullrating)
+                                                    <i class="fas fa-star"></i>
+                                                @else
+                                                    <i class="far fa-star"></i>
+                                                @endif
+                                            @endfor
+            
+                                            <span>({{ count($product->reviews) }} review)</span>
                                         </p>
 
                                         <p class="description">{{ $product->short_description }}</p>
@@ -411,7 +434,7 @@
                                                 <li><a class="buy_now" href="#">buy now</a></li>
                                                 <li><a data-id="{{ $product->id }}" class="addToWishlist"
                                                         href="#"><i class="fal fa-heart"></i></a></li>
-                                                {{-- <li><a href="#"><i class="far fa-random"></i></a></li> --}}
+                                           
                                             </ul>
 
                                         </form>
