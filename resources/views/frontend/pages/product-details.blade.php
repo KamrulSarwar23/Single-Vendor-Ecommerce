@@ -77,7 +77,7 @@
 
                             @if (checkProductDiscount($product))
                                 <h4>{{ $setting->currency_icon }}{{ $product->offer_price }}
-                                    <del>${{ $product->price }}</del>
+                                    <del>{{ $setting->currency_icon }}{{ $product->price }}</del>
                                 </h4>
                             @else
                                 <h4>{{ $setting->currency_icon }}{{ $product->price }}</h4>

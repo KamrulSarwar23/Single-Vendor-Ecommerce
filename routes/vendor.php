@@ -27,7 +27,6 @@ Route::put('product/change-status', [VendorProductController::class, 'changeStat
 Route::resource('products', VendorProductController::class);
 
 //* Products Image Gallery Routes*//
-
 Route::resource('product-image-gallery', VendorProductImageGalleryController::class);
 
 //* Products Variants Routes*//

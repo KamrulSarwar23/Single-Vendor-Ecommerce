@@ -12,6 +12,8 @@ use App\Models\ProductImageGallery;
 use App\Models\ProductVariant;
 use App\Models\Brand;
 use App\Models\FlashSaleItem;
+use App\Models\Order;
+use App\Models\OrderProduct;
 use App\Models\Product;
 use App\Traits\ImageUploadTrait;
 use Illuminate\Support\Facades\Auth;
@@ -171,6 +173,10 @@ class ProductController extends Controller
         // Delete Main Product Image
         $product = Product::findOrFail($id);
 
+        if (OrderProduct::where('product_id', $product->id)->count()) {
+            return response(['status' => 'error', 'message' => 'This product have orders cant delete it']);
+        }
+
         $flashsaleitem = FlashSaleItem::where('product_id', $product->id)->count();
 
         if ($flashsaleitem) {
@@ -180,7 +186,7 @@ class ProductController extends Controller
 
         $this->deleteImage($product->thumb_image);
 
-        // // Delete Gallery Image
+        // Delete Gallery Image
         $productGallery = ProductImageGallery::where('product_id',  $product->id)->get();
         foreach ($productGallery as $image) {
             $this->deleteImage($image->image);

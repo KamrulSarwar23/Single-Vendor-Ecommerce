@@ -238,6 +238,6 @@ Route::delete('blog-comment/{id}', [BlogController::class, 'blogDestroy'])->name
 Route::get('cash-on-delivery', [CodSettingController::class, 'index'])->name('cod-setting-index');
 Route::put('cash-on-delivery', [CodSettingController::class, 'CodSetting'])->name('cod-setting-update');
 
-// ecommerce service route
+// Ecommerce Service Route
 Route::put('ecommerce-service-change-status', [EcommerceServiceController::class, 'changeStatus'])->name('ecommerce-service.change-status');
 Route::resource('ecommerce-service', EcommerceServiceController::class);

@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\SubCategory;
 use App\Models\ChildCategory;
+use App\Models\HomePageSetting;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Str;
 use Rule;
@@ -101,7 +103,7 @@ class ChildCategoryController extends Controller
 
             'category' => ['required'],
             'subcategory' => ['required'],
-            'name' => ['required', 'max:200', 'unique:child_categories,name,'.$id],
+            'name' => ['required', 'max:200', 'unique:child_categories,name,' . $id],
             'status' => ['required'],
 
         ]);
@@ -128,6 +130,18 @@ class ChildCategoryController extends Controller
     public function destroy(string $id)
     {
         $childcategory = ChildCategory::findOrFail($id);
+
+        if (Product::where('childcategory_id', $childcategory->id)->count() > 0) {
+            return response(['status' => 'error', 'message' => 'It Contains relations cant delete']);
+        }
+        $homepagesetting = HomePageSetting::all();
+        foreach ($homepagesetting as $item) {
+            $array = json_decode($item->value, true);
+            $collection = collect($array);
+            if ($collection->contains('child_category', $childcategory->id)) {
+                return response(['status' => 'error', 'message' => 'It Contains relations cant delete']);
+            }
+        }
         $childcategory->delete();
         return response(['status' => 'success', 'message' => 'Deleted Successfully']);
     }

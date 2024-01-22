@@ -46,7 +46,7 @@
                             </li>
                             <li><a data-id="{{ $product->id }}" class="addToWishlist" href="#"><i
                                         class="far fa-heart"></i></a></li>
-                        
+
                         </ul>
                         <div class="wsus__product_details">
                             <a class="wsus__category" href="#">{{ $product->category->name }} </a>
@@ -189,7 +189,7 @@
                                             $avgrating = $product->reviews()->avg('rating');
                                             $fullrating = round($avgrating);
                                         @endphp
-        
+
                                         @for ($i = 1; $i <= 5; $i++)
                                             @if ($i <= $fullrating)
                                                 <i class="fas fa-star"></i>
@@ -197,7 +197,7 @@
                                                 <i class="far fa-star"></i>
                                             @endif
                                         @endfor
-        
+
                                         <span>({{ count($product->reviews) }} review)</span>
                                     </p>
 
@@ -231,7 +231,7 @@
                                                         </div>
                                                     @endif
                                                 @endforeach
-                                                
+
                                             </div>
                                         </div>
 
@@ -246,7 +246,8 @@
                                         <ul class="wsus__button_area">
                                             <li><button type="submit" class="add_cart" data-href="#">add to
                                                     cart</button></li>
-                                            <li><a class="buy_now" href="{{ route('user.checkout') }}">buy now</a></li>
+                                            <li><a class="buy_now" href="{{ route('user.checkout') }}">buy now</a>
+                                            </li>
                                             <li><a data-id="{{ $product->id }}" class="addToWishlist"
                                                     href="#"><i class="fal fa-heart"></i></a></li>
                                         </ul>
