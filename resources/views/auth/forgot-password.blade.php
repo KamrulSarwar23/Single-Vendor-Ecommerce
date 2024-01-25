@@ -13,8 +13,8 @@
                     <div class="col-12">
                         <h4>forget password</h4>
                         <ul>
-                            <li><a href="#">login</a></li>
-                            <li><a href="#">forget password</a></li>
+                            <li><a href="{{route('login')}}">login</a></li>
+                            <li><a href="javascript:;">forget password</a></li>
                         </ul>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                     <div class="wsus__forget_area">
                         <span class="qiestion_icon"><i class="fal fa-question-circle"></i></span>
                         <h4>forget password ?</h4>
-                        <p>enter the email address to register with <span>e-shop</span></p>
+                        <p>enter the email address to register</p>
                         <div class="wsus__login">
                             <form method="POST" action="{{ route('password.email') }}">
                                 @csrf
