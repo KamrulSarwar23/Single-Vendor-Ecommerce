@@ -2665,7 +2665,7 @@ body.layout-3 .main-footer {
       box-shadow: none;
       background-color: transparent; }
       .main-sidebar .sidebar-menu li ul.dropdown-menu li a {
-        color: #dee2e6;
+        color: #979899;
         height: 35px;
         padding-left: 65px;
         font-weight: 400; }
@@ -2673,7 +2673,7 @@ body.layout-3 .main-footer {
           color: #5C8374;
           background-color: inherit; }
       .main-sidebar .sidebar-menu li ul.dropdown-menu li.active > a {
-        color: #e5ebe8;
+        color: #e4e9e6;
         font-weight: 600; }
       .main-sidebar .sidebar-menu li ul.dropdown-menu li a i {
         margin-top: 1px;

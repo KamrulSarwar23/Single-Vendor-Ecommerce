@@ -45,7 +45,7 @@ class ProductDataTable extends DataTable
 
             ->addColumn('thumb_image', function ($query) {
                 return $img = "<img width='80px' height='60px' src='" . asset($query->thumb_image) . "'> <img/>";
-            })
+            })            
 
             ->addColumn('type', function ($query) {
                 switch ($query->product_type) {
