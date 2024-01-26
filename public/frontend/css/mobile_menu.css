@@ -17,7 +17,7 @@ a {
 .wsus__mobile_menu_icon {
   width: 30px;
   height: 30px;
-  background: #5C8374;
+  background: #2B2A4C;
   color: #fff;
   text-align: center;
   line-height: 30px;
@@ -36,7 +36,7 @@ a {
 
 .wsus__mobile_menu_icon:hover {
   color: #fff;
-  background: #568d78;
+  background: #2B2A4C;
 }
 
 .wsus__mobile_menu_close {
@@ -62,12 +62,12 @@ a {
 }
 
 .wsus__mobile_menu_close:hover {
-  background: #5C8374;
+  background: #2B2A4C;
 }
 
 #wsus__mobile_menu {
   width: 300px;
-  background: #1B4242;
+  background: #2B2A4C;
   height: 100vh;
   position: fixed;
   top: 0;
@@ -90,9 +90,9 @@ a {
 
 .mobile_menu_lan li a {
   height: 30px;
-  background: #5C8374;
+  background: #2B2A4C;
   color: #fff;
-  border: 1px solid #1B4242;
+  border: 1px solid #0ac4c4;
   text-align: center;
   line-height: 30px;
   margin-left: 10px;
@@ -156,9 +156,8 @@ a {
 .wsus__mobile_menu_header_icon li a {
   width: 31px;
   height: 31px;
-  background: #1B4242;
+  background: #2B2A4C;
   color: #fff;
-  border: 1px solid #1B4242;
   text-align: center;
   line-height: 30px;
   margin-right: 15px;
@@ -363,7 +362,7 @@ a {
 
 .wsus__mobile_menu_main_menu .accordion-body {
   padding: 0;
-  background: #0f3a50;
+  background: #2B2A4C;
 }
 
 .wsus__mobile_menu_main_menu .accordion-body ul li a {

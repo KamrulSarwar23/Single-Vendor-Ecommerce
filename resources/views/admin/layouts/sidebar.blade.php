@@ -19,7 +19,7 @@
     .fa-comment,
     .fa-tachometer-alt,
     .fa-paperclip {
-        color: #5C8374;
+        color: #e1e9e6;
         font-size: 15px;
     }
 
@@ -31,7 +31,7 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a style="font-size: 22px; color:#5C8374" href="javascript:;">{{ @$setting->site_name }}</a>
+            <a style="font-size: 22px; color:#d8e4df" href="javascript:;">{{ @$setting->site_name }}</a>
         </div>
 
 
