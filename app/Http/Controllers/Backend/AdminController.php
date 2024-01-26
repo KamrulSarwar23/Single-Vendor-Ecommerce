@@ -46,10 +46,8 @@ class AdminController extends Controller
         $totalBlog = Blog::count();
         $totalCustomer = User::where('role', 'user')->count();
         $totalSubscriber = NewsLettersubscriber::where('is_verified', 1)->count();
-        $totalVendor = User::where('role', 'vendor')->count();
         $totalAdmin = User::where('role', 'admin')->count();
         $totalProduct = Product::count();
-        $totalSellerProduct = Product::where('vendor_id', '!=', Auth::user()->vendor->id)->count();
         $totalPendingProduct = Product::where('is_approved', 0)->count();
 
         return view('admin.dashboard', compact([
@@ -72,10 +70,8 @@ class AdminController extends Controller
             'totalBlog',
             'totalCustomer',
             'totalSubscriber',
-            'totalVendor',
             'totalAdmin',
             'totalProduct',
-            'totalSellerProduct',
             'totalPendingProduct'
         ]));
         

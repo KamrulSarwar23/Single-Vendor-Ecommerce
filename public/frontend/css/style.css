@@ -66,7 +66,7 @@ p {
   text-transform: capitalize;
   font-weight: 600;
   color: #fff;
-  background: #5C8374;
+  background: #5c6383;
   padding: 12px 25px;
   border: none;
   border-radius: 30px;
@@ -80,14 +80,14 @@ p {
 
 .common_btn:hover {
   color: #fff;
-  background: #1B4242;
+  background: #2B2A4C;
 }
 
 .see_btn {
   text-transform: capitalize;
   font-size: 16px;
   font-weight: 400;
-  color: #5C8374;
+  color: #2B2A4C;
   border: 1px solid #eee;
   padding: 5px 23px 5px 10px;
   border-radius: 3px;
@@ -129,8 +129,8 @@ p {
 
 .shop_btn:hover {
   color: #fff;
-  background: #5C8374;
-  border-color: #5C8374;
+  background: #2B2A4C;
+  border-color: #2B2A4C;
 }
 
 .add_cart {
@@ -139,7 +139,7 @@ p {
   font-weight: 600;
   color: #fff;
   padding: 10px 15px;
-  background: #5C8374;
+  background: #2B2A4C;
   border-radius: 3px;
   transition: all linear 0.3s;
   -webkit-transition: all linear 0.3s ease;
@@ -154,7 +154,7 @@ p {
 
 .add_cart:hover {
   color: #fff;
-  background: #1B4242;
+  background: #2B2A4C;
 }
 
 /*======================
@@ -167,7 +167,7 @@ p {
 #wsus__topbar {
   width: 100%;
   height: 45px;
-  background: #5C8374;
+  background: #5c6683;
 }
 
 .wsus__topbar_left {
@@ -249,8 +249,8 @@ p {
 }
 
 .wsus__topbar_dropdown li a:hover {
-  background: #aad8ff73;
-  color: #5C8374;
+  background: #2B2A4C;
+  color: #2B2A4C;
 }
 
 .wsus__topbar_left li:hover .wsus__topbar_dropdown {
@@ -301,7 +301,7 @@ p {
 ========================*/
 header {
   width: 100%;
-  background: #5C8374;
+  background: #2B2A4C;
   padding: 19px 0px;
   height: 90px;
   border-bottom: 1px solid #bdbcbc;
@@ -368,7 +368,7 @@ header {
   top: 50%;
   transform: translateY(-50%);
   right: 2px;
-  background: #aad8ffab;
+  background: #373777;
   padding: 16px 35px;
   border-radius: 80px;
   transition: all linear 0.3s;
@@ -377,7 +377,7 @@ header {
   -ms-transition: all linear 0.3s ease;
   -o-transition: all linear 0.3s ease;
   outline: none;
-  color: #333;
+  color: #ffffff;
 }
 
 .wsus__call_icon_area {
@@ -418,7 +418,7 @@ header {
 }
 
 .wsus__call_text a:hover {
-  color: #007aff;
+  color: #2c2b58;
 }
 
 .wsus__icon_area {
@@ -511,14 +511,14 @@ header {
 }
 
 .wsus__mini_cart h4 span:hover {
-  background: #5C8374;
+  background: #2B2A4C;
 }
 
 .wsus__mini_cart ul {
   display: block;
   overflow-y: auto !important;
   scrollbar-width: thin;
-  scrollbar-color: #5C8374 #0b172d;
+  scrollbar-color: #2B2A4C;
   transition: all linear 0.3s;
   -webkit-transition: all linear 0.3s ease;
   -moz-transition: all linear 0.3s ease;
@@ -570,7 +570,7 @@ header {
 }
 
 .wsis__del_icon:hover {
-  color: #5C8374;
+  color: #2B2A4C;
 }
 
 .wsus__mini_cart .wsus__cart_text {
@@ -616,7 +616,7 @@ header {
 }
 
 .wsus__mini_cart h5 span {
-  color: #353535;
+  color: #2B2A4C;
   font-weight: 700;
 }
 
@@ -658,7 +658,7 @@ header {
   line-height: 48px;
   display: block;
   font-size: 20px;
-  background: #5C8374;
+  background: #2B2A4C;
   position: relative;
   transition: all linear 0.3s;
   -webkit-transition: all linear 0.3s ease;
@@ -737,7 +737,7 @@ header {
 
 .wsus_menu_cat_item>li:hover>a {
   color: #5C8374;
-  background: #aad8ff73;
+  background: #2B2A4C;
 }
 
 .wsus_menu_cat_item>li:hover .wsus__droap_arrow::after {
@@ -1172,7 +1172,7 @@ header {
   width: 35px;
   height: 35px;
   line-height: 36px;
-  background: #1B4242;
+  background: #2B2A4C;
   color: #fff;
   border-radius: 50%;
   text-align: center;
@@ -1303,7 +1303,7 @@ PRODUCT MODAL VIEW START
 }
 
 .product_popup_modal .btn-close:hover {
-  background: #5C8374;
+  background: #2B2A4C;
 }
 
 .report_modal .btn-close {
@@ -1334,7 +1334,7 @@ PRODUCT MODAL VIEW START
   position: absolute;
   top: 50%;
   left: 5px;
-  background: #5C8374;
+  background: #2B2A4C;
   width: 35px;
   height: 35px;
   z-index: 1;
@@ -1423,7 +1423,7 @@ PRODUCT MODAL VIEW END
   font-size: 0;
   width: 30px;
   height: 8px;
-  background: #9EC8B9;
+  background: #2B2A4C;
   border-radius: 50px;
   margin: 0 5px;
   outline: 0;
@@ -1431,7 +1431,7 @@ PRODUCT MODAL VIEW END
 }
 
 #wsus__banner .slick-dots li.slick-active button {
-  background: #5C8374;
+  background: #2B2A4C;
 }
 
 /*======================
@@ -1461,7 +1461,7 @@ PRODUCT MODAL VIEW END
   left: -15px;
   width: 35px;
   height: 35px;
-  background: #5C8374;
+  background: #2B2A4C;
   opacity: .5;
   line-height: 35px;
   font-size: 15px;
@@ -1486,7 +1486,7 @@ PRODUCT MODAL VIEW END
 
 #wsus__brand_sleder .nxt_arr:hover,
 #wsus__brand_sleder .prv_arr:hover {
-  background: #5C8374;
+  background: #2B2A4C;
   opacity: 1;
 }
 
@@ -1565,7 +1565,7 @@ PRODUCT MODAL VIEW END
   text-align: center;
   width: 50px;
   height: 30px;
-  background: #5C8374;
+  background: #2B2A4C;
   margin: 0px 5px;
   border-radius: 3px;
   padding-top: 2px;
@@ -1623,7 +1623,7 @@ PRODUCT MODAL VIEW END
 
 .wsus__new {
   position: absolute;
-  background: #5C8374;
+  background: #2B2A4C;
   width: auto;
   height: 25px;
   text-align: center;
@@ -1731,7 +1731,7 @@ PRODUCT MODAL VIEW END
 .wsus__single_pro_icon li a:hover {
   color: #fff !important;
   border-color: #5C8374;
-  background: #5C8374;
+  background: #2B2A4C;
 }
 
 .wsus__product_details {
@@ -1839,7 +1839,7 @@ PRODUCT MODAL VIEW END
   left: 15px;
   width: 35px;
   height: 35px;
-  background: #5C8374;
+  background: #2B2A4C;
   opacity: .5;
   line-height: 35px;
   font-size: 15px;
@@ -1870,7 +1870,7 @@ PRODUCT MODAL VIEW END
 #wsus__electronic2 .prv_arr:hover,
 #wsus__electronic .nxt_arr:hover,
 #wsus__electronic .prv_arr:hover {
-  background: #5C8374;
+  background: #2B2A4C;
   opacity: 1;
 }
 
@@ -1922,7 +1922,7 @@ MONTHLY TOP PRODUCT START
 .monthly_top_filter2 button:hover,
 .monthly_top_filter2 button.active {
   color: #fff;
-  background: #5C8374 !important;
+  background: #2B2A4C !important;
 }
 
 .wsus__monthly_top_banner {
@@ -2019,7 +2019,7 @@ MONTHLY TOP PRODUCT START
   right: 12px;
   width: 25px;
   height: 25px;
-  background: #5C8374;
+  background: #2B2A4C;
   line-height: 24px;
   font-size: 15px;
   text-align: center;
@@ -2041,7 +2041,7 @@ MONTHLY TOP PRODUCT START
 
 #wsus__hot_deals .nxt_arr:hover,
 #wsus__hot_deals .prv_arr:hover {
-  background: #5C8374;
+  background: #2B2A4C;
 }
 
 /*======================
@@ -2136,8 +2136,8 @@ HOME BLOGS END
 
 .single_banner_2 .shop_btn:hover {
   color: #fff;
-  background: #5C8374;
-  border-color: #5C8374;
+  background: #2B2A4C;
+  border-color: #2B2A4C;
 }
 
 /*======================
@@ -2283,8 +2283,8 @@ HOME BLOGS END
 .wsus__hot_deals_text ul li:nth-child(2) a:hover,
 .wsus__hot_deals_text ul li:nth-child(3) a:hover {
   color: #fff;
-  border-color: #5C8374;
-  background: #5C8374;
+  border-color: #2B2A4C;
+  background: #2B2A4C;
 }
 
 .wsus__hot_deals__single {
@@ -2440,7 +2440,7 @@ WEEKLY BEST ITEM START
   right: 12px;
   width: 30px;
   height: 30px;
-  background: #5C8374;
+  background: #2B2A4C;
   line-height: 32px;
   font-size: 15px;
   text-align: center;
@@ -2469,7 +2469,7 @@ WEEKLY BEST ITEM START
 #wsus__weekly_best .prv_arr:hover,
 .home_blogs .nxt_arr:hover,
 .home_blogs .prv_arr:hover {
-  background: #5C8374;
+  background: #2B2A4C;
   opacity: 1;
 }
 
@@ -2545,7 +2545,7 @@ HOME SERVOCES START
   left: 15px;
   width: 35px;
   height: 35px;
-  background: #5C8374;
+  background: #2B2A4C;
   opacity: .5;
   line-height: 35px;
   font-size: 15px;
@@ -2577,7 +2577,7 @@ HOME SERVOCES START
 ========================*/
 #wsus__subscribe {
   margin-top: 70px;
-  background: #0b2c3d;
+  background: #2B2A4C;
   padding: 70px 0px;
 }
 
@@ -2783,7 +2783,7 @@ footer {
 .wsus__footer_bottom {
   padding: 30px 0px;
   margin-top: 67px;
-  background: #5C8374;
+  background: #2f2f77;
 }
 
 .wsus__copyright {
@@ -2836,7 +2836,7 @@ SCROLL BUTTON START
 
 .wsus__scroll_btn:hover {
   color: #fff;
-  background: #5C8374;
+  background: #2B2A4C;
 }
 
 /*======================
@@ -2982,7 +2982,7 @@ PPRODUCT PAGE START
 }
 
 .wsus__sidebar_filter {
-  background: #5C8374;
+  background: #2B2A4C;
   display: none;
   align-items: center;
   justify-content: space-between;
@@ -3107,8 +3107,8 @@ PPRODUCT PAGE START
 }
 
 .form-check-input:checked {
-  background-color: #5C8374;
-  border-color: #5C8374;
+  background-color: #2B2A4C;
+  border-color: #2B2A4C;
 }
 
 .form-check label {
@@ -8543,7 +8543,7 @@ header .dropdown-menu a:hover {
 }
 
 header .wsus__search button:hover {
-  background: #5C8374 !important;
+  background: #2b2a4d !important;
   color: #fff !important;
 }
 
@@ -8912,7 +8912,7 @@ header .wsus__call_text a:hover {
   height: 50px;
   border-radius: 50%;
   line-height: 50px;
-  background: #5C8374;
+  background: #2B2A4C;
   position: absolute;
   top: -25px;
   left: 50%;
@@ -9000,7 +9000,7 @@ header .wsus__call_text a:hover {
 
 .footer_2 {
   margin-top: 70px;
-  background: #1B4242;
+  background: #2B2A4C;
 }
 
 .footer_2 form {

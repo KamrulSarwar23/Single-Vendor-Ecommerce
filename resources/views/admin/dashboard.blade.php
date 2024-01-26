@@ -283,23 +283,6 @@
                 </a>
             </div>
 
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                <a href="{{ route('admin.coupons.index') }}">
-                    <div class="card card-statistic-1">
-                        <div class="card-icon bg-success">
-                            <i class="fas fa-circle"></i>
-                        </div>
-                        <div class="card-wrap">
-                            <div class="card-header">
-                                <h4>Total Coupon</h4>
-                            </div>
-                            <div class="card-body">
-                                {{ $totalCoupon }}
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
       
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                 <a href="{{ route('admin.blog.index') }}">
@@ -353,23 +336,7 @@
                     </div>
                 </a>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                <a href="{{ route('admin.vendor.index') }}">
-                    <div class="card card-statistic-1">
-                        <div class="card-icon bg-info">
-                            <i class="far fa-user"></i>
-                        </div>
-                        <div class="card-wrap">
-                            <div class="card-header">
-                                <h4>Total Vendors</h4>
-                            </div>
-                            <div class="card-body">
-                                {{ $totalVendor }}
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
+
 
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                 <a href="{{ route('admin.admin-list.index') }}">
@@ -389,41 +356,6 @@
                 </a>
             </div>
 
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                <a href="{{ route('admin.seller-pending-products.index') }}">
-                    <div class="card card-statistic-1">
-                        <div class="card-icon bg-primary">
-                            <i class="fab fa-product-hunt"></i>
-                        </div>
-                        <div class="card-wrap">
-                            <div class="card-header">
-                                <h4>Total Seller Pending Product</h4>
-                            </div>
-                            <div class="card-body">
-                                {{ $totalPendingProduct }}
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                <a href="{{ route('admin.seller-products.index') }}">
-                    <div class="card card-statistic-1">
-                        <div class="card-icon bg-primary">
-                            <i class="fab fa-product-hunt"></i>
-                        </div>
-                        <div class="card-wrap">
-                            <div class="card-header">
-                                <h4>Total Seller Product</h4>
-                            </div>
-                            <div class="card-body">
-                                {{ $totalSellerProduct }}
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
 
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                 <a href="{{ route('admin.products.index') }}">

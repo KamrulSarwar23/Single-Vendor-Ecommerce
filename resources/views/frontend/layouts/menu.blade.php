@@ -92,9 +92,6 @@
                             </div>
                         </li>
 
-                        <li><a class="{{ setActive(['vendor.index']) }}" href="{{ route('vendor.index') }}">vendor</a>
-                        </li>
-
                         <li><a class="{{ setActive(['blog']) }}" href="{{ route('blog') }}">blog</a></li>
 
                         <li class="wsus__relative_li"><a
@@ -117,9 +114,6 @@
                         @auth
                             @if (auth()->user()->role === 'user')
                                 <li><a class="btn btn-secondary text-white" href="{{ route('user.dashboard') }}">Go
-                                        Dashboard</a></li>
-                            @elseif(auth()->user()->role === 'vendor')
-                                <li><a class="btn btn-secondary text-white" href="{{ route('vendor.dashboard') }}">Go
                                         Dashboard</a></li>
                             @elseif(auth()->user()->role === 'admin')
                                 <li><a class="btn btn-secondary text-white" href="{{ route('admin.dashboard') }}">Go
@@ -163,8 +157,6 @@
             @auth
             @if (auth()->user()->role === 'user')
                 <li><a class="text-white" href="{{ route('user.dashboard') }}"><i class="fal fa-user"></i></a></li>
-            @elseif(auth()->user()->role === 'vendor')
-                <li><a class="text-white" href="{{ route('vendor.dashboard') }}"><i class="fal fa-user"></i></a></li>
             @elseif(auth()->user()->role === 'admin')
                 <li><a class="text-white" href="{{ route('admin.dashboard') }}"><i class="fal fa-user"></i></a></li>
             @endif
@@ -250,7 +242,6 @@
                                 </div>
                             </div>
                         </li>
-                        <li><a href="{{ route('vendor.index') }}">vendor</a></li>
                         <li><a href="{{ route('blog') }}">blog</a></li>
                         <li><a href="#" class="accordion-button collapsed" data-bs-toggle="collapse"
                                 data-bs-target="#flush-collapseThree101" aria-expanded="false"

@@ -66,9 +66,6 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 
     Route::get('reviews', [ReviewController::class, 'index'])->name('review.index');
     Route::post('review', [ReviewController::class, 'create'])->name('review.create');
 
-    // Vendors Request
-    Route::get('vendor-request', [UserVendorrequestController::class, 'vendorRequest'])->name('vendor.request');
-    Route::post('vendor-request-send', [UserVendorrequestController::class, 'vendorRequestSend'])->name('vendor-request-send');
 
     // Vendors Request
     Route::post('blog-comment', [PageController::class, 'blogComment'])->name('blog-comment');
@@ -105,10 +102,6 @@ Route::get('coupon-calculation', [CartController::class, 'couponCalculation'])->
 // News Letter route
 Route::post('news-letter-request', [NewsLetterController::class, 'newsLetterRequest'])->name('news-letter-request');
 Route::get('news-letter-verify/{token}', [NewsLetterController::class, 'newsLetterEmailVerify'])->name('news-letter-verify-email');
-
-// Vendors route
-Route::get('vendor', [HomeController::class, 'vendorPage'])->name('vendor.index');
-Route::get('vendor-product/{id}', [HomeController::class, 'vendorProduct'])->name('vendor.product');
 
 // about page route
 Route::get('/about', [PageController::class, 'aboutPage'])->name('about.index');

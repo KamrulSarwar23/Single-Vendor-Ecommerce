@@ -51,7 +51,6 @@
                                     <select id="inputState" class="form-control" name="role">
                                         <option>Select</option>
                                         <option value="admin">Admin</option>
-                                        <option value="vendor">Vendor</option>
                                         <option value="user">User</option>
                                     </select>
                                 </div>

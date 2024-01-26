@@ -16,7 +16,6 @@ class AdminListController extends Controller
         return $datatable->render('admin.admin-list.index');
     }
 
-
     public function changeStatus(Request $request)
     {
         $user = User::findOrFail($request->id);

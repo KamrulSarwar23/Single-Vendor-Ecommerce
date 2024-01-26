@@ -60,8 +60,6 @@
                     <li class="{{ setActive(['admin.home-page-setting.*']) }}"><a class="nav-link"
                             href="{{ route('admin.home-page-setting.index') }}">Home Page Setting</a></li>
 
-                    <li class="{{ setActive(['admin.vendor-condition.*']) }}"><a class="nav-link"
-                            href="{{ route('admin.vendor-condition.index') }}">Vendor Condition</a></li>
                     <li class="{{ setActive(['admin.about.*']) }}"><a class="nav-link"
                             href="{{ route('admin.about.index') }}">About Page</a></li>
                     <li class="{{ setActive(['admin.terms-condition.*']) }}"><a class="nav-link"
@@ -157,12 +155,6 @@
                         <a class="nav-link" href="{{ route('admin.products.index') }}">Products</a>
                     </li>
 
-                    <li class="{{ setActive(['admin.seller-products.*']) }}"><a class="nav-link"
-                            href="{{ route('admin.seller-products.index') }}">Seller Products</a></li>
-
-                    <li class="{{ setActive(['admin.seller-pending-products.*']) }}"><a class="nav-link"
-                            href="{{ route('admin.seller-pending-products.index') }}">Seller Pending Products</a></li>
-
                     <li class="{{ setActive(['admin.review.*']) }}"><a class="nav-link"
                             href="{{ route('admin.review.index') }}">Product Reviews</a></li>
 
@@ -185,8 +177,6 @@
                     <li class="{{ setActive(['admin.shipping-rule.*']) }}"><a class="nav-link"
                             href="{{ route('admin.shipping-rule.index') }}">Shipping Rule</a></li>
 
-                    <li class="{{ setActive(['admin.vendor-profile.*']) }}"><a class="nav-link"
-                            href="{{ route('admin.vendor-profile.index') }}">Vendor Profile</a></li>
 
                 </ul>
             </li>
@@ -236,10 +226,6 @@
                     <span>Manage Users</span></a>
 
                 <ul class="dropdown-menu">
-                    <li class="{{ setActive(['admin.vendor-request.*']) }}"><a class="nav-link"
-                            href="{{ route('admin.vendor-request.index') }}">Pending Vendors</a></li>
-                    <li class="{{ setActive(['admin.vendor.*']) }}"><a class="nav-link"
-                            href="{{ route('admin.vendor.index') }}">Vendors</a></li>
                     <li class="{{ setActive(['admin.customer.*']) }}"><a class="nav-link"
                             href="{{ route('admin.customer.index') }}">Customers</a></li>
                     <li class="{{ setActive(['admin.admin-list.*']) }}"><a class="nav-link"

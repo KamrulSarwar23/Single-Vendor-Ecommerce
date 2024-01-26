@@ -30,7 +30,6 @@ use App\Http\Controllers\Backend\ProductImageGalleryController;
 use App\Http\Controllers\Backend\ProductVariantController;
 use App\Http\Controllers\Backend\ProductVariantItemController;
 use App\Http\Controllers\Backend\ProfileController;
-use App\Http\Controllers\Backend\SellerProductController;
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\ShippingRuleController;
 use App\Http\Controllers\Backend\SliderController;
@@ -39,9 +38,6 @@ use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\SubscriberController;
 use App\Http\Controllers\Backend\TermsConditionController;
 use App\Http\Controllers\Backend\TransactionController;
-use App\Http\Controllers\Backend\VendorConditionController;
-use App\Http\Controllers\Backend\VendorListController;
-use App\Http\Controllers\Backend\VendorRequestController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -95,11 +91,6 @@ Route::get('product-variant-item/edit{variantItemId}', [ProductVariantItemContro
 Route::post('product-varian t-item/update{variantItemId}', [ProductVariantItemController::class, 'update'])->name('product-variant-item.update');
 Route::delete('product-variant-item/destroy/{variantItemId}', [ProductVariantItemController::class, 'destroy'])->name('product-variant-item.destroy');
 Route::put('product-variant-item/change-status', [ProductVariantItemController::class, 'changeStatus'])->name('product-variant-item.change-status');
-
-// Seller Product
-Route::get('seller-products', [SellerProductController::class, 'index'])->name('seller-products.index');
-Route::get('seller-pending-products', [SellerProductController::class, 'pendingProducts'])->name('seller-pending-products.index');
-Route::put('change-approve-status', [SellerProductController::class, 'chnageapprovestatus'])->name('change-approve-status');
 
 // Flash Sale
 Route::get('flash-sale', [FlashSaleController::class, 'index'])->name('flash-sale.index');
@@ -190,22 +181,9 @@ Route::put('review-status', [AdminProductReviewController::class, 'changeReviewS
 Route::get('reviews', [AdminProductReviewController::class, 'index'])->name('review.index');
 Route::delete('reviews-remove/{id}', [AdminProductReviewController::class, 'destory'])->name('remove-reviews');
 
-// Vendor Request Routes
-Route::get('vendor-status', [VendorRequestController::class, 'changeVendorStatus'])->name('vendor-request.status');
-Route::get('vendor-request', [VendorRequestController::class, 'index'])->name('vendor-request.index');
-Route::get('vendor-request/{id}/show', [VendorRequestController::class, 'show'])->name('vendor-request.show');
-
-// Vendor List Routes
-Route::get('vendor', [VendorListController::class, 'index'])->name('vendor.index');
-Route::put('vendor-change-status', [VendorListController::class, 'changeStatus'])->name('vendor.change-status');
-
 // Customer List Routes
 Route::get('customers', [CustomerListControlller::class, 'index'])->name('customer.index');
 Route::put('customers-change-status', [CustomerListControlller::class, 'changeStatus'])->name('customer.change-status');
-
-// Vendor Condition Routes
-Route::get('vendor-condition', [VendorConditionController::class, 'index'])->name('vendor-condition.index');
-Route::put('vendor-condition/update', [VendorConditionController::class, 'update'])->name('vendor-condition.update');
 
 // About Page Routes
 Route::get('about', [AboutController::class, 'index'])->name('about.index');

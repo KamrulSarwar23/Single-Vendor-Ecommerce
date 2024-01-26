@@ -12,7 +12,6 @@ class AdminProductReviewController extends Controller
     public function index(AdminProductReviewDataTable $datatable){
         return $datatable->render('admin.review.index');
     }
-
     public function changeReviewStatus(Request $request){
         $review = Review::findOrFail($request->id);
         $review->status = $request->status == 'true' ? 1 : 0;
