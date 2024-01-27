@@ -72,8 +72,16 @@
                                             <a class="forget_p" href="{{ route('password.request') }}">forget password ?</a>
                                         </div>
                                         
-                                        <button class="common_btn" type="submit">login</button>
-                                  
+                                        <button class="common_btn mb-3" type="submit">login</button>
+
+                                        <div class="text-center">
+                                            <span class="text-info">Login With Social</span>
+                                        </br>
+                               
+                                        <a class="btn btn-primary m-2" href="{{ route('login.google') }}"><i class="fab fa-google"></i></a>
+                                        <a class="btn btn-primary" href="{{ route('login.github') }}"><i class="fab fa-github"></i></a>
+                                        <a class="btn btn-primary m-2" href="{{ route('login.facebook') }}"><i class="fab fa-facebook"></i></a>
+                                        </div>
                                     </form>
 
                                 </div>

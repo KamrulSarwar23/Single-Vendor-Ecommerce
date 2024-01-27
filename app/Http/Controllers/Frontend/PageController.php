@@ -2,19 +2,22 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use App\Models\About;
+use App\Models\Blog;
+use App\Models\User;
 use App\Mail\Contact;
+use App\Models\About;
+use App\Helper\MailHelper;
+use App\Models\BlogComment;
 use App\Models\EmailConfig;
+use App\Models\BlogCategory;
+use Illuminate\Http\Request;
 use App\Models\GeneralSetting;
 use App\Models\TermsCondition;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
-use App\Helper\MailHelper;
-use App\Models\Blog;
-use App\Models\BlogCategory;
-use App\Models\BlogComment;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Laravel\Socialite\Facades\Socialite;
+use Exception;
 
 class PageController extends Controller
 {
@@ -55,8 +58,8 @@ class PageController extends Controller
     public function blogdetailspage(string $slug)
     {
         $blog = Blog::with(['user', 'comments'])->where('slug', $slug)->where('status', 1)->firstOrFail();
-        
-        $recentblog = Blog::with('category')->where('slug', '!=', $slug)->where('category_id',$blog->category_id)->where('status', 1)->orderBy('id', 'DESC')->take(10)->get();
+
+        $recentblog = Blog::with('category')->where('slug', '!=', $slug)->where('category_id', $blog->category_id)->where('status', 1)->orderBy('id', 'DESC')->take(10)->get();
         $comments = $blog->comments()->paginate(5);
         $blogcategory = BlogCategory::where('status', 1)->get();
         $latestblog = Blog::where('slug', '!=', $slug)->where('status', 1)->take(5)->latest('created_at')->get();
@@ -92,5 +95,86 @@ class PageController extends Controller
             $blogs = Blog::where('status', 1)->orderBy('id', 'DESC')->paginate(12);
         }
         return view('frontend.pages.blog', compact('blogs'));
+    }
+
+    // Login with Google
+    public function googleRedirect()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function googleCallback()
+    {
+        $user = Socialite::driver('google')->user();
+
+        $finduser = User::where('google_id', $user->id)->first();
+        if ($finduser) {
+            Auth::login($finduser);
+        } else {
+            $createuser = User::create([
+                'name' => $user->name,
+                'email' => $user->email,
+                'google_id' => $user->id,
+            ]);
+
+            Auth::login($createuser);
+        }
+        return redirect()->route('user.dashboard');
+    }
+
+
+    // Login with Github
+    public function githubRedirect()
+    {
+        return Socialite::driver('github')->redirect();
+    }
+
+    public function githubCallback()
+    {
+        $user = Socialite::driver('github')->user();
+
+        $finduser = User::where('github_id', $user->id)->first();
+
+        if ($finduser) {
+            Auth::login($finduser);
+        } else {
+            $createuser = User::create([
+                'name' => $user->name,
+                'email' => $user->email,
+                'github_id' => $user->id,
+            ]);
+
+            Auth::login($createuser);
+        }
+        return redirect()->route('user.dashboard');
+    }
+
+
+    // Login with Facebook
+    public function facebookRedirect()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    public function facebookCallback()
+    {
+        $user = Socialite::driver('facebook')->user();
+
+        $finduser = User::where('facebook_id', $user->id)->first();
+
+        if ($finduser) {
+            Auth::login($finduser);
+            return redirect()->route('user.dashboard');
+        } else {
+            $createuser = User::create([
+
+                'name' => $user->name,
+                'email' => $user->email,
+                'facebook_id' => $user->id,
+
+            ]);
+            Auth::login($createuser);
+        }
+        return redirect()->route('user.dashboard');
     }
 }
