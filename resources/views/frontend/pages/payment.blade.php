@@ -1,3 +1,7 @@
+@php
+    $cod = App\Models\CodSetting::first();
+@endphp
+
 @extends('frontend.layouts.master')
 
 @section('title')
@@ -46,9 +50,11 @@
                                     data-bs-target="#v-pills-stripe" type="button" role="tab"
                                     aria-controls="v-pills-stripe" aria-selected="false">Stripe</button>
 
-                                <button class="nav-link common_btn" id="v-pills-cod-tab" data-bs-toggle="pill"
-                                    data-bs-target="#v-pills-cod" type="button" role="tab"
-                                    aria-controls="v-pills-cod" aria-selected="false">Cash on Delivery</button>
+                             @if ($cod->status == 1)
+                             <button class="nav-link common_btn" id="v-pills-cod-tab" data-bs-toggle="pill"
+                             data-bs-target="#v-pills-cod" type="button" role="tab"
+                             aria-controls="v-pills-cod" aria-selected="false">Cash on Delivery</button>
+                             @endif
                             </div>
                         </div>
                     </div>

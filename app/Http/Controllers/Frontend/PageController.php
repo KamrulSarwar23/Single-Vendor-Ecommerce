@@ -105,21 +105,26 @@ class PageController extends Controller
 
     public function googleCallback()
     {
-        $user = Socialite::driver('google')->user();
+        try {
+            $user = Socialite::driver('google')->user();
 
-        $finduser = User::where('google_id', $user->id)->first();
-        if ($finduser) {
-            Auth::login($finduser);
-        } else {
-            $createuser = User::create([
-                'name' => $user->name,
-                'email' => $user->email,
-                'google_id' => $user->id,
-            ]);
+            $finduser = User::where('google_id', $user->id)->first();
+            if ($finduser) {
+                Auth::login($finduser);
+            } else {
+                $createuser = User::create([
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'google_id' => $user->id,
+                ]);
 
-            Auth::login($createuser);
+                Auth::login($createuser);
+            }
+            return redirect()->route('user.dashboard');
+        } catch (Exception $e) {
+            toastr('Something went wrong');
+            return redirect()->route('login');
         }
-        return redirect()->route('user.dashboard');
     }
 
 
@@ -131,22 +136,27 @@ class PageController extends Controller
 
     public function githubCallback()
     {
-        $user = Socialite::driver('github')->user();
+        try {
+            $user = Socialite::driver('github')->user();
 
-        $finduser = User::where('github_id', $user->id)->first();
+            $finduser = User::where('github_id', $user->id)->first();
 
-        if ($finduser) {
-            Auth::login($finduser);
-        } else {
-            $createuser = User::create([
-                'name' => $user->name,
-                'email' => $user->email,
-                'github_id' => $user->id,
-            ]);
+            if ($finduser) {
+                Auth::login($finduser);
+            } else {
+                $createuser = User::create([
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'github_id' => $user->id,
+                ]);
 
-            Auth::login($createuser);
+                Auth::login($createuser);
+            }
+            return redirect()->route('user.dashboard');
+        } catch (Exception $e) {
+            toastr('Something went wrong');
+            return redirect()->route('login');
         }
-        return redirect()->route('user.dashboard');
     }
 
 
@@ -158,23 +168,27 @@ class PageController extends Controller
 
     public function facebookCallback()
     {
-        $user = Socialite::driver('facebook')->user();
+        try {
+            $user = Socialite::driver('facebook')->user();
 
-        $finduser = User::where('facebook_id', $user->id)->first();
+            $finduser = User::where('facebook_id', $user->id)->first();
 
-        if ($finduser) {
-            Auth::login($finduser);
+            if ($finduser) {
+                Auth::login($finduser);
+            } else {
+                $createuser = User::create([
+
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'facebook_id' => $user->id,
+
+                ]);
+                Auth::login($createuser);
+            }
             return redirect()->route('user.dashboard');
-        } else {
-            $createuser = User::create([
-
-                'name' => $user->name,
-                'email' => $user->email,
-                'facebook_id' => $user->id,
-
-            ]);
-            Auth::login($createuser);
+        } catch (Exception $e) {
+            toastr('Something went wrong');
+            return redirect()->route('login');
         }
-        return redirect()->route('user.dashboard');
     }
 }

@@ -219,3 +219,7 @@ Route::put('cash-on-delivery', [CodSettingController::class, 'CodSetting'])->nam
 // Ecommerce Service Route
 Route::put('ecommerce-service-change-status', [EcommerceServiceController::class, 'changeStatus'])->name('ecommerce-service.change-status');
 Route::resource('ecommerce-service', EcommerceServiceController::class);
+
+
+/** Vendor Profile routes */
+Route::resource('vendor-profile', AdminVendorProfileController::class);

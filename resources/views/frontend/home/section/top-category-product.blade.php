@@ -35,6 +35,7 @@
                         @php
                             $products = [];
                         @endphp
+                        
                         @foreach ($popularCategories as $key => $popularCategory)
                             @php
                                 $lastKey = [];

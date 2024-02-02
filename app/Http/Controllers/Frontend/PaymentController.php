@@ -57,6 +57,7 @@ class PaymentController extends Controller
         // order store
         foreach (\Cart::content() as $item) {
             $product = Product::find($item->id);
+            
             $orderProduct = new OrderProduct();
             $orderProduct->order_id = $order->id;
             $orderProduct->product_id = $product->id;

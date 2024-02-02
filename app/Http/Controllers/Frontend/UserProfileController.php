@@ -20,7 +20,7 @@ class UserProfileController extends Controller
         $request->validate([
 
             'name' => ['required', 'max:100'],
-            'email' => ['required', 'email', 'unique:users,email,' .Auth::user()->id],
+            'email' => ['required', 'email'],
             'image' => ['image', 'max:2048'],
 
         ]);

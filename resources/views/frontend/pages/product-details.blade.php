@@ -173,11 +173,6 @@
                                 </li>
 
 
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
-                                        data-bs-target="#pills-contact" type="button" role="tab"
-                                        aria-controls="pills-contact" aria-selected="false">Vendor Info</button>
-                                </li>
 
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link" id="pills-contact-tab2" data-bs-toggle="pill"
@@ -199,50 +194,6 @@
                                         </div>
 
 
-                                    </div>
-                                </div>
-
-                                <div class="tab-pane fade" id="pills-contact" role="tabpanel"
-                                    aria-labelledby="pills-contact-tab">
-                                    <div class="wsus__pro_det_vendor">
-                                        <div class="row">
-                                            <div class="col-xl-6 col-xxl-5 col-md-6">
-                                                <div class="wsus__vebdor_img">
-                                                    <img src="{{ asset($product->vendor->banner) }}" alt="vensor"
-                                                        class="img-fluid w-100">
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-6 col-xxl-7 col-md-6 mt-4 mt-md-0">
-                                                <div class="wsus__pro_det_vendor_text">
-                                                    <h4>{{ $product->vendor->user->name }}</h4>
-                                                    <p class="rating">
-                                                        @php
-                                                            $avgrating = $product->reviews()->avg('rating');
-                                                            $fullrating = round($avgrating);
-                                                        @endphp
-
-                                                        @for ($i = 1; $i <= 5; $i++)
-                                                            @if ($i <= $fullrating)
-                                                                <i class="fas fa-star"></i>
-                                                            @else
-                                                                <i class="far fa-star"></i>
-                                                            @endif
-                                                        @endfor
-
-                                                        <span>({{ count($product->reviews) }} review)</span>
-                                                    </p>
-                                                    <p><span>Store Name:</span> {{ $product->vendor->shop_name }}</p>
-                                                    <p><span>Address:</span> {{ $product->vendor->address }}</p>
-                                                    <p><span>Phone:</span> {{ $product->vendor->phone }}</p>
-                                                    <p><span>mail:</span> {{ $product->vendor->email }}</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-12">
-                                                <div class="wsus__vendor_details">
-                                                    {!! $product->vendor->description !!}
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
 

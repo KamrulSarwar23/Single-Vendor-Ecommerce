@@ -235,6 +235,12 @@
                 </ul>
             </li>
 
+            <li class="{{ setActive(['admin.vendor-profile.*']) }}"><a class="nav-link"
+                href="{{ route('admin.vendor-profile.index') }}"><i
+                    class="fa-solid fa-money-check-dollar"></i><span>Manage
+                    Seller Profile</span></a></li>
+
+
             <li class="{{ setActive(['admin.transaction']) }}"><a class="nav-link"
                     href="{{ route('admin.transaction') }}"><i
                         class="fa-solid fa-money-check-dollar"></i><span>Manage

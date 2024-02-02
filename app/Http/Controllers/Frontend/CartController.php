@@ -24,6 +24,7 @@ class CartController extends Controller
             toastr('Please Add Product to Your Cart', 'warning', 'Cart is empty');
             return redirect()->route('home.page');
         }
+
         $cart_page_banner = Advertisement::where('key', 'cart-page-banner')->first();
         $cart_page_banner = json_decode($cart_page_banner->value);
 
@@ -32,9 +33,8 @@ class CartController extends Controller
 
     public function addCart(Request $request)
     {
-
         $product = Product::findOrFail($request->product_id);
-
+        
         // Check product Quantity
         if ($product->qty == 0) {
             return response(['status' => 'error', 'message' => 'Product Stock Out']);

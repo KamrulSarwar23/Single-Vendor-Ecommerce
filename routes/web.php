@@ -122,11 +122,11 @@ Route::get('/blog-details/{slug}', [PageController::class, 'blogdetailspage'])->
 // blog routes
 Route::get('/blog', [PageController::class, 'blog'])->name('blog');
 
-// goole login
+// Google login
 Route::get('/login/google', [PageController::class, 'googleRedirect'])->name('login.google');
 Route::get('/login/google/callback', [PageController::class, 'googleCallback']);
 
-// github login
+// Github login
 Route::get('/login/github', [PageController::class, 'githubRedirect'])->name('login.github');
 Route::get('/login/github/callback', [PageController::class, 'githubCallback']);
 
